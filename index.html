@@ -5668,20 +5668,30 @@ function physioComputeAngles(lm) {
   const lk = lm[PHYSIO_LM.leftKnee], rk = lm[PHYSIO_LM.rightKnee];
   const la = lm[PHYSIO_LM.leftAnkle], ra = lm[PHYSIO_LM.rightAnkle];
 
-  if (![ls, rs, lh, rh].every(physioVisible)) return null;
+  // Only the shoulders are strictly required. Previously this also required
+  // both hips to be visible, which meant a very common webcam framing
+  // (person visible from the waist/chest up, hips out of frame) caused this
+  // function to return null on every single frame — the scan would run for
+  // the full 20s but capture zero data points, so the report always showed
+  // "0"/"—" for every score. Now upper-body metrics (neck, shoulder tilt)
+  // are still computed even when hips/knees aren't in frame, and hip/spine/
+  // knee metrics are simply skipped (not the whole frame) when unavailable.
+  if (!physioVisible(ls) || !physioVisible(rs)) return null;
+
+  const hipsVisible = physioVisible(lh) && physioVisible(rh);
 
   const shoulderMid = physioMidpoint(ls, rs);
-  const hipMid = physioMidpoint(lh, rh);
+  const hipMid = hipsVisible ? physioMidpoint(lh, rh) : null;
   const earMid = (physioVisible(le) && physioVisible(re)) ? physioMidpoint(le, re)
     : (physioVisible(le) ? le : (physioVisible(re) ? re : null));
 
   const rawNeck = earMid ? physioAngleFromVertical(shoulderMid, earMid) : null;
   const rawShoulderTilt = physioAngleFromHorizontal(ls, rs);
-  const rawSpine = physioAngleFromVertical(hipMid, shoulderMid);
-  const rawHipTilt = physioAngleFromHorizontal(lh, rh);
+  const rawSpine = hipMid ? physioAngleFromVertical(hipMid, shoulderMid) : null;
+  const rawHipTilt = hipsVisible ? physioAngleFromHorizontal(lh, rh) : null;
 
-  const kneeL = (physioVisible(lk) && physioVisible(la)) ? physioAngleAtVertex(lh, lk, la) : null;
-  const kneeR = (physioVisible(rk) && physioVisible(ra)) ? physioAngleAtVertex(rh, rk, ra) : null;
+  const kneeL = (hipsVisible && physioVisible(lk) && physioVisible(la)) ? physioAngleAtVertex(lh, lk, la) : null;
+  const kneeR = (hipsVisible && physioVisible(rk) && physioVisible(ra)) ? physioAngleAtVertex(rh, rk, ra) : null;
   const kneeVals = [kneeL, kneeR].filter(v => v !== null);
   const rawKnee = kneeVals.length ? physioMean(kneeVals) : null;
   const kneeAsymmetry = (kneeL !== null && kneeR !== null) ? Math.abs(kneeL - kneeR) : 0;
@@ -5702,7 +5712,7 @@ function physioComputeAngles(lm) {
   };
   const overallConfidence = physioMean(Object.values(confidence));
 
-  return { neck, shoulderTilt, spine, hipTilt, knee, kneeAsymmetry, hipMidX: hipMid.x, confidence, overallConfidence };
+  return { neck, shoulderTilt, spine, hipTilt, knee, kneeAsymmetry, hipMidX: hipMid ? hipMid.x : null, confidence, overallConfidence };
 }
 
 /* ---- scoring & report ---- */
