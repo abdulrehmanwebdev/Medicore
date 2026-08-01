@@ -351,7 +351,114 @@ html.light-mode .bg-gradient-to-r.from-\[\#00C896\] {
   h1 { line-height: 1.1; }
 }
 
+/* ---- AI Physiotherapy Scan: scanner frame ---- */
+#physio-frame { position: relative; }
+#physio-frame .p-corner { position: absolute; width: 24px; height: 24px; border-color: var(--cyan); opacity: .95; filter: drop-shadow(0 0 4px rgba(0,229,255,0.6)); pointer-events: none; }
+#physio-frame .p-corner-tl { top: 10px; left: 10px; border-top: 3px solid; border-left: 3px solid; border-top-left-radius: 6px; }
+#physio-frame .p-corner-tr { top: 10px; right: 10px; border-top: 3px solid; border-right: 3px solid; border-top-right-radius: 6px; }
+#physio-frame .p-corner-bl { bottom: 10px; left: 10px; border-bottom: 3px solid; border-left: 3px solid; border-bottom-left-radius: 6px; }
+#physio-frame .p-corner-br { bottom: 10px; right: 10px; border-bottom: 3px solid; border-right: 3px solid; border-bottom-right-radius: 6px; }
+@keyframes physioSweep { 0% { transform: translateY(-4%); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(104%); opacity: 0; } }
+#physio-frame .p-sweep { position: absolute; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); box-shadow: 0 0 14px 2px rgba(0,229,255,.7); animation: physioSweep 2.6s linear infinite; pointer-events: none; }
+@keyframes physioPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(.8); } }
+.physio-pulse-dot { animation: physioPulse 1.4s ease-in-out infinite; }
+#physio-body-warning { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); background: rgba(6,18,31,0.88); border: 1px solid rgba(251,191,36,0.4); color: #FBBF24; font-size: 11px; padding: 6px 14px; border-radius: 999px; white-space: nowrap; }
+
+/* ---- AI Physiotherapy Scan: premium medical upgrade ---- */
+:root {
+  --physio-blue:      #2563EB;
+  --physio-blue-deep: #1D4ED8;
+  --physio-sky:       #38BDF8;
+  --physio-white:     #FFFFFF;
+}
+.physio-medical-shell {
+  position: relative;
+  border-radius: 1.75rem;
+  background: linear-gradient(160deg, rgba(37,99,235,0.10), rgba(56,189,248,0.05));
+  border: 1px solid rgba(56,189,248,0.22);
+  box-shadow: 0 30px 60px -30px rgba(37,99,235,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+  transition: box-shadow .4s ease, transform .4s ease;
+}
+html.light-mode .physio-medical-shell {
+  background: linear-gradient(160deg, rgba(37,99,235,0.06), rgba(255,255,255,0.9));
+  border: 1px solid rgba(37,99,235,0.16);
+  box-shadow: 0 30px 60px -30px rgba(37,99,235,0.22);
+}
+.physio-medical-shell:hover { box-shadow: 0 34px 70px -28px rgba(37,99,235,0.45); }
+
+.physio-medic-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: linear-gradient(135deg, var(--physio-blue), var(--physio-sky));
+  color: #fff; font-weight: 700; font-size: 11px; letter-spacing: .04em;
+  padding: .3rem .75rem; border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.35);
+}
+
+@keyframes physioCardIn {
+  0%   { opacity: 0; transform: translateY(18px) scale(.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.physio-card {
+  animation: physioCardIn .55s cubic-bezier(.2,.8,.2,1) both;
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, rgba(37,99,235,0.07), rgba(255,255,255,0.02));
+  border: 1px solid rgba(56,189,248,0.18);
+  box-shadow: 0 18px 40px -22px rgba(37,99,235,0.30);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+html.light-mode .physio-card {
+  background: linear-gradient(180deg, rgba(37,99,235,0.05), #ffffff);
+  border: 1px solid rgba(37,99,235,0.14);
+  box-shadow: 0 18px 40px -24px rgba(37,99,235,0.20);
+}
+.physio-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -20px rgba(37,99,235,0.40); border-color: rgba(56,189,248,0.4); }
+.physio-card:nth-child(1) { animation-delay: .02s; }
+.physio-card:nth-child(2) { animation-delay: .10s; }
+.physio-card:nth-child(3) { animation-delay: .18s; }
+
+.physio-conf-track { width: 100%; height: 6px; border-radius: 999px; background: rgba(148,163,184,0.25); overflow: hidden; }
+.physio-conf-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--physio-blue), var(--physio-sky)); width: 0%; transition: width 1s cubic-bezier(.2,.8,.2,1); }
+
+@keyframes physioRingDraw { from { stroke-dashoffset: 94; } }
+.physio-ring-circle { animation: physioRingDraw 1.1s cubic-bezier(.2,.8,.2,1) both; }
+
+@keyframes physioShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.physio-skeleton {
+  background: linear-gradient(90deg, rgba(148,163,184,0.12) 25%, rgba(148,163,184,0.28) 37%, rgba(148,163,184,0.12) 63%);
+  background-size: 400% 100%;
+  animation: physioShimmer 1.4s ease infinite;
+  border-radius: .85rem;
+}
+
+.physio-spinner {
+  width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  border: 3px solid rgba(56,189,248,0.25); border-top-color: var(--physio-sky);
+  animation: physioSpin .8s linear infinite;
+}
+@keyframes physioSpin { to { transform: rotate(360deg); } }
+
+@keyframes physioFadeUp { 0% { opacity:0; transform: translateY(10px);} 100% { opacity:1; transform: translateY(0);} }
+.physio-fade-up { animation: physioFadeUp .45s ease both; }
+
+.physio-metric-row { transition: background .25s ease; border-radius: .85rem; }
+.physio-metric-row:hover { background: rgba(56,189,248,0.08); }
+.physio-metric-value { transition: color .3s ease; }
+
+.physio-alert-banner {
+  border-radius: 1rem; padding: .85rem 1rem; font-size: 12.5px; line-height: 1.5;
+  border: 1px solid rgba(248,113,113,0.35); background: rgba(248,113,113,0.08); color: #FCA5A5;
+}
+html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,113,0.08); }
+
+@media (max-width: 640px) {
+  .physio-medical-shell { border-radius: 1.25rem; }
+}
 </style>
+
+<!-- MediaPipe Pose (AI Physiotherapy Scan) -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
 
 </head>
 <body class="overflow-x-hidden">
@@ -458,6 +565,7 @@ html.light-mode .bg-gradient-to-r.from-\[\#00C896\] {
           <a href="#heartrate"  data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-heart w-5 text-teal-400"></i>Heart Rate Tracker</a>
           <a href="#stress"     data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-face-smile w-5 text-teal-400"></i>Stress Checker</a>
           <a href="#posture"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-chair w-5 text-teal-400"></i>Posture Tracker</a>
+          <a href="#physioscan" data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-person-walking w-5 text-teal-400"></i>AI Physiotherapy Scan</a>
           <a href="#labtest"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-flask w-5 text-teal-400"></i>Lab Tests</a>
           <a href="#insurance"  data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-shield-halved w-5 text-teal-400"></i>Insurance Advisor</a>
           <a href="#appointments" data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-user-doctor w-5 text-teal-400"></i>AI Doctor Recommendation</a>
@@ -523,6 +631,7 @@ html.light-mode .bg-gradient-to-r.from-\[\#00C896\] {
       <a href="#heartrate" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-heart text-teal-400 w-5 mr-1"></i> Heart Rate Tracker</a>
       <a href="#stress"    data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-face-smile text-teal-400 w-5 mr-1"></i> Stress Checker</a>
       <a href="#posture"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-chair text-teal-400 w-5 mr-1"></i> Posture Tracker</a>
+      <a href="#physioscan" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-person-walking text-teal-400 w-5 mr-1"></i> AI Physiotherapy Scan</a>
       <a href="#labtest"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-flask text-teal-400 w-5 mr-1"></i> Lab Tests</a>
       <a href="#insurance" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-shield-halved text-teal-400 w-5 mr-1"></i> Insurance Advisor</a>
       <a href="#appointments" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-user-doctor text-teal-400 w-5 mr-1"></i> AI Doctor Recommendation</a>
@@ -1477,6 +1586,100 @@ html.light-mode .bg-gradient-to-r.from-\[\#00C896\] {
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ AI PHYSIOTHERAPY SCAN ============ -->
+<section id="physioscan" class="py-20 md:py-24 section-alt border-t border-white/10" aria-labelledby="physioscan-heading">
+  <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="physio-medic-badge mb-3"><i class="fa-solid fa-staff-snake" aria-hidden="true"></i> FEATURE 13 — CLINICAL-GRADE MOTION ANALYSIS</div>
+      <h2 id="physioscan-heading" class="text-4xl md:text-5xl font-bold font-display">AI Physiotherapy Scan</h2>
+      <p class="mt-4" style="color:var(--text-muted)">Turn on your camera for a real-time posture &amp; movement check. MediCore tracks your skeleton with MediaPipe Pose, stabilizes it with smoothing filters, and measures joint alignment with confidence scoring — this is guidance, not a diagnosis.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-8">
+      <!-- Camera + skeleton -->
+      <div class="lg:col-span-3">
+        <div id="physio-frame" class="physio-medical-shell overflow-hidden" style="aspect-ratio:4/3;background:#04101F;">
+          <video id="physio-video" class="hidden" playsinline muted></video>
+          <canvas id="physio-canvas" class="w-full h-full object-cover"></canvas>
+          <div id="physio-placeholder" class="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center px-6" style="position:absolute;top:0;left:0;right:0;bottom:0;">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg, rgba(37,99,235,0.18), rgba(56,189,248,0.12));border:1px solid rgba(56,189,248,0.35)">
+              <i class="fa-solid fa-video text-2xl" style="color:var(--physio-sky, #38BDF8)" aria-hidden="true"></i>
+            </div>
+            <p class="text-sm max-w-xs" style="color:var(--text-muted)">Camera preview appears here. Stand about 2 meters back so your full body is visible.</p>
+            <p id="physio-error" class="physio-alert-banner max-w-xs hidden"></p>
+          </div>
+          <div id="physio-loading-overlay" class="absolute inset-0 flex-col items-center justify-center gap-3 hidden" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(4,16,31,0.72);backdrop-filter:blur(3px);display:none;">
+            <div class="physio-spinner"></div>
+            <p id="physio-loading-text" class="text-xs font-semibold text-white">Starting camera…</p>
+          </div>
+        </div>
+
+        <div id="physio-progress-wrap" class="mt-4 hidden physio-fade-up">
+          <div class="flex justify-between text-xs mb-1" style="color:var(--text-muted)">
+            <span>Capturing movement…</span>
+            <span id="physio-countdown" class="font-semibold">20s remaining</span>
+          </div>
+          <div class="w-full h-2 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.08)">
+            <div id="physio-progress-bar" class="h-full" style="width:0%;background:linear-gradient(90deg,var(--physio-blue,#2563EB),var(--physio-sky,#38BDF8));transition:width 1s linear"></div>
+          </div>
+          <p class="text-xs mt-2" style="color:var(--text-muted)">Tip: slowly roll your shoulders and bend your knees a little to help measure mobility.</p>
+        </div>
+
+        <div class="mt-4 flex flex-wrap gap-3" id="physio-controls">
+          <button id="physio-start-cam-btn" onclick="startPhysioCamera()" class="px-6 py-3 text-white font-semibold rounded-2xl flex items-center gap-x-2 hover:scale-[1.02] transition focus-ring" style="background:linear-gradient(135deg,var(--physio-blue,#2563EB),var(--physio-sky,#38BDF8));box-shadow:0 10px 26px -8px rgba(37,99,235,0.55)">
+            <i class="fa-solid fa-camera" aria-hidden="true"></i> Start Camera
+          </button>
+        </div>
+      </div>
+
+      <!-- Live metrics -->
+      <div class="lg:col-span-2 space-y-4">
+        <div class="physio-card p-6">
+          <div class="flex items-center gap-x-2 mb-1">
+            <span id="physio-status-dot" class="w-2 h-2 rounded-full" style="background:#6B7280"></span>
+            <span id="physio-status-text" class="text-xs font-semibold" style="color:var(--text-muted)">Camera off</span>
+          </div>
+          <div class="font-semibold mt-2 mb-1 flex items-center gap-x-2"><i class="fa-solid fa-wave-square" style="color:var(--physio-sky,#38BDF8)" aria-hidden="true"></i> Live Joint Angles</div>
+          <p class="text-xs mb-3" style="color:var(--text-muted)">Stabilized in real time from your skeleton tracking (noise-filtered).</p>
+          <div class="space-y-0">
+            <div class="physio-metric-row flex items-center justify-between py-2.5 px-2 border-b border-white/10">
+              <div><p class="text-sm font-medium">Neck Posture</p><p class="text-[11px]" style="color:var(--text-muted)">Ideal: close to 0° (upright head)</p></div>
+              <span id="physio-neck" class="physio-metric-value font-semibold" style="color:var(--physio-sky,#38BDF8)">—</span>
+            </div>
+            <div class="physio-metric-row flex items-center justify-between py-2.5 px-2 border-b border-white/10">
+              <div><p class="text-sm font-medium">Shoulder Alignment</p><p class="text-[11px]" style="color:var(--text-muted)">Ideal: close to 0° (level shoulders)</p></div>
+              <span id="physio-shoulder" class="physio-metric-value font-semibold" style="color:var(--physio-sky,#38BDF8)">—</span>
+            </div>
+            <div class="physio-metric-row flex items-center justify-between py-2.5 px-2 border-b border-white/10">
+              <div><p class="text-sm font-medium">Spine Alignment</p><p class="text-[11px]" style="color:var(--text-muted)">Ideal: close to 0° (upright trunk)</p></div>
+              <span id="physio-spine" class="physio-metric-value font-semibold" style="color:var(--physio-sky,#38BDF8)">—</span>
+            </div>
+            <div class="physio-metric-row flex items-center justify-between py-2.5 px-2 border-b border-white/10">
+              <div><p class="text-sm font-medium">Hip Alignment</p><p class="text-[11px]" style="color:var(--text-muted)">Ideal: close to 0° (level hips)</p></div>
+              <span id="physio-hip" class="physio-metric-value font-semibold" style="color:var(--physio-sky,#38BDF8)">—</span>
+            </div>
+            <div class="physio-metric-row flex items-center justify-between py-2.5 px-2">
+              <div><p class="text-sm font-medium">Knee Alignment</p><p class="text-[11px]" style="color:var(--text-muted)">Ideal: near 175–180° (standing extension)</p></div>
+              <span id="physio-knee" class="physio-metric-value font-semibold" style="color:var(--physio-sky,#38BDF8)">—</span>
+            </div>
+          </div>
+          <div class="mt-3 pt-3 border-t border-white/10 flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wide" style="color:var(--text-muted)">Tracking Confidence</span>
+            <span id="physio-live-confidence" class="text-xs font-bold" style="color:var(--physio-sky,#38BDF8)">—</span>
+          </div>
+          <div class="physio-conf-track mt-1.5"><div id="physio-live-confidence-bar" class="physio-conf-fill"></div></div>
+        </div>
+        <div class="physio-card p-5 flex gap-3">
+          <i class="fa-solid fa-circle-info mt-0.5" style="color:var(--physio-sky,#38BDF8)" aria-hidden="true"></i>
+          <p class="text-xs" style="color:var(--text-muted)">This module analyses body alignment and movement patterns only. It does <strong>not</strong> diagnose medical conditions or diseases. For clinical evaluation, consult a licensed physiotherapist.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="physio-report-results"></div>
   </div>
 </section>
 
@@ -5355,6 +5558,569 @@ function analyzePosture() {
       </div>
     </div>`;
   popResults('posture-results', 'Your Posture & Desk Health Score', 'fa-solid fa-chair');
+}
+
+/* =========================================================
+   AI PHYSIOTHERAPY SCAN (MediaPipe Pose)
+   ========================================================= */
+const physioState = {
+  pose: null,
+  camera: null,
+  stage: 'idle',        // idle | loading | ready | scanning | complete
+  scanning: false,
+  history: [],
+  lastUiUpdate: 0,
+  countdown: 20,
+  countdownTimer: null,
+  scanTimeout: null,
+  emaAngles: {},         // smoothed (EMA) angle values, keyed by metric
+  rawBuffers: {},        // small rolling buffers per metric for despike/median filtering
+};
+const PHYSIO_SCAN_SECONDS = 20;
+const PHYSIO_LM = {
+  leftEar: 7, rightEar: 8,
+  leftShoulder: 11, rightShoulder: 12,
+  leftHip: 23, rightHip: 24,
+  leftKnee: 25, rightKnee: 26,
+  leftAnkle: 27, rightAnkle: 28,
+};
+/* Landmarks that feed each metric — used for confidence scoring */
+const PHYSIO_METRIC_LANDMARKS = {
+  neck:        ['leftEar', 'rightEar', 'leftShoulder', 'rightShoulder'],
+  shoulderTilt:['leftShoulder', 'rightShoulder'],
+  spine:       ['leftShoulder', 'rightShoulder', 'leftHip', 'rightHip'],
+  hipTilt:     ['leftHip', 'rightHip'],
+  knee:        ['leftHip', 'leftKnee', 'leftAnkle', 'rightHip', 'rightKnee', 'rightAnkle'],
+};
+
+/* ---- geometry helpers ---- */
+function physioAngleAtVertex(A, B, C) {
+  const BA = { x: A.x - B.x, y: A.y - B.y };
+  const BC = { x: C.x - B.x, y: C.y - B.y };
+  const dot = BA.x * BC.x + BA.y * BC.y;
+  const magBA = Math.hypot(BA.x, BA.y) || 1e-6;
+  const magBC = Math.hypot(BC.x, BC.y) || 1e-6;
+  const cos = Math.min(1, Math.max(-1, dot / (magBA * magBC)));
+  return (Math.acos(cos) * 180) / Math.PI;
+}
+function physioAngleFromVertical(A, B) {
+  const dx = B.x - A.x, dy = B.y - A.y;
+  return (Math.atan2(Math.abs(dx), Math.abs(dy) || 1e-6) * 180) / Math.PI;
+}
+function physioAngleFromHorizontal(A, B) {
+  const dx = B.x - A.x, dy = B.y - A.y;
+  return (Math.atan2(Math.abs(dy), Math.abs(dx) || 1e-6) * 180) / Math.PI;
+}
+function physioMidpoint(A, B) { return { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 }; }
+function physioVisible(p) { return p && (p.visibility === undefined || p.visibility > 0.5); }
+function physioClamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+function physioMean(arr) { return arr.reduce((a, b) => a + b, 0) / (arr.length || 1); }
+function physioMedian(arr) {
+  if (!arr.length) return null;
+  const s = [...arr].sort((a, b) => a - b);
+  const mid = Math.floor(s.length / 2);
+  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+}
+function physioStdDev(arr) {
+  const m = physioMean(arr);
+  return Math.sqrt(physioMean(arr.map(v => (v - m) ** 2)));
+}
+
+/* ---- noise reduction: median despike + exponential smoothing ----
+   Improves AI accuracy by rejecting single-frame jitter/outliers before
+   feeding the value into a smoothing filter, giving far more stable
+   live readings and a cleaner session history for the report. */
+function physioStabilize(key, rawValue) {
+  if (rawValue === null || rawValue === undefined || Number.isNaN(rawValue)) {
+    return physioState.emaAngles[key] ?? null;
+  }
+  const buf = physioState.rawBuffers[key] || (physioState.rawBuffers[key] = []);
+  buf.push(rawValue);
+  if (buf.length > 5) buf.shift();
+
+  // Median despike: if the newest sample is a wild outlier vs. the
+  // recent median, ignore it in favor of the median (rejects momentary
+  // mis-detections without lagging behind genuine movement).
+  const med = physioMedian(buf);
+  const despiked = (buf.length >= 3 && Math.abs(rawValue - med) > 22) ? med : rawValue;
+
+  // Exponential moving average for smooth, low-jitter output.
+  const alpha = 0.28;
+  const prev = physioState.emaAngles[key];
+  const next = (prev === null || prev === undefined) ? despiked : prev * (1 - alpha) + despiked * alpha;
+  physioState.emaAngles[key] = next;
+  return next;
+}
+
+function physioConfidenceFor(metricKey, lm) {
+  const idxNames = PHYSIO_METRIC_LANDMARKS[metricKey] || [];
+  const vis = idxNames.map(name => {
+    const p = lm[PHYSIO_LM[name]];
+    return p ? (p.visibility === undefined ? 1 : physioClamp(p.visibility, 0, 1)) : 0;
+  });
+  return vis.length ? physioClamp(physioMean(vis) * 100, 0, 100) : 0;
+}
+
+function physioComputeAngles(lm) {
+  const ls = lm[PHYSIO_LM.leftShoulder], rs = lm[PHYSIO_LM.rightShoulder];
+  const le = lm[PHYSIO_LM.leftEar], re = lm[PHYSIO_LM.rightEar];
+  const lh = lm[PHYSIO_LM.leftHip], rh = lm[PHYSIO_LM.rightHip];
+  const lk = lm[PHYSIO_LM.leftKnee], rk = lm[PHYSIO_LM.rightKnee];
+  const la = lm[PHYSIO_LM.leftAnkle], ra = lm[PHYSIO_LM.rightAnkle];
+
+  if (![ls, rs, lh, rh].every(physioVisible)) return null;
+
+  const shoulderMid = physioMidpoint(ls, rs);
+  const hipMid = physioMidpoint(lh, rh);
+  const earMid = (physioVisible(le) && physioVisible(re)) ? physioMidpoint(le, re)
+    : (physioVisible(le) ? le : (physioVisible(re) ? re : null));
+
+  const rawNeck = earMid ? physioAngleFromVertical(shoulderMid, earMid) : null;
+  const rawShoulderTilt = physioAngleFromHorizontal(ls, rs);
+  const rawSpine = physioAngleFromVertical(hipMid, shoulderMid);
+  const rawHipTilt = physioAngleFromHorizontal(lh, rh);
+
+  const kneeL = (physioVisible(lk) && physioVisible(la)) ? physioAngleAtVertex(lh, lk, la) : null;
+  const kneeR = (physioVisible(rk) && physioVisible(ra)) ? physioAngleAtVertex(rh, rk, ra) : null;
+  const kneeVals = [kneeL, kneeR].filter(v => v !== null);
+  const rawKnee = kneeVals.length ? physioMean(kneeVals) : null;
+  const kneeAsymmetry = (kneeL !== null && kneeR !== null) ? Math.abs(kneeL - kneeR) : 0;
+
+  // Stabilize each metric (despike + EMA) for smoother, more reliable readings.
+  const neck = physioStabilize('neck', rawNeck);
+  const shoulderTilt = physioStabilize('shoulderTilt', rawShoulderTilt);
+  const spine = physioStabilize('spine', rawSpine);
+  const hipTilt = physioStabilize('hipTilt', rawHipTilt);
+  const knee = physioStabilize('knee', rawKnee);
+
+  const confidence = {
+    neck: physioConfidenceFor('neck', lm),
+    shoulderTilt: physioConfidenceFor('shoulderTilt', lm),
+    spine: physioConfidenceFor('spine', lm),
+    hipTilt: physioConfidenceFor('hipTilt', lm),
+    knee: physioConfidenceFor('knee', lm),
+  };
+  const overallConfidence = physioMean(Object.values(confidence));
+
+  return { neck, shoulderTilt, spine, hipTilt, knee, kneeAsymmetry, hipMidX: hipMid.x, confidence, overallConfidence };
+}
+
+/* ---- scoring & report ---- */
+function physioScoreFromDeviation(value, hardMax) {
+  if (value === null || value === undefined) return null;
+  const s = 100 - (physioClamp(value, 0, hardMax) / hardMax) * 100;
+  return physioClamp(s, 0, 100);
+}
+function physioStatusOf(score) {
+  if (score === null || score === undefined) return { label: 'N/A', color: '#9CA3AF' };
+  if (score >= 80) return { label: 'Good', color: '#22C55E' };
+  if (score >= 60) return { label: 'Fair', color: '#F59E0B' };
+  return { label: 'Needs Attention', color: '#EF4444' };
+}
+function physioConfidenceLabel(pct) {
+  if (pct === null || pct === undefined) return { label: 'N/A', color: '#9CA3AF' };
+  if (pct >= 85) return { label: 'High', color: '#22C55E' };
+  if (pct >= 60) return { label: 'Moderate', color: '#38BDF8' };
+  return { label: 'Low', color: '#F59E0B' };
+}
+function physioBuildReport(history) {
+  const clean = k => history.map(h => h[k]).filter(v => v !== null && v !== undefined && !Number.isNaN(v));
+  const neckVals = clean('neck'), shoulderVals = clean('shoulderTilt'), spineVals = clean('spine');
+  const hipVals = clean('hipTilt'), kneeVals = clean('knee'), kneeAsymVals = clean('kneeAsymmetry'), hipXVals = clean('hipMidX');
+
+  const avgNeck = neckVals.length ? physioMean(neckVals) : null;
+  const avgShoulder = shoulderVals.length ? physioMean(shoulderVals) : null;
+  const avgSpine = spineVals.length ? physioMean(spineVals) : null;
+  const avgHip = hipVals.length ? physioMean(hipVals) : null;
+  const avgKnee = kneeVals.length ? physioMean(kneeVals) : null;
+  const avgKneeAsym = kneeAsymVals.length ? physioMean(kneeAsymVals) : null;
+
+  // Average confidence per observation, computed from per-frame landmark
+  // visibility captured during the whole scan window.
+  const confKeys = ['neck', 'shoulderTilt', 'spine', 'hipTilt', 'knee'];
+  const confidence = {};
+  confKeys.forEach(k => {
+    const vals = history.map(h => h.confidence && h.confidence[k]).filter(v => v !== null && v !== undefined && !Number.isNaN(v));
+    confidence[k] = vals.length ? Math.round(physioMean(vals)) : null;
+  });
+  const overallConfVals = history.map(h => h.overallConfidence).filter(v => v !== null && v !== undefined && !Number.isNaN(v));
+  const overallConfidence = overallConfVals.length ? Math.round(physioMean(overallConfVals)) : null;
+
+  const postureComponents = [
+    physioScoreFromDeviation(avgNeck, 30), physioScoreFromDeviation(avgShoulder, 15),
+    physioScoreFromDeviation(avgSpine, 20), physioScoreFromDeviation(avgHip, 15),
+  ].filter(v => v !== null);
+  const postureScore = postureComponents.length ? Math.round(physioMean(postureComponents)) : null;
+
+  const rangeOf = arr => (arr.length > 1 ? Math.max(...arr) - Math.min(...arr) : 0);
+  const romVals = [rangeOf(neckVals), rangeOf(spineVals), rangeOf(kneeVals)].filter(v => !Number.isNaN(v));
+  const rom = romVals.length ? physioMean(romVals) : null;
+  // Baseline of ~35 gives a fair "Fair" score for a mostly-still standing
+  // scan (small natural sway), while a divisor of 10° still rewards
+  // deliberate shoulder-roll / knee-bend movement with a higher score.
+  // Previously this divided by 18 with no floor, so a near-still scan
+  // (the common case) always rounded down to 0.
+  const mobilityScore = rom === null ? null : physioClamp(Math.round(35 + (rom / 10) * 65), 0, 100);
+
+  const symmetryPenalty = physioMean([avgShoulder || 0, avgHip || 0, (avgKneeAsym || 0) / 2]);
+  const symmetryScore = physioClamp(100 - symmetryPenalty * 4, 0, 100);
+  const hipStability = hipXVals.length > 1 ? physioStdDev(hipXVals) : 0;
+  const stabilityScore = physioClamp(100 - hipStability * 900, 0, 100);
+  const balanceScore = Math.round(physioMean([symmetryScore, stabilityScore]));
+
+  const issues = [];
+  if (avgNeck !== null && avgNeck > 14) issues.push('Forward head posture detected — the head sits noticeably ahead of the shoulder line.');
+  if (avgShoulder !== null && avgShoulder > 5) issues.push('Shoulder height asymmetry observed between left and right sides.');
+  if (avgSpine !== null && avgSpine > 9) issues.push('Trunk lean detected — shoulders are offset from the hip line.');
+  if (avgHip !== null && avgHip > 5) issues.push('Hip alignment asymmetry observed between left and right sides.');
+  if (avgKneeAsym !== null && avgKneeAsym > 8) issues.push('Uneven knee bend between left and right leg during the scan.');
+  if (avgKnee !== null && avgKnee < 160) issues.push('Knees remained noticeably bent — limited leg extension during standing.');
+  if (issues.length === 0) issues.push('No significant posture deviations observed during this scan.');
+
+  return { postureScore, mobilityScore, balanceScore, issues, confidence, overallConfidence,
+    metrics: { avgNeck, avgShoulder, avgSpine, avgHip, avgKnee } };
+}
+
+/* ---- MediaPipe wiring ---- */
+function physioEnsurePose() {
+  if (physioState.pose || typeof Pose === 'undefined') return;
+  const pose = new Pose({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}` });
+  // Higher confidence thresholds + built-in landmark smoothing, combined
+  // with our own despike/EMA filter above, materially reduces jitter and
+  // false-positive joint detections versus the previous configuration.
+  pose.setOptions({ modelComplexity: 1, smoothLandmarks: true, minDetectionConfidence: 0.65, minTrackingConfidence: 0.65 });
+  pose.onResults(physioOnResults);
+  physioState.pose = pose;
+}
+
+function physioSetLiveText(id, value, unit) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = (value === null || value === undefined) ? '—' : `${value.toFixed(1)}${unit}`;
+}
+
+function physioUpdateLiveConfidence(pct) {
+  const label = document.getElementById('physio-live-confidence');
+  const bar = document.getElementById('physio-live-confidence-bar');
+  if (!label || !bar) return;
+  if (pct === null || pct === undefined || Number.isNaN(pct)) {
+    label.textContent = '—';
+    bar.style.width = '0%';
+    return;
+  }
+  const st = physioConfidenceLabel(pct);
+  label.textContent = `${Math.round(pct)}% · ${st.label}`;
+  label.style.color = st.color;
+  bar.style.width = `${physioClamp(pct, 0, 100)}%`;
+}
+
+function physioOnResults(results) {
+  const canvas = document.getElementById('physio-canvas');
+  const video = document.getElementById('physio-video');
+  if (!canvas || !video) return;
+  canvas.width = video.videoWidth || 640;
+  canvas.height = video.videoHeight || 480;
+  const ctx = canvas.getContext('2d');
+  ctx.save();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Mirror horizontally for a natural "selfie view" and draw the actual
+  // camera frame first — previously only the skeleton overlay was drawn,
+  // leaving the video itself invisible.
+  ctx.translate(canvas.width, 0);
+  ctx.scale(-1, 1);
+  const frameSource = results.image || video;
+  if (frameSource) {
+    ctx.drawImage(frameSource, 0, 0, canvas.width, canvas.height);
+  }
+
+  const lm = results.poseLandmarks;
+  const warningEl = document.getElementById('physio-body-warning');
+
+  if (lm) {
+    if (warningEl) warningEl.remove();
+    if (typeof drawConnectors === 'function' && typeof POSE_CONNECTIONS !== 'undefined') {
+      drawConnectors(ctx, lm, POSE_CONNECTIONS, { color: 'rgba(56,189,248,0.9)', lineWidth: 3 });
+    }
+    if (typeof drawLandmarks === 'function') {
+      drawLandmarks(ctx, lm, { color: '#2563EB', fillColor: '#FFFFFF', lineWidth: 1.5, radius: 3.5 });
+    }
+    const angles = physioComputeAngles(lm);
+    if (angles) {
+      const now = performance.now();
+      if (now - physioState.lastUiUpdate > 150) {
+        physioState.lastUiUpdate = now;
+        physioSetLiveText('physio-neck', angles.neck, '°');
+        physioSetLiveText('physio-shoulder', angles.shoulderTilt, '°');
+        physioSetLiveText('physio-spine', angles.spine, '°');
+        physioSetLiveText('physio-hip', angles.hipTilt, '°');
+        physioSetLiveText('physio-knee', angles.knee, '°');
+        physioUpdateLiveConfidence(angles.overallConfidence);
+      }
+      if (physioState.scanning) physioState.history.push(angles);
+    }
+  } else {
+    const frame = document.getElementById('physio-frame');
+    if (frame && !document.getElementById('physio-body-warning')) {
+      const div = document.createElement('div');
+      div.id = 'physio-body-warning';
+      div.textContent = 'Full body not detected — step back so head to feet are visible';
+      frame.appendChild(div);
+    }
+    physioUpdateLiveConfidence(null);
+  }
+  ctx.restore();
+}
+
+/* ---- loading / error UI helpers ---- */
+function physioShowLoading(message) {
+  const overlay = document.getElementById('physio-loading-overlay');
+  const text = document.getElementById('physio-loading-text');
+  if (text) text.textContent = message || 'Loading…';
+  if (overlay) { overlay.style.display = 'flex'; overlay.classList.remove('hidden'); }
+}
+function physioHideLoading() {
+  const overlay = document.getElementById('physio-loading-overlay');
+  if (overlay) { overlay.style.display = 'none'; overlay.classList.add('hidden'); }
+}
+function physioShowError(message) {
+  const errorEl = document.getElementById('physio-error');
+  if (!errorEl) return;
+  errorEl.textContent = message;
+  errorEl.classList.remove('hidden');
+}
+function physioCameraErrorMessage(err) {
+  const name = err && err.name ? err.name : '';
+  if (name === 'NotAllowedError' || name === 'PermissionDeniedError') {
+    return 'Camera permission was denied. Please allow camera access in your browser settings and try again.';
+  }
+  if (name === 'NotFoundError' || name === 'DevicesNotFoundError') {
+    return 'No camera was found on this device. Connect a camera and try again.';
+  }
+  if (name === 'NotReadableError' || name === 'TrackStartError') {
+    return 'Your camera is already in use by another app. Close it and try again.';
+  }
+  if (name === 'OverconstrainedError' || name === 'ConstraintNotSatisfiedError') {
+    return 'Your camera does not support the requested settings. Try a different camera.';
+  }
+  if (name === 'SecurityError') {
+    return 'Camera access is blocked on this connection. Please use a secure (https) page.';
+  }
+  return 'Camera access was denied or unavailable. Please allow camera permissions and try again.';
+}
+
+async function startPhysioCamera() {
+  const errorEl = document.getElementById('physio-error');
+  const placeholder = document.getElementById('physio-placeholder');
+  const frame = document.getElementById('physio-frame');
+  const statusDot = document.getElementById('physio-status-dot');
+  const statusText = document.getElementById('physio-status-text');
+  errorEl.classList.add('hidden');
+  physioState.stage = 'loading';
+  statusText.textContent = 'Starting camera…';
+  physioShowLoading('Loading AI pose model…');
+
+  // Camera permission / device support pre-check for clearer error handling.
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    physioHideLoading();
+    physioShowError('Your browser does not support camera access. Please use an updated browser (Chrome, Edge, Safari).');
+    physioState.stage = 'idle';
+    statusText.textContent = 'Camera off';
+    return;
+  }
+
+  physioEnsurePose();
+  if (typeof Camera === 'undefined' || !physioState.pose) {
+    physioHideLoading();
+    physioShowError('Could not load the pose-tracking library. Check your connection and try again.');
+    physioState.stage = 'idle';
+    statusText.textContent = 'Camera off';
+    return;
+  }
+
+  try {
+    physioShowLoading('Requesting camera access…');
+    const video = document.getElementById('physio-video');
+    const camera = new Camera(video, {
+      onFrame: async () => { if (physioState.pose) await physioState.pose.send({ image: video }); },
+      width: 640, height: 480,
+    });
+    await camera.start();
+    physioState.camera = camera;
+    physioState.stage = 'ready';
+    physioHideLoading();
+    placeholder.classList.add('hidden');
+    statusDot.style.background = '#22C55E';
+    statusText.textContent = 'Live — ready to scan';
+
+    frame.insertAdjacentHTML('beforeend', `
+      <span class="p-corner p-corner-tl"></span><span class="p-corner p-corner-tr"></span>
+      <span class="p-corner p-corner-bl"></span><span class="p-corner p-corner-br"></span>`);
+
+    document.getElementById('physio-controls').innerHTML = `
+      <button onclick="startPhysioScan()" class="px-6 py-3 text-white font-semibold rounded-2xl flex items-center gap-x-2 hover:scale-[1.02] transition focus-ring" style="background:linear-gradient(135deg,var(--physio-blue,#2563EB),var(--physio-sky,#38BDF8));box-shadow:0 10px 26px -8px rgba(37,99,235,0.55)">
+        <i class="fa-solid fa-radar" aria-hidden="true"></i> Start 20s Scan
+      </button>
+      <button onclick="stopPhysioCamera()" class="px-6 py-3 rounded-2xl font-semibold border" style="border-color:var(--physio-blue,#2563EB);color:var(--text-base)">
+        Stop Camera
+      </button>`;
+  } catch (err) {
+    physioHideLoading();
+    physioShowError(physioCameraErrorMessage(err));
+    physioState.stage = 'idle';
+    statusText.textContent = 'Camera off';
+  }
+}
+
+function stopPhysioCamera() {
+  if (physioState.camera) { try { physioState.camera.stop(); } catch (e) {} }
+  clearTimeout(physioState.scanTimeout);
+  clearInterval(physioState.countdownTimer);
+  physioState.scanning = false;
+  physioState.stage = 'idle';
+  physioState.camera = null;
+  physioState.emaAngles = {};
+  physioState.rawBuffers = {};
+
+  physioHideLoading();
+  document.getElementById('physio-placeholder').classList.remove('hidden');
+  document.getElementById('physio-progress-wrap').classList.add('hidden');
+  document.querySelectorAll('#physio-frame .p-corner, #physio-body-warning').forEach(el => el.remove());
+  document.getElementById('physio-status-dot').style.background = '#6B7280';
+  document.getElementById('physio-status-text').textContent = 'Camera off';
+  ['neck', 'shoulder', 'spine', 'hip', 'knee'].forEach(k => { document.getElementById(`physio-${k}`).textContent = '—'; });
+  physioUpdateLiveConfidence(null);
+  document.getElementById('physio-controls').innerHTML = `
+    <button onclick="startPhysioCamera()" class="px-6 py-3 text-white font-semibold rounded-2xl flex items-center gap-x-2 hover:scale-[1.02] transition focus-ring" style="background:linear-gradient(135deg,var(--physio-blue,#2563EB),var(--physio-sky,#38BDF8));box-shadow:0 10px 26px -8px rgba(37,99,235,0.55)">
+      <i class="fa-solid fa-camera" aria-hidden="true"></i> Start Camera
+    </button>`;
+}
+
+function startPhysioScan() {
+  physioState.history = [];
+  physioState.scanning = true;
+  physioState.stage = 'scanning';
+  physioState.countdown = PHYSIO_SCAN_SECONDS;
+
+  document.getElementById('physio-progress-wrap').classList.remove('hidden');
+  document.getElementById('physio-countdown').textContent = `${PHYSIO_SCAN_SECONDS}s remaining`;
+  document.getElementById('physio-progress-bar').style.width = '0%';
+  document.getElementById('physio-status-dot').className = 'w-2 h-2 rounded-full physio-pulse-dot';
+  document.getElementById('physio-status-dot').style.background = 'var(--physio-sky, #38BDF8)';
+  document.getElementById('physio-status-text').textContent = `Scanning… ${PHYSIO_SCAN_SECONDS}s`;
+  document.getElementById('physio-controls').innerHTML = `
+    <button disabled class="px-6 py-3 rounded-2xl font-semibold opacity-60 flex items-center gap-x-2" style="background:rgba(255,255,255,0.08)">
+      <i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> Scanning…
+    </button>`;
+
+  physioState.countdownTimer = setInterval(() => {
+    physioState.countdown = Math.max(0, physioState.countdown - 1);
+    document.getElementById('physio-countdown').textContent = `${physioState.countdown}s remaining`;
+    document.getElementById('physio-status-text').textContent = `Scanning… ${physioState.countdown}s`;
+    document.getElementById('physio-progress-bar').style.width = `${((PHYSIO_SCAN_SECONDS - physioState.countdown) / PHYSIO_SCAN_SECONDS) * 100}%`;
+  }, 1000);
+
+  physioState.scanTimeout = setTimeout(() => {
+    physioState.scanning = false;
+    clearInterval(physioState.countdownTimer);
+    physioState.stage = 'complete';
+    document.getElementById('physio-progress-wrap').classList.add('hidden');
+    document.getElementById('physio-status-dot').className = 'w-2 h-2 rounded-full';
+    document.getElementById('physio-status-dot').style.background = '#22C55E';
+    document.getElementById('physio-status-text').textContent = 'Report ready';
+    if (physioState.history.length < 5) {
+      physioShowError('Not enough movement data was captured. Stand fully in frame and try the scan again.');
+    }
+    const report = physioBuildReport(physioState.history);
+    renderPhysioReport(report);
+    document.getElementById('physio-controls').innerHTML = `
+      <button onclick="startPhysioScan()" class="px-6 py-3 text-white font-semibold rounded-2xl flex items-center gap-x-2 hover:scale-[1.02] transition focus-ring" style="background:linear-gradient(135deg,var(--physio-blue,#2563EB),var(--physio-sky,#38BDF8));box-shadow:0 10px 26px -8px rgba(37,99,235,0.55)">
+        <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Retake Scan
+      </button>
+      <button onclick="stopPhysioCamera()" class="px-6 py-3 rounded-2xl font-semibold border" style="border-color:var(--physio-blue,#2563EB);color:var(--text-base)">
+        End Session
+      </button>`;
+  }, PHYSIO_SCAN_SECONDS * 1000);
+}
+
+function physioGaugeSvg(label, score, iconClass) {
+  const st = physioStatusOf(score);
+  const pct = score === null ? 0 : score / 100;
+  return `
+    <div class="physio-card p-6 flex flex-col items-center text-center">
+      <div class="relative w-24 h-24">
+        <svg viewBox="0 0 42 42" class="w-24 h-24 -rotate-90" aria-hidden="true">
+          <circle cx="21" cy="21" r="15" fill="none" stroke="rgba(148,163,184,0.25)" stroke-width="6"></circle>
+          <circle class="physio-ring-circle" cx="21" cy="21" r="15" fill="none" stroke="${st.color}" stroke-width="6"
+            stroke-dasharray="94" stroke-dashoffset="${94 - 94 * pct}" stroke-linecap="round"></circle>
+        </svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center">
+          <span class="text-xl font-bold" style="color:var(--text-base)">${score === null ? '—' : score}</span>
+          <span class="text-[10px]" style="color:var(--text-muted)">/ 100</span>
+        </div>
+      </div>
+      <div class="mt-3 font-semibold text-sm flex items-center gap-x-1.5">${iconClass ? `<i class="${iconClass}" style="color:var(--physio-sky,#38BDF8)" aria-hidden="true"></i>` : ''}${label}</div>
+      <div class="text-xs font-semibold mt-0.5" style="color:${st.color}">${st.label}</div>
+    </div>`;
+}
+
+function physioConfidenceRow(label, pct) {
+  const st = physioConfidenceLabel(pct);
+  const width = pct === null || pct === undefined ? 0 : physioClamp(pct, 0, 100);
+  return `
+    <div class="py-2">
+      <div class="flex items-center justify-between text-sm mb-1">
+        <span>${label}</span>
+        <span class="font-semibold" style="color:${st.color}">${pct === null ? '—' : Math.round(pct) + '%'} · ${st.label}</span>
+      </div>
+      <div class="physio-conf-track"><div class="physio-conf-fill" style="width:${width}%"></div></div>
+    </div>`;
+}
+
+function renderPhysioReport(report) {
+  const m = report.metrics;
+  const fmt = v => (v === null || v === undefined ? '—' : `${v.toFixed(1)}°`);
+  document.getElementById('physio-report-results').innerHTML = `
+    <div class="mt-10 physio-fade-up">
+      <div class="flex items-center gap-x-2 mb-1">
+        <span class="physio-medic-badge"><i class="fa-solid fa-file-waveform" aria-hidden="true"></i> AI ASSESSMENT REPORT</span>
+      </div>
+      <h3 class="text-2xl font-bold font-display mt-3">Physiotherapy Scan Report</h3>
+      <p class="text-sm mb-6" style="color:var(--text-muted)">Generated from a ${PHYSIO_SCAN_SECONDS}-second motion sample · overall tracking confidence ${report.overallConfidence === null ? '—' : report.overallConfidence + '%'}. Results are guidance only, not a medical diagnosis.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
+        ${physioGaugeSvg('Posture Score', report.postureScore, 'fa-solid fa-person')}
+        ${physioGaugeSvg('Mobility Score', report.mobilityScore, 'fa-solid fa-arrows-up-down-left-right')}
+        ${physioGaugeSvg('Balance Score', report.balanceScore, 'fa-solid fa-scale-balanced')}
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div class="physio-card p-6">
+          <div class="font-semibold mb-3 flex items-center gap-x-2"><i class="fa-solid fa-ruler-combined" style="color:var(--physio-sky,#38BDF8)" aria-hidden="true"></i> Session Averages</div>
+          <div class="flex items-center justify-between py-2 border-b border-white/10"><span class="text-sm">Neck Posture</span><span class="font-semibold" style="color:var(--physio-sky,#38BDF8)">${fmt(m.avgNeck)}</span></div>
+          <div class="flex items-center justify-between py-2 border-b border-white/10"><span class="text-sm">Shoulder Alignment</span><span class="font-semibold" style="color:var(--physio-sky,#38BDF8)">${fmt(m.avgShoulder)}</span></div>
+          <div class="flex items-center justify-between py-2 border-b border-white/10"><span class="text-sm">Spine Alignment</span><span class="font-semibold" style="color:var(--physio-sky,#38BDF8)">${fmt(m.avgSpine)}</span></div>
+          <div class="flex items-center justify-between py-2 border-b border-white/10"><span class="text-sm">Hip Alignment</span><span class="font-semibold" style="color:var(--physio-sky,#38BDF8)">${fmt(m.avgHip)}</span></div>
+          <div class="flex items-center justify-between py-2"><span class="text-sm">Knee Alignment</span><span class="font-semibold" style="color:var(--physio-sky,#38BDF8)">${fmt(m.avgKnee)}</span></div>
+        </div>
+        <div class="physio-card p-6">
+          <div class="font-semibold mb-3 flex items-center gap-x-2"><i class="fa-solid fa-signal" style="color:var(--physio-sky,#38BDF8)" aria-hidden="true"></i> Confidence per Observation</div>
+          ${physioConfidenceRow('Neck Posture', report.confidence.neck)}
+          ${physioConfidenceRow('Shoulder Alignment', report.confidence.shoulderTilt)}
+          ${physioConfidenceRow('Spine Alignment', report.confidence.spine)}
+          ${physioConfidenceRow('Hip Alignment', report.confidence.hipTilt)}
+          ${physioConfidenceRow('Knee Alignment', report.confidence.knee)}
+        </div>
+        <div class="physio-card p-6">
+          <div class="font-semibold mb-3 flex items-center gap-x-2"><i class="fa-solid fa-triangle-exclamation" style="color:#F59E0B" aria-hidden="true"></i> Possible Posture Observations</div>
+          <ul class="space-y-2.5">
+            ${report.issues.map(issue => `<li class="text-sm flex items-start gap-x-2" style="color:var(--text-muted)"><i class="fa-solid fa-circle-check mt-0.5 text-xs" style="color:var(--physio-sky,#38BDF8)"></i>${issue}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+      <div class="mt-5 physio-card p-5 flex gap-3">
+        <i class="fa-solid fa-shield-heart mt-0.5" style="color:var(--physio-sky,#38BDF8)" aria-hidden="true"></i>
+        <p class="text-xs" style="color:var(--text-muted)"><strong style="color:var(--text-base)">Disclaimer:</strong> MediCore's AI Physiotherapy Scan provides general posture, mobility and balance observations derived from computer-vision estimates. It is not a medical device and does not diagnose injuries, diseases, or musculoskeletal conditions. Always consult a licensed physiotherapist or physician for a clinical assessment.</p>
+      </div>
+    </div>`;
+  popResults('physio-report-results', 'Your Physiotherapy Scan Report', 'fa-solid fa-file-medical');
 }
 
 /* =========================================================
