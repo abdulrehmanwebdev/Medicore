@@ -543,7 +543,8 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
     <div class="hidden lg:flex items-center gap-x-1 text-sm font-medium" id="desktop-nav">
       <a href="#home" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">Home</a>
       <a href="#dashboard" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">Dashboard</a>
-      <a href="#symptom" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">Symptoms</a
+      <a href="#symptom" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">Symptoms</a>
+      <a href="#coach" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">AI Coach</a>
 
       <!-- Tools Dropdown -->
       <div class="relative group">
@@ -551,10 +552,12 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
           Tools <i class="fa-solid fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform duration-200"></i>
         </button>
         <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 max-h-[75vh] overflow-y-auto glass-solid rounded-2xl shadow-2xl shadow-black/40 border border-white/10 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <a href="#coach"      data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-route w-5 text-teal-400"></i>AI Health Coach</a>
           <a href="#diet"       data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-bowl-food w-5 text-teal-400"></i>Budget Diet Planner</a>
           <a href="#medicine"   data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-pills w-5 text-teal-400"></i>Medicine Tracker</a>
           <a href="#risk"       data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-chart-line w-5 text-teal-400"></i>Health Risk Calculator</a>
           <a href="#clinics"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-hospital w-5 text-teal-400"></i>Find Clinics</a>
+          <a href="#locator"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-map-location-dot w-5 text-teal-400"></i>Location Features</a>
           <a href="#mental"     data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-brain w-5 text-teal-400"></i>Mental Health</a>
           <a href="#pregnancy"  data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-person-pregnant w-5 text-teal-400"></i>Pregnancy Tracker</a>
           <a href="#firstaid"   data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-kit-medical w-5 text-teal-400"></i>First Aid Guide</a>
@@ -566,6 +569,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
           <a href="#stress"     data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-face-smile w-5 text-teal-400"></i>Stress Checker</a>
           <a href="#posture"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-chair w-5 text-teal-400"></i>Posture Tracker</a>
           <a href="#physioscan" data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-person-walking w-5 text-teal-400"></i>AI Physiotherapy Scan</a>
+          <a href="#skincheck" data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-microscope w-5 text-teal-400"></i>AI Skin Disease Detection</a>
           <a href="#labtest"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-flask w-5 text-teal-400"></i>Lab Tests</a>
           <a href="#insurance"  data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-shield-halved w-5 text-teal-400"></i>Insurance Advisor</a>
           <a href="#appointments" data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-user-doctor w-5 text-teal-400"></i>AI Doctor Recommendation</a>
@@ -612,15 +616,18 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
       <a href="#home"     data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">🏠 Home</a>
       <a href="#dashboard" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">📊 Dashboard</a>
       <a href="#symptom"  data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">🩺 Symptom Checker</a>
+      <a href="#coach"    data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">🧭 AI Health Coach</a>
       <a href="#stats"    data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">📊 Health Data</a>
       <a href="#about"    data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">ℹ️ About Us</a>
       <a href="#contact"  data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">✉️ Contact</a>
       <a href="#feedback" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">⭐ Feedback</a>
       <div class="pt-2 pb-1 px-3 text-xs uppercase tracking-widest font-semibold text-teal-400/70">— Health Tools —</div>
+      <a href="#coach"     data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-route text-teal-400 w-5 mr-1"></i> AI Health Coach</a>
       <a href="#diet"      data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-bowl-food text-teal-400 w-5 mr-1"></i> Budget Diet Planner</a>
       <a href="#medicine"  data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-pills text-teal-400 w-5 mr-1"></i> Medicine Tracker</a>
       <a href="#risk"      data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-chart-line text-teal-400 w-5 mr-1"></i> Health Risk Calculator</a>
       <a href="#clinics"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-hospital text-teal-400 w-5 mr-1"></i> Find Clinics</a>
+      <a href="#locator"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-map-location-dot text-teal-400 w-5 mr-1"></i> Location Features</a>
       <a href="#mental"    data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-brain text-teal-400 w-5 mr-1"></i> Mental Health</a>
       <a href="#pregnancy" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-person-pregnant text-teal-400 w-5 mr-1"></i> Pregnancy Tracker</a>
       <a href="#firstaid"  data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-kit-medical text-teal-400 w-5 mr-1"></i> First Aid Guide</a>
@@ -632,6 +639,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
       <a href="#stress"    data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-face-smile text-teal-400 w-5 mr-1"></i> Stress Checker</a>
       <a href="#posture"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-chair text-teal-400 w-5 mr-1"></i> Posture Tracker</a>
       <a href="#physioscan" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-person-walking text-teal-400 w-5 mr-1"></i> AI Physiotherapy Scan</a>
+      <a href="#skincheck" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-microscope text-teal-400 w-5 mr-1"></i> AI Skin Disease Detection</a>
       <a href="#labtest"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-flask text-teal-400 w-5 mr-1"></i> Lab Tests</a>
       <a href="#insurance" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-shield-halved text-teal-400 w-5 mr-1"></i> Insurance Advisor</a>
       <a href="#appointments" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-user-doctor text-teal-400 w-5 mr-1"></i> AI Doctor Recommendation</a>
@@ -988,6 +996,135 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
   </div>
 </section>
 
+<!-- ============ AI SKIN DISEASE DETECTION ============ -->
+<section id="skincheck" class="py-20 md:py-24 border-t border-white/10" aria-labelledby="skincheck-heading">
+  <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="section-eyebrow uppercase text-teal-400 text-sm mb-3">AI-ASSISTED VISUAL SCREENING</div>
+      <h2 id="skincheck-heading" class="text-4xl md:text-5xl font-bold font-display">AI Skin Disease Detection</h2>
+      <p class="mt-4" style="color:var(--text-muted)">Upload a clear photo of the affected skin — Medicore analyzes color, tone and texture patterns and combines them with your answers to suggest possible conditions and how urgently to see a dermatologist.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10">
+      <!-- LEFT: Upload + Input Panel -->
+      <div class="glass glass-hover rounded-3xl p-6 md:p-8">
+
+        <fieldset>
+          <legend class="font-semibold text-lg mb-1">1. Upload a photo</legend>
+          <p class="text-sm mb-3" style="color:var(--text-muted)">Use good lighting, get close, and keep the skin in focus for the best result.</p>
+
+          <div id="skin-dropzone" class="glass rounded-2xl border-2 border-dashed border-white/20 p-6 text-center transition-all cursor-pointer hover:border-teal-400/50">
+            <input type="file" id="skin-file-input" accept="image/*" capture="environment" class="hidden">
+            <div id="skin-dropzone-empty">
+              <i class="fa-solid fa-camera-retro text-4xl text-teal-400/70 mb-3" aria-hidden="true"></i>
+              <p class="font-medium">Upload a photo of the skin concern</p>
+              <p class="text-xs mt-1" style="color:var(--text-muted)">Click to browse, or drag-and-drop (JPG / PNG)</p>
+              <button type="button" onclick="document.getElementById('skin-file-input').click()" class="mt-4 px-5 py-2.5 bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] font-semibold rounded-2xl hover:scale-[1.02] transition-all focus-ring text-sm">
+                <i class="fa-solid fa-camera mr-1"></i> Choose Photo
+              </button>
+            </div>
+            <div id="skin-dropzone-preview" class="hidden">
+              <img id="skin-preview-img" src="" alt="Skin photo preview" class="max-h-64 mx-auto rounded-xl border border-white/15 object-contain">
+              <button type="button" onclick="resetSkinUpload()" class="mt-4 px-5 py-2.5 glass border border-white/20 hover:bg-white/10 rounded-2xl transition-all focus-ring text-sm">
+                <i class="fa-solid fa-rotate-left mr-1"></i> Change Photo
+              </button>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- STEP 2: Location -->
+        <div class="mt-7">
+          <label for="skin-location" class="block text-sm font-medium mb-2">2. Where on the body?</label>
+          <select id="skin-location" class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring text-sm">
+            <option value="face">Face</option>
+            <option value="scalp">Scalp</option>
+            <option value="neck">Neck</option>
+            <option value="arm">Arm / Elbow</option>
+            <option value="hand">Hand / Nails</option>
+            <option value="torso">Chest / Back / Torso</option>
+            <option value="leg">Leg / Knee</option>
+            <option value="foot">Foot</option>
+            <option value="groin">Groin / Skin fold</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <!-- STEP 3: Symptoms -->
+        <div class="mt-7">
+          <label class="block text-sm font-medium mb-3">3. Any of these symptoms?</label>
+          <div class="grid grid-cols-2 gap-2" id="skin-symptom-group">
+            <label class="flex items-center gap-2 text-sm glass rounded-xl px-3 py-2.5 cursor-pointer border border-white/10">
+              <input type="checkbox" id="skin-sym-itch" class="accent-teal-400"> Itching
+            </label>
+            <label class="flex items-center gap-2 text-sm glass rounded-xl px-3 py-2.5 cursor-pointer border border-white/10">
+              <input type="checkbox" id="skin-sym-pain" class="accent-teal-400"> Pain / tender
+            </label>
+            <label class="flex items-center gap-2 text-sm glass rounded-xl px-3 py-2.5 cursor-pointer border border-white/10">
+              <input type="checkbox" id="skin-sym-bleed" class="accent-teal-400"> Bleeding / oozing
+            </label>
+            <label class="flex items-center gap-2 text-sm glass rounded-xl px-3 py-2.5 cursor-pointer border border-white/10">
+              <input type="checkbox" id="skin-sym-spread" class="accent-teal-400"> Spreading / growing
+            </label>
+            <label class="flex items-center gap-2 text-sm glass rounded-xl px-3 py-2.5 cursor-pointer border border-white/10">
+              <input type="checkbox" id="skin-sym-change" class="accent-teal-400"> Changed shape/color
+            </label>
+            <label class="flex items-center gap-2 text-sm glass rounded-xl px-3 py-2.5 cursor-pointer border border-white/10">
+              <input type="checkbox" id="skin-sym-fever" class="accent-teal-400"> Fever with it
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 4: Duration -->
+        <div class="mt-7">
+          <label for="skin-duration" class="block text-sm font-medium mb-2">4. How long has it been there?</label>
+          <select id="skin-duration" class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring text-sm">
+            <option value="new">Less than a week</option>
+            <option value="short">1–4 weeks</option>
+            <option value="medium">1–6 months</option>
+            <option value="long">6+ months / longstanding</option>
+          </select>
+        </div>
+
+        <!-- STEP 5: City -->
+        <div class="mt-7">
+          <label for="skin-city" class="block text-sm font-medium mb-2">5. Your city (to recommend nearby dermatologists)</label>
+          <select id="skin-city" class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring text-sm">
+            <option value="Karachi">Karachi</option>
+            <option value="Islamabad">Islamabad</option>
+            <option value="Lahore">Lahore</option>
+            <option value="Other">Other city</option>
+          </select>
+        </div>
+
+        <div id="skin-error" class="text-red-400 text-sm mt-4 hidden" role="alert"></div>
+
+        <button type="button" id="skin-analyze-btn" onclick="analyzeSkinImage()"
+          class="mt-7 w-full px-8 py-4 bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] font-semibold rounded-3xl text-base flex items-center justify-center gap-x-3 hover:scale-[1.02] transition-all focus-ring">
+          <i class="fa-solid fa-microscope" aria-hidden="true"></i> ANALYZE SKIN PHOTO
+        </button>
+        <p class="text-xs mt-3 text-center" style="color:var(--text-muted)">AI-assisted visual screening only — not a diagnosis. Always confirm with a dermatologist.</p>
+
+        <!-- Loading state -->
+        <div id="skin-loading" class="hidden text-center py-6">
+          <i class="fa-solid fa-spinner fa-spin text-2xl text-teal-400 mb-2"></i>
+          <p class="text-sm" style="color:var(--text-muted)">Analyzing photo — checking color, tone &amp; texture patterns…</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results Panel -->
+      <div>
+        <div id="skin-results" class="space-y-5">
+          <div class="glass glass-hover rounded-3xl p-8 text-center h-full flex flex-col items-center justify-center min-h-[300px]" style="color:var(--text-muted)">
+            <i class="fa-solid fa-hand-dots text-4xl mb-4 text-teal-400/60" aria-hidden="true"></i>
+            <p class="font-medium">Your skin analysis will appear here.</p>
+            <p class="text-sm mt-2">Upload a photo, answer a few questions, then tap Analyze.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ TOOLS OVERVIEW ============ -->
 <section id="tools" class="py-20 md:py-24 section-alt" aria-labelledby="tools-heading">
   <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
@@ -1123,8 +1260,8 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
           <!-- Prescription upload tab -->
           <div id="med-tab-prescription" class="hidden">
             <p class="text-sm mb-4" style="color:var(--text-muted)">
-              Doctor ki prescription upload karein — Medicore uske medicine naam padh kar
-              <strong class="text-teal-400">Subah / Dopahar / Raat</strong> ka schedule khud bana dega.
+              Upload your doctor's prescription — Medicore will read the medicine names and
+              <strong class="text-teal-400">Morning / Afternoon / Night</strong> schedule automatically.
             </p>
 
             <!-- Upload zone -->
@@ -1132,8 +1269,8 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
               <input type="file" id="rx-file-input" accept="image/*" capture="environment" class="hidden">
               <div id="rx-dropzone-empty">
                 <i class="fa-solid fa-cloud-arrow-up text-4xl text-teal-400/70 mb-3" aria-hidden="true"></i>
-                <p class="font-medium">Prescription ki photo yahan upload karein</p>
-                <p class="text-xs mt-1" style="color:var(--text-muted)">Click karein, ya photo drag-and-drop karein (JPG / PNG)</p>
+                <p class="font-medium">Upload a photo of your prescription here</p>
+                <p class="text-xs mt-1" style="color:var(--text-muted)">Click to browse, or drag-and-drop a photo (JPG / PNG)</p>
                 <button type="button" onclick="document.getElementById('rx-file-input').click()" class="mt-4 px-5 py-2.5 bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] font-semibold rounded-2xl hover:scale-[1.02] transition-all focus-ring text-sm">
                   <i class="fa-solid fa-camera mr-1"></i> Choose Photo
                 </button>
@@ -1154,13 +1291,13 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
             <!-- Loading state -->
             <div id="rx-loading" class="hidden text-center py-6">
               <i class="fa-solid fa-spinner fa-spin text-2xl text-teal-400 mb-2"></i>
-              <p id="rx-loading-text" class="text-sm" style="color:var(--text-muted)">Prescription parhi ja rahi hai…</p>
+              <p id="rx-loading-text" class="text-sm" style="color:var(--text-muted)">Reading prescription…</p>
             </div>
 
             <!-- Paste text fallback -->
             <div class="mt-4">
               <button type="button" onclick="document.getElementById('rx-text-fallback').classList.toggle('hidden')" class="text-xs text-teal-400 hover:underline focus-ring">
-                <i class="fa-solid fa-keyboard mr-1"></i> Photo saaf nahi? Prescription ka text paste karein
+                <i class="fa-solid fa-keyboard mr-1"></i> Photo not clear? Paste the prescription text instead
               </button>
               <div id="rx-text-fallback" class="hidden mt-3">
                 <textarea id="rx-text-input" rows="4" placeholder="e.g. Tab Panadol 500mg 1-0-1 after food x5 days&#10;Tab Augmentin 625mg 1-1-1 after food x7 days" class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring text-sm"></textarea>
@@ -1177,7 +1314,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
 
               <div class="rounded-2xl px-4 py-3 flex items-start gap-3 text-sm" style="background:rgba(251,191,36,0.10);border:1px solid rgba(251,191,36,0.4);color:#fde68a;">
                 <i class="fa-solid fa-triangle-exclamation text-amber-400 mt-0.5 shrink-0" aria-hidden="true"></i>
-                <span>AI se nikala gaya text handwriting ki wajah se ghalat ho sakta hai. Reminder set karne se pehle har medicine ka naam aur dose zaroor check kar lein, aur confirm ke liye apne doctor/pharmacist se rabta karein.</span>
+                <span>Text extracted by AI may be inaccurate due to handwriting. Please double-check each medicine name and dose before setting a reminder, and confirm with your doctor/pharmacist.</span>
               </div>
 
               <div>
@@ -1257,26 +1394,87 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
   </div>
 </section>
 
+<!-- ============ LOCATION FEATURES (Hospitals / Pharmacies / Blood Banks / Ambulance / Labs) ============ -->
+<section id="locator" class="py-20 md:py-24 border-t border-white/10" aria-labelledby="locator-heading">
+  <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="section-eyebrow uppercase text-teal-400 text-sm mb-3">GOOGLE MAPS INTEGRATION</div>
+      <h2 id="locator-heading" class="text-4xl md:text-5xl font-bold font-display">Nearby Health Locations</h2>
+      <p class="mt-4" style="color:var(--text-muted)">Find hospitals, pharmacies, blood banks, ambulance services and diagnostic labs near you — with one-tap calling and Google Maps directions.</p>
+    </div>
+
+    <!-- Ambulance quick-dial strip — always visible, emergency style -->
+    <div class="mb-10">
+      <div class="text-xs font-bold uppercase tracking-wider mb-3 text-red-400"><i class="fa-solid fa-truck-medical mr-1"></i> Emergency Ambulance — Tap to Call</div>
+      <div id="ambulance-quickdial" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+    </div>
+
+    <div class="glass glass-hover rounded-3xl p-6 md:p-8">
+      <!-- Category tabs -->
+      <div class="flex flex-wrap gap-2 mb-5" id="locator-tabs">
+        <button type="button" data-cat="hospital"  class="locator-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all focus-ring">
+          <i class="fa-solid fa-hospital mr-1"></i> Hospitals
+        </button>
+        <button type="button" data-cat="pharmacy"  class="locator-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all focus-ring">
+          <i class="fa-solid fa-prescription-bottle-medical mr-1"></i> Pharmacies
+        </button>
+        <button type="button" data-cat="bloodbank" class="locator-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all focus-ring">
+          <i class="fa-solid fa-droplet mr-1"></i> Blood Banks
+        </button>
+        <button type="button" data-cat="ambulance" class="locator-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all focus-ring">
+          <i class="fa-solid fa-truck-medical mr-1"></i> Ambulance
+        </button>
+        <button type="button" data-cat="lab"       class="locator-tab-btn px-4 py-2.5 rounded-xl text-sm font-semibold transition-all focus-ring">
+          <i class="fa-solid fa-flask mr-1"></i> Labs
+        </button>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div>
+          <label for="locator-city" class="block text-sm font-medium mb-2">City</label>
+          <select id="locator-city" class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring">
+            <option value="">Any city</option>
+            <option>Karachi</option>
+            <option>Lahore</option>
+            <option>Islamabad</option>
+            <option>Faisalabad</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2 flex items-end">
+          <button id="locator-locate-btn" type="button" class="w-full px-6 py-3.5 glass border border-white/30 hover:bg-white/10 rounded-2xl font-semibold transition-all focus-ring flex items-center justify-center gap-x-2">
+            <i class="fa-solid fa-location-crosshairs" aria-hidden="true"></i> USE MY LOCATION &amp; SORT BY DISTANCE
+          </button>
+        </div>
+      </div>
+      <p id="locator-status" class="text-xs mt-3 h-4" aria-live="polite" style="color:var(--text-muted)"></p>
+      <div id="locator-results" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8"></div>
+      <p class="text-xs mt-6 text-center" style="color:var(--text-muted)">
+        <i class="fa-solid fa-circle-info mr-1"></i> Listings are sample/reference data for demo purposes — please confirm details before visiting, and always dial <strong>1122</strong> for a life-threatening emergency.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ AI DOCTOR RECOMMENDATION ============ -->
 <section id="appointments" class="py-20 md:py-24 border-t border-white/10" aria-labelledby="appointments-heading">
   <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
     <div class="text-center max-w-2xl mx-auto mb-10">
       <div class="section-eyebrow uppercase text-teal-400 text-sm mb-3">FEATURE 12 — AI-POWERED CARE MATCHING</div>
       <h2 id="appointments-heading" class="text-4xl md:text-5xl font-bold font-display">AI Doctor Recommendation</h2>
-      <p class="mt-4" style="color:var(--text-muted)">Apni problem apne alfaz mein likhein — hamara AI usay analyze kar ke sahi specialist tajweez karega aur Karachi ke tajurbakar doctors recommend karega.</p>
+      <p class="mt-4" style="color:var(--text-muted)">Describe your problem in your own words — our AI will analyze it, suggest the right specialist, and recommend experienced doctors in Karachi.</p>
     </div>
 
     <div class="max-w-3xl mx-auto">
       <form id="doc-recommend-form" class="glass glass-hover rounded-3xl p-6 md:p-8 space-y-4">
         <div>
-          <label for="doc-symptom-input" class="block text-sm font-medium mb-2">Apni problem likhein</label>
+          <label for="doc-symptom-input" class="block text-sm font-medium mb-2">Describe your problem</label>
           <textarea id="doc-symptom-input" rows="4" required
-            placeholder="e.g. Mujhe 3 din se chest pain hai aur saans lene mein takleef ho rahi hai."
+            placeholder="e.g. I have had chest pain for 3 days and I'm having trouble breathing."
             class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring"></textarea>
         </div>
         <div id="doc-recommend-error" class="text-red-400 text-sm hidden" role="alert"></div>
         <button type="submit" class="w-full px-6 py-3.5 bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] font-semibold rounded-2xl hover:scale-[1.02] transition-all focus-ring">
-          <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> AI SE ANALYZE KAREIN
+          <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> ANALYZE WITH AI
         </button>
       </form>
 
@@ -2121,6 +2319,98 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
   </div>
 </section>
 
+<!-- ============ AI HEALTH COACH ============ -->
+<section id="coach" class="py-20 md:py-24 section-alt border-t border-white/10" aria-labelledby="coach-heading">
+  <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="section-eyebrow uppercase text-teal-400 text-sm mb-3">FEATURE 14 — PERSONALISED GUIDANCE</div>
+      <h2 id="coach-heading" class="text-4xl md:text-5xl font-bold font-display">AI Health Coach</h2>
+      <p class="mt-4" style="color:var(--text-muted)">Answer four quick questions and get a personalised daily coaching plan — habits, weekly targets, nutrition pointers and red flags to watch for.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-10">
+      <!-- Questionnaire -->
+      <div class="lg:col-span-2">
+        <div class="glass glass-hover rounded-3xl p-6 md:p-8 space-y-7">
+
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-teal-400 mb-3">1. What's your main goal?</p>
+            <div class="grid grid-cols-2 gap-2.5" id="coach-goal-group" role="group" aria-label="Primary goal">
+              <button type="button" data-group="goal" data-value="weight" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-3 text-sm flex flex-col items-center gap-y-1.5 hover:bg-white/10 transition focus-ring">
+                <i class="fa-solid fa-weight-scale text-lg" style="color:#00C896" aria-hidden="true"></i> Lose Weight
+              </button>
+              <button type="button" data-group="goal" data-value="strength" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-3 text-sm flex flex-col items-center gap-y-1.5 hover:bg-white/10 transition focus-ring">
+                <i class="fa-solid fa-dumbbell text-lg" style="color:#00C896" aria-hidden="true"></i> Build Strength
+              </button>
+              <button type="button" data-group="goal" data-value="sleep" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-3 text-sm flex flex-col items-center gap-y-1.5 hover:bg-white/10 transition focus-ring">
+                <i class="fa-solid fa-moon text-lg" style="color:#00C896" aria-hidden="true"></i> Improve Sleep
+              </button>
+              <button type="button" data-group="goal" data-value="stress" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-3 text-sm flex flex-col items-center gap-y-1.5 hover:bg-white/10 transition focus-ring">
+                <i class="fa-solid fa-spa text-lg" style="color:#00C896" aria-hidden="true"></i> Reduce Stress
+              </button>
+              <button type="button" data-group="goal" data-value="condition" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-3 text-sm flex flex-col items-center gap-y-1.5 hover:bg-white/10 transition focus-ring">
+                <i class="fa-solid fa-notes-medical text-lg" style="color:#00C896" aria-hidden="true"></i> Manage a Condition
+              </button>
+              <button type="button" data-group="goal" data-value="wellness" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-3 text-sm flex flex-col items-center gap-y-1.5 hover:bg-white/10 transition focus-ring">
+                <i class="fa-solid fa-heart-pulse text-lg" style="color:#00C896" aria-hidden="true"></i> General Wellness
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-teal-400 mb-3">2. Current activity level</p>
+            <div class="grid grid-cols-2 gap-2.5" id="coach-activity-group" role="group" aria-label="Activity level">
+              <button type="button" data-group="activity" data-value="sedentary" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Sedentary</button>
+              <button type="button" data-group="activity" data-value="light" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Lightly Active</button>
+              <button type="button" data-group="activity" data-value="active" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Active</button>
+              <button type="button" data-group="activity" data-value="very" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Very Active</button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-teal-400 mb-3">3. Age range</p>
+            <div class="grid grid-cols-3 gap-2.5" id="coach-age-group" role="group" aria-label="Age range">
+              <button type="button" data-group="age" data-value="u18" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Under 18</button>
+              <button type="button" data-group="age" data-value="18-30" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">18–30</button>
+              <button type="button" data-group="age" data-value="31-45" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">31–45</button>
+              <button type="button" data-group="age" data-value="46-60" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">46–60</button>
+              <button type="button" data-group="age" data-value="60plus" onclick="selectCoachChip(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">60+</button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-teal-400 mb-3">4. Anything we should be mindful of? <span class="normal-case font-normal" style="color:var(--text-muted)">(select all that apply)</span></p>
+            <div class="grid grid-cols-2 gap-2.5" id="coach-condition-group" role="group" aria-label="Health conditions">
+              <button type="button" data-value="diabetes" onclick="toggleCoachCondition(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Diabetes</button>
+              <button type="button" data-value="bp" onclick="toggleCoachCondition(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">High Blood Pressure</button>
+              <button type="button" data-value="heart" onclick="toggleCoachCondition(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Heart Condition</button>
+              <button type="button" data-value="pregnancy" onclick="toggleCoachCondition(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Pregnancy</button>
+              <button type="button" data-value="joint" onclick="toggleCoachCondition(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">Joint / Back Pain</button>
+              <button type="button" data-value="none" onclick="toggleCoachCondition(this)" class="coach-chip glass rounded-xl px-3 py-2.5 text-sm hover:bg-white/10 transition focus-ring">None of these</button>
+            </div>
+          </div>
+
+          <div id="coach-error" class="text-red-400 text-sm hidden" role="alert"></div>
+
+          <button type="button" onclick="generateCoachPlan()" class="w-full px-8 py-4 bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] font-semibold rounded-3xl flex items-center justify-center gap-x-3 hover:scale-[1.02] transition focus-ring">
+            <i class="fa-solid fa-route" aria-hidden="true"></i> GENERATE MY PLAN
+          </button>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="lg:col-span-3">
+        <div id="coach-results">
+          <div class="glass glass-hover rounded-3xl p-8 text-center min-h-[280px] flex flex-col items-center justify-center" style="color:var(--text-muted)">
+            <i class="fa-solid fa-route text-4xl mb-4 text-teal-400/60" aria-hidden="true"></i>
+            <p>Complete the questions on the left and generate your plan to see personalised daily habits, weekly targets and guidance here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ HEALTH INSURANCE ADVISOR ============ -->
 <section id="insurance" class="py-20 md:py-24 border-t border-white/10" aria-labelledby="insurance-heading">
   <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
@@ -2879,7 +3169,7 @@ function initNav() {
     });
   });
 
-  const sections = ['home','symptom','tools','medicine','clinics','diet','risk','mental','pregnancy','firstaid','water','sleep','exercise','bloodsugar','heartrate','stress','posture','labtest','insurance','stats','about','contact','feedback']
+  const sections = ['home','symptom','skincheck','tools','medicine','clinics','locator','diet','risk','mental','pregnancy','firstaid','water','sleep','exercise','bloodsugar','heartrate','stress','posture','labtest','insurance','stats','about','contact','feedback']
     .map(id => document.getElementById(id)).filter(Boolean);
   const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
 
@@ -4029,33 +4319,33 @@ function initMedicineTracker() {
    Not exhaustive — used to (a) recognise likely medicine lines in OCR text
    and (b) show quick info when a matched name isn't a dosage-format line. */
 const RX_MEDICINE_DB = [
-  { canon:'Paracetamol', aliases:['paracetamol','panadol','calpol','panadol extra'], category:'Pain reliever / fever reducer', use:'Fever aur halka dard kam karne ke liye.', note:'Din mein 4 gram (adult) se zyada na lein.' },
-  { canon:'Ibuprofen', aliases:['ibuprofen','brufen'], category:'NSAID pain reliever', use:'Dard, sujan aur fever ke liye.', note:'Khali pait na lein — khane ke baad lein.' },
-  { canon:'Aspirin', aliases:['aspirin','disprin'], category:'NSAID / blood thinner (low dose)', use:'Dard-fever ya (low dose) dil ki hifazat ke liye.', note:'Khane ke baad lein; bachon ko na dein.' },
-  { canon:'Amoxicillin', aliases:['amoxicillin','amoxil'], category:'Antibiotic (penicillin group)', use:'Bacterial infections ke liye.', note:'Poora course zaroor mukammal karein, beech mein na chorein.' },
-  { canon:'Co-Amoxiclav', aliases:['augmentin','co-amoxiclav','amoxiclav'], category:'Antibiotic', use:'Bacterial infections ke liye.', note:'Khane ke saath lein taake pait kharab na ho.' },
-  { canon:'Azithromycin', aliases:['azithromycin','zithromax','azomax','azithral'], category:'Antibiotic (macrolide)', use:'Chest, throat aur skin infections ke liye.', note:'Poora course mukammal karein.' },
-  { canon:'Ciprofloxacin', aliases:['ciprofloxacin','ciproxin','cipro'], category:'Antibiotic (fluoroquinolone)', use:'Urinary aur pait ke infections ke liye.', note:'Dairy products ke saath na lein.' },
-  { canon:'Metronidazole', aliases:['metronidazole','flagyl'], category:'Antibiotic / antiparasitic', use:'Pait ke infections ke liye.', note:'Is dawa ke doran alcohol na lein.' },
-  { canon:'Omeprazole', aliases:['omeprazole','risek','losec'], category:'Acid reducer (PPI)', use:'Acidity, gastric ulcer ke liye.', note:'Khane se pehle, khali pait behtar asar karti hai.' },
-  { canon:'Ranitidine', aliases:['ranitidine','zantac'], category:'Acid reducer', use:'Acidity aur heartburn ke liye.', note:'' },
-  { canon:'Domperidone', aliases:['domperidone','motilium'], category:'Anti-nausea / digestive motility', use:'Ulti, matli aur bad-hazmi ke liye.', note:'Khane se 15-30 min pehle lein.' },
-  { canon:'Metformin', aliases:['metformin','glucophage'], category:'Anti-diabetic', use:'Type 2 diabetes mein sugar control ke liye.', note:'Khane ke saath lein taake pait kharab na ho.' },
-  { canon:'Amlodipine', aliases:['amlodipine','norvasc'], category:'Blood pressure medicine', use:'High blood pressure control ke liye.', note:'Rozana ek hi waqt par lein.' },
-  { canon:'Losartan', aliases:['losartan'], category:'Blood pressure medicine', use:'High blood pressure control ke liye.', note:'' },
-  { canon:'Atorvastatin', aliases:['atorvastatin','lipitor'], category:'Cholesterol-lowering statin', use:'Cholesterol kam karne ke liye.', note:'Aksar raat ko li jati hai.' },
-  { canon:'Cetirizine', aliases:['cetirizine','alerid','zyrtec'], category:'Antihistamine (allergy)', use:'Allergy, khujli, chheenkon ke liye.', note:'Neend aa sakti hai.' },
-  { canon:'Loratadine', aliases:['loratadine','claritin'], category:'Antihistamine (allergy)', use:'Allergy symptoms ke liye.', note:'' },
-  { canon:'Vitamin D3', aliases:['vitamin d','vitamin d3','arachitol','maltifresh'], category:'Vitamin supplement', use:'Vitamin D ki kami poori karne ke liye.', note:'' },
-  { canon:'Calcium', aliases:['calcium','calcium carbonate','caltrate'], category:'Mineral supplement', use:'Haddiyon ki majbooti ke liye.', note:'' },
-  { canon:'Ferrous Sulfate (Iron)', aliases:['ferrous sulfate','iron','fefol','feroglobin'], category:'Iron supplement', use:'Khoon ki kami (anemia) ke liye.', note:'Chai/coffee ke saath na lein, asar kam ho jata hai.' },
-  { canon:'Folic Acid', aliases:['folic acid','folvite'], category:'Vitamin supplement', use:'Khoon banane aur pregnancy mein zaroori.', note:'' },
-  { canon:'ORS', aliases:['ors','oral rehydration'], category:'Rehydration salts', use:'Dast/ulti mein pani ki kami poori karne ke liye.', note:'Saaf pani mein ghol kar peeyein.' },
-  { canon:'Insulin', aliases:['insulin'], category:'Anti-diabetic (injectable)', use:'Diabetes mein blood sugar control ke liye.', note:'Doctor ki hidayat ke mutabiq hi dose lein.' },
-  { canon:'Prednisolone', aliases:['prednisolone','prednisone'], category:'Steroid (anti-inflammatory)', use:'Sujan aur allergy ke shadeed cases ke liye.', note:'Achanak band na karein — doctor se poochein.' },
-  { canon:'Salbutamol', aliases:['salbutamol','ventolin','asthalin'], category:'Bronchodilator (inhaler)', use:'Asthma / saans ki takleef ke liye.', note:'' },
-  { canon:'Diclofenac', aliases:['diclofenac','voltral','voveran'], category:'NSAID pain reliever', use:'Dard aur sujan ke liye.', note:'Khane ke baad lein.' },
-  { canon:'Levothyroxine', aliases:['levothyroxine','eltroxin','thyronorm'], category:'Thyroid hormone', use:'Underactive thyroid ke liye.', note:'Subah khali pait, khane se 30 min pehle lein.' },
+  { canon:'Paracetamol', aliases:['paracetamol','panadol','calpol','panadol extra'], category:'Pain reliever / fever reducer', use:'For reducing fever and mild pain.', note:'Do not exceed 4 grams (adult) per day.' },
+  { canon:'Ibuprofen', aliases:['ibuprofen','brufen'], category:'NSAID pain reliever', use:'For pain, swelling and fever.', note:'Do not take on an empty stomach — take after food.' },
+  { canon:'Aspirin', aliases:['aspirin','disprin'], category:'NSAID / blood thinner (low dose)', use:'For pain/fever, or (low dose) heart protection.', note:'Take after food; do not give to children.' },
+  { canon:'Amoxicillin', aliases:['amoxicillin','amoxil'], category:'Antibiotic (penicillin group)', use:'For bacterial infections.', note:'Always complete the full course, do not stop midway.' },
+  { canon:'Co-Amoxiclav', aliases:['augmentin','co-amoxiclav','amoxiclav'], category:'Antibiotic', use:'For bacterial infections.', note:'Take with food to avoid stomach upset.' },
+  { canon:'Azithromycin', aliases:['azithromycin','zithromax','azomax','azithral'], category:'Antibiotic (macrolide)', use:'For chest, throat and skin infections.', note:'Complete the full course.' },
+  { canon:'Ciprofloxacin', aliases:['ciprofloxacin','ciproxin','cipro'], category:'Antibiotic (fluoroquinolone)', use:'For urinary and stomach infections.', note:'Do not take with dairy products.' },
+  { canon:'Metronidazole', aliases:['metronidazole','flagyl'], category:'Antibiotic / antiparasitic', use:'For stomach infections.', note:'Do not drink alcohol while taking this medicine.' },
+  { canon:'Omeprazole', aliases:['omeprazole','risek','losec'], category:'Acid reducer (PPI)', use:'For acidity and gastric ulcers.', note:'Works better on an empty stomach, before food.' },
+  { canon:'Ranitidine', aliases:['ranitidine','zantac'], category:'Acid reducer', use:'For acidity and heartburn.', note:'' },
+  { canon:'Domperidone', aliases:['domperidone','motilium'], category:'Anti-nausea / digestive motility', use:'For vomiting, nausea and indigestion.', note:'Take 15-30 minutes before food.' },
+  { canon:'Metformin', aliases:['metformin','glucophage'], category:'Anti-diabetic', use:'For blood sugar control in Type 2 diabetes.', note:'Take with food to avoid stomach upset.' },
+  { canon:'Amlodipine', aliases:['amlodipine','norvasc'], category:'Blood pressure medicine', use:'For high blood pressure control.', note:'Take at the same time every day.' },
+  { canon:'Losartan', aliases:['losartan'], category:'Blood pressure medicine', use:'For high blood pressure control.', note:'' },
+  { canon:'Atorvastatin', aliases:['atorvastatin','lipitor'], category:'Cholesterol-lowering statin', use:'For lowering cholesterol.', note:'Usually taken at night.' },
+  { canon:'Cetirizine', aliases:['cetirizine','alerid','zyrtec'], category:'Antihistamine (allergy)', use:'For allergies, itching and sneezing.', note:'May cause drowsiness.' },
+  { canon:'Loratadine', aliases:['loratadine','claritin'], category:'Antihistamine (allergy)', use:'For allergy symptoms.', note:'' },
+  { canon:'Vitamin D3', aliases:['vitamin d','vitamin d3','arachitol','maltifresh'], category:'Vitamin supplement', use:'To correct vitamin D deficiency.', note:'' },
+  { canon:'Calcium', aliases:['calcium','calcium carbonate','caltrate'], category:'Mineral supplement', use:'For strengthening bones.', note:'' },
+  { canon:'Ferrous Sulfate (Iron)', aliases:['ferrous sulfate','iron','fefol','feroglobin'], category:'Iron supplement', use:'For iron deficiency (anemia).', note:'Do not take with tea/coffee, it reduces effectiveness.' },
+  { canon:'Folic Acid', aliases:['folic acid','folvite'], category:'Vitamin supplement', use:'For blood formation and essential during pregnancy.', note:'' },
+  { canon:'ORS', aliases:['ors','oral rehydration'], category:'Rehydration salts', use:'To replace fluid loss during diarrhea/vomiting.', note:'Dissolve in clean water and drink.' },
+  { canon:'Insulin', aliases:['insulin'], category:'Anti-diabetic (injectable)', use:'For blood sugar control in diabetes.', note:'Take dose only as directed by your doctor.' },
+  { canon:'Prednisolone', aliases:['prednisolone','prednisone'], category:'Steroid (anti-inflammatory)', use:'For severe cases of swelling and allergy.', note:'Do not stop suddenly — consult your doctor.' },
+  { canon:'Salbutamol', aliases:['salbutamol','ventolin','asthalin'], category:'Bronchodilator (inhaler)', use:'For asthma / breathing difficulty.', note:'' },
+  { canon:'Diclofenac', aliases:['diclofenac','voltral','voveran'], category:'NSAID pain reliever', use:'For pain and swelling.', note:'Take after food.' },
+  { canon:'Levothyroxine', aliases:['levothyroxine','eltroxin','thyronorm'], category:'Thyroid hormone', use:'For underactive thyroid.', note:'Take in the morning on an empty stomach, 30 minutes before food.' },
   { canon:'Multivitamin', aliases:['multivitamin','centrum','surbex'], category:'Vitamin supplement', use:'General nutrition support.', note:'' },
 ];
 
@@ -4192,7 +4482,7 @@ function renderPrescriptionResults(meds, rawText) {
   rawBox.textContent = rawText || '(no text)';
 
   if (meds.length === 0) {
-    document.getElementById('rx-error').textContent = 'Koi medicine pehchani nahi ja saki. Photo saaf khenchein ya neeche text paste karke try karein.';
+    document.getElementById('rx-error').textContent = 'No medicines could be recognized. Take a clearer photo or paste the text below and try again.';
     document.getElementById('rx-error').classList.remove('hidden');
     resultsBox.classList.add('hidden');
     return;
@@ -4208,7 +4498,7 @@ function renderPrescriptionResults(meds, rawText) {
         <i class="fa-solid ${scheduleIcon(slot)} text-teal-400"></i> ${scheduleLabel(slot)}
       </div>
       ${medsInSlot.length === 0
-        ? `<p class="text-xs" style="color:var(--text-muted)">Koi medicine nahi</p>`
+        ? `<p class="text-xs" style="color:var(--text-muted)">No medicines</p>`
         : `<div class="flex flex-wrap gap-1.5">${medsInSlot.map(m => `<span class="text-xs px-2 py-1 rounded-full bg-teal-400/15 text-teal-400 border border-teal-400/25">${m.name}</span>`).join('')}</div>`
       }
     </div>`;
@@ -4229,7 +4519,7 @@ function renderPrescriptionResults(meds, rawText) {
          </div>`
       : `<div class="mt-3 text-xs rounded-xl p-3 flex items-start gap-2" style="background:rgba(148,163,184,0.08);border:1px solid rgba(148,163,184,0.25);color:var(--text-muted)">
            <i class="fa-solid fa-circle-info mt-0.5 shrink-0"></i>
-           <span>Ye medicine hamare database mein nahi mili. Naam confirm karne ke liye apne pharmacist ya doctor se rabta karein — khud se dose tabdeel na karein.</span>
+           <span>This medicine wasn't found in our database. Please confirm the name with your pharmacist or doctor — don't change the dose yourself.</span>
          </div>`;
 
     return `<div class="glass rounded-2xl p-4">
@@ -4285,14 +4575,14 @@ function addExtractedMedToReminders(med) {
   medicines.sort((a, b) => a.time.localeCompare(b.time));
   saveMedicines();
   renderMedicineList();
-  showToast(`${med.name} reminder(s) add ho gaye — checklist mein dekhein.`);
+  showToast(`${med.name} reminder(s) added — check the checklist.`);
 }
 
 function addAllExtractedToReminders() {
   if (!extractedRxMeds.length) return;
   extractedRxMeds.forEach(m => addExtractedMedToReminders(m));
   switchMedTab('checklist');
-  showToast('Saari medicines reminder checklist mein add ho gayi.');
+  showToast('All medicines added to the reminder checklist.');
 }
 
 /* ── Text fallback entry point ── */
@@ -4301,7 +4591,7 @@ function analyzePrescriptionText() {
   const errBox = document.getElementById('rx-error');
   errBox.classList.add('hidden');
   if (!raw) {
-    errBox.textContent = 'Pehle prescription ka text paste karein.';
+    errBox.textContent = 'Please paste the prescription text first.';
     errBox.classList.remove('hidden');
     return;
   }
@@ -4334,11 +4624,11 @@ function analyzePrescriptionImage() {
   errBox.classList.add('hidden');
   document.getElementById('rx-results').classList.add('hidden');
   loading.classList.remove('hidden');
-  loadingText.textContent = 'OCR library load ho rahi hai…';
+  loadingText.textContent = 'Loading OCR library…';
 
   loadTesseractLib()
     .then(() => {
-      loadingText.textContent = 'Prescription parhi ja rahi hai… isme thoda waqt lag sakta hai.';
+      loadingText.textContent = 'Reading prescription… this may take a moment.';
       return window.Tesseract.recognize(rxSelectedFile, 'eng');
     })
     .then(({ data }) => {
@@ -4348,7 +4638,7 @@ function analyzePrescriptionImage() {
     })
     .catch(() => {
       loading.classList.add('hidden');
-      errBox.textContent = 'Photo se text nahi parha ja saka. Behtar roshni mein saaf photo lein, ya neeche text paste karke try karein.';
+      errBox.textContent = 'Could not read text from the photo. Take a clearer photo in better lighting, or paste the text below and try again.';
       errBox.classList.remove('hidden');
     });
 }
@@ -4367,7 +4657,7 @@ function resetPrescriptionUpload() {
 function handleRxFile(file) {
   if (!file || !file.type.startsWith('image/')) {
     const errBox = document.getElementById('rx-error');
-    errBox.textContent = 'Sirf image file upload karein (JPG/PNG).';
+    errBox.textContent = 'Please upload an image file only (JPG/PNG).';
     errBox.classList.remove('hidden');
     return;
   }
@@ -4402,6 +4692,467 @@ function initPrescriptionUpload() {
   dropzone.addEventListener('drop', (e) => {
     e.preventDefault();
     if (e.dataTransfer.files && e.dataTransfer.files[0]) handleRxFile(e.dataTransfer.files[0]);
+  });
+}
+
+/* =========================================================
+   2B. AI SKIN DISEASE DETECTION (photo upload)
+   Heuristic, rules-based visual screening: the uploaded photo is
+   analyzed on-device (canvas pixel sampling for redness, pigment,
+   brightness and texture/edge irregularity) and combined with the
+   symptom answers to score a set of common skin-condition profiles.
+   This is NOT a trained medical AI model or a diagnosis — it is a
+   screening aid, same spirit as the rules-based Symptom Checker.
+   ========================================================= */
+let skinSelectedFile = null;
+
+const SKIN_CONDITIONS = [
+  {
+    name: 'Acne / Breakouts',
+    icon: 'fa-user-injured', color: '#f59e0b',
+    causes: ['Clogged pores from oil & dead skin', 'Hormonal changes', 'Bacterial inflammation (P. acnes)', 'Diet, stress or certain cosmetics'],
+    baseUrgency: 'Low',
+    action: 'Keep the area clean, avoid picking, try an over-the-counter benzoyl peroxide or salicylic acid wash. See a dermatologist if it is severe, cystic, or scarring.',
+    tests: [],
+    doctorCategory: { type: 'Dermatologist', icon: 'fa-user-doctor', color: '#f59e0b' },
+    score(f, s) {
+      let sc = 0;
+      sc += clamp01(f.redness * 1.4) * 40;
+      sc += clamp01(f.textureVariance / 55) * 25;
+      if (s.location === 'face') sc += 20;
+      if (s.symptoms.pain) sc += 8;
+      if (s.duration === 'long') sc += 5;
+      if (s.symptoms.bleed || s.symptoms.change) sc -= 10;
+      return sc;
+    }
+  },
+  {
+    name: 'Eczema (Atopic Dermatitis)',
+    icon: 'fa-hand-dots', color: '#22c55e',
+    causes: ['Skin barrier dysfunction', 'Allergens or irritants', 'Dry weather / low humidity', 'Family history of allergies or asthma'],
+    baseUrgency: 'Low',
+    action: 'Moisturize frequently with a fragrance-free cream, avoid known triggers and harsh soaps. See a doctor if it cracks, weeps, or does not improve with moisturizing.',
+    tests: [],
+    doctorCategory: { type: 'Dermatologist / General Physician', icon: 'fa-user-doctor', color: '#22c55e' },
+    score(f, s) {
+      let sc = 0;
+      sc += clamp01(f.textureVariance / 60) * 35;
+      sc += clamp01((0.55 - f.saturation) * 2) * 20;
+      if (s.symptoms.itch) sc += 30;
+      if (s.duration === 'medium' || s.duration === 'long') sc += 10;
+      if (['arm','leg','torso','neck'].includes(s.location)) sc += 8;
+      return sc;
+    }
+  },
+  {
+    name: 'Fungal Infection (Ringworm / Tinea)',
+    icon: 'fa-circle-notch', color: '#a855f7',
+    causes: ['Dermatophyte fungus', 'Warm, sweaty or humid skin folds', 'Contact with an infected person, pet, or surface', 'Sharing towels or clothing'],
+    baseUrgency: 'Low',
+    action: 'Keep the area dry, use an OTC antifungal cream for 2 weeks. See a doctor if it spreads, forms rings, or does not clear up.',
+    tests: ['Skin scraping / KOH test'],
+    doctorCategory: { type: 'Dermatologist', icon: 'fa-user-doctor', color: '#a855f7' },
+    score(f, s) {
+      let sc = 0;
+      sc += clamp01(f.edgeRingScore) * 40;
+      sc += clamp01(f.redness) * 20;
+      if (s.symptoms.itch) sc += 20;
+      if (['groin','foot','torso'].includes(s.location)) sc += 15;
+      if (s.symptoms.spread) sc += 10;
+      return sc;
+    }
+  },
+  {
+    name: 'Allergic Reaction / Hives (Urticaria)',
+    icon: 'fa-shield-virus', color: '#06b6d4',
+    causes: ['Food, medicine or insect-bite allergy', 'Contact allergen (soap, plant, metal)', 'Heat, stress or infection triggers'],
+    baseUrgency: 'Medium',
+    action: 'Avoid the suspected trigger, an antihistamine can ease itching. Seek urgent care immediately if there is facial/throat swelling or breathing difficulty.',
+    tests: [],
+    doctorCategory: { type: 'Allergist / Dermatologist', icon: 'fa-shield-halved', color: '#06b6d4' },
+    score(f, s) {
+      let sc = 0;
+      sc += clamp01(f.redness * 1.3) * 35;
+      sc += clamp01(f.brightness) * 10;
+      if (s.symptoms.itch) sc += 20;
+      if (s.duration === 'new') sc += 15;
+      if (s.symptoms.fever) sc += 10;
+      return sc;
+    }
+  },
+  {
+    name: 'Psoriasis',
+    icon: 'fa-layer-group', color: '#eab308',
+    causes: ['Autoimmune skin condition', 'Family history', 'Stress, infection or skin injury as triggers'],
+    baseUrgency: 'Medium',
+    action: 'Moisturize and avoid scratching or picking scaly patches. A dermatologist can confirm the diagnosis and prescribe topical or systemic treatment.',
+    tests: [],
+    doctorCategory: { type: 'Dermatologist', icon: 'fa-user-doctor', color: '#eab308' },
+    score(f, s) {
+      let sc = 0;
+      sc += clamp01(f.textureVariance / 50) * 30;
+      sc += clamp01(f.brightness) * 15;
+      if (s.duration === 'long') sc += 20;
+      if (['scalp','arm','leg'].includes(s.location)) sc += 10;
+      if (s.symptoms.itch) sc += 10;
+      return sc;
+    }
+  },
+  {
+    name: 'Suspicious Mole / Possible Skin Cancer',
+    icon: 'fa-magnifying-glass', color: '#ef4444',
+    causes: ['Irregular or asymmetric pigmented lesion', 'Long-term sun exposure', 'Fair skin or family history of skin cancer', 'A mole that is changing, bleeding or growing'],
+    baseUrgency: 'High',
+    action: 'This pattern can resemble the ABCDE warning signs used to flag lesions for review (Asymmetry, Border irregularity, Color variation, Diameter over 6mm, Evolving). Please get this checked by a dermatologist promptly — early evaluation matters most for this category.',
+    tests: ['Dermoscopy', 'Skin biopsy (if advised by a dermatologist)'],
+    doctorCategory: { type: 'Dermatologist — prompt evaluation advised', icon: 'fa-user-doctor', color: '#ef4444' },
+    score(f, s) {
+      let sc = 0;
+      sc += clamp01(f.darkRatio * 3) * 30;
+      sc += clamp01(f.textureVariance / 45) * 20;
+      sc += clamp01(1 - f.symmetryScore) * 20;
+      if (s.symptoms.change) sc += 20;
+      if (s.symptoms.bleed) sc += 20;
+      if (s.symptoms.spread) sc += 10;
+      if (s.duration === 'long' && s.symptoms.change) sc += 10;
+      return sc;
+    }
+  },
+  {
+    name: 'Normal / Healthy-Looking Skin',
+    icon: 'fa-circle-check', color: '#00C896',
+    causes: ['No strong signs of redness, irregular pigment, or unusual texture were detected in this photo.'],
+    baseUrgency: 'Low',
+    action: 'Nothing concerning stands out from the photo and answers given. Keep an eye on the area and get it checked if it changes, itches, grows, or does not go away.',
+    tests: [],
+    doctorCategory: { type: 'No urgent referral needed', icon: 'fa-circle-check', color: '#00C896' },
+    score(f, s) {
+      let sc = 45;
+      sc -= clamp01(f.redness) * 25;
+      sc -= clamp01(f.textureVariance / 50) * 20;
+      sc -= clamp01(f.darkRatio * 3) * 20;
+      if (Object.values(s.symptoms).some(v => v)) sc -= 20;
+      if (s.duration === 'long') sc -= 10;
+      return sc;
+    }
+  }
+];
+
+function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+
+/* ── Canvas-based visual feature extraction ── */
+function computeSkinImageFeatures(img) {
+  const canvas = document.createElement('canvas');
+  const maxDim = 260;
+  const scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
+  canvas.width = Math.max(1, Math.round(img.naturalWidth * scale));
+  canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+  let data;
+  try {
+    data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+  } catch (e) {
+    return null; // e.g. tainted canvas from cross-origin image
+  }
+
+  const w = canvas.width, h = canvas.height;
+  const gray = new Float32Array(w * h);
+  let sumR = 0, sumG = 0, sumB = 0, n = 0;
+  let darkCount = 0;
+
+  for (let i = 0, p = 0; i < data.length; i += 4, p++) {
+    const r = data[i], g = data[i+1], b = data[i+2];
+    sumR += r; sumG += g; sumB += b; n++;
+    const l = (r + g + b) / 3;
+    gray[p] = l;
+    if (l < 70) darkCount++;
+  }
+  const avgR = sumR / n, avgG = sumG / n, avgB = sumB / n;
+  const brightness = (avgR + avgG + avgB) / 3 / 255;
+  const maxC = Math.max(avgR, avgG, avgB), minC = Math.min(avgR, avgG, avgB);
+  const saturation = maxC === 0 ? 0 : (maxC - minC) / maxC;
+  const redness = clamp01((avgR - (avgG + avgB) / 2) / 255 + 0.15);
+  const darkRatio = darkCount / n;
+
+  // Texture variance via simple horizontal+vertical gradient magnitude
+  let gradSum = 0, gradCount = 0;
+  for (let y = 1; y < h - 1; y++) {
+    for (let x = 1; x < w - 1; x++) {
+      const idx = y * w + x;
+      const gx = gray[idx + 1] - gray[idx - 1];
+      const gy = gray[idx + w] - gray[idx - w];
+      gradSum += Math.sqrt(gx*gx + gy*gy);
+      gradCount++;
+    }
+  }
+  const textureVariance = gradCount ? gradSum / gradCount : 0;
+
+  // Rough "ring" score: dark-ish border with lighter center suggests a
+  // ring-shaped lesion (used as a mild signal for fungal infection).
+  const cx = Math.floor(w/2), cy = Math.floor(h/2);
+  const centerL = gray[cy*w+cx] || brightness*255;
+  let edgeSampleSum = 0, edgeSampleCount = 0;
+  const rad = Math.floor(Math.min(w,h) * 0.4);
+  for (let a = 0; a < 360; a += 30) {
+    const rx = Math.round(cx + rad * Math.cos(a * Math.PI/180));
+    const ry = Math.round(cy + rad * Math.sin(a * Math.PI/180));
+    if (rx >= 0 && rx < w && ry >= 0 && ry < h) {
+      edgeSampleSum += gray[ry*w+rx];
+      edgeSampleCount++;
+    }
+  }
+  const edgeAvg = edgeSampleCount ? edgeSampleSum / edgeSampleCount : centerL;
+  const edgeRingScore = clamp01((edgeAvg - centerL) / 60 + 0.3);
+
+  // Rough left/right symmetry score for mole-shape heuristic (1 = symmetric)
+  let diffSum = 0, diffCount = 0;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < Math.floor(w/2); x++) {
+      const left = gray[y*w + x];
+      const right = gray[y*w + (w - 1 - x)];
+      diffSum += Math.abs(left - right);
+      diffCount++;
+    }
+  }
+  const symmetryScore = diffCount ? clamp01(1 - (diffSum / diffCount) / 60) : 1;
+
+  return { avgR, avgG, avgB, brightness, saturation, redness, darkRatio, textureVariance, edgeRingScore, symmetryScore };
+}
+
+function urgencyFromScore(condition, score, symptoms, duration) {
+  let level = condition.baseUrgency;
+  if (symptoms.bleed || symptoms.change) level = rankUrgency(Math.max(urgencyRank(level), urgencyRank('High')));
+  if (symptoms.fever) level = rankUrgency(Math.max(urgencyRank(level), urgencyRank('Medium')));
+  if (duration === 'long' && score > 55) level = rankUrgency(Math.max(urgencyRank(level), urgencyRank('Medium')));
+  return level;
+}
+
+function runSkinEngine(features, inputs) {
+  const scored = SKIN_CONDITIONS.map(c => {
+    const raw = Math.max(0, c.score(features, inputs));
+    return { condition: c, raw };
+  });
+  const totalRaw = scored.reduce((s, r) => s + r.raw, 0) || 1;
+  const results = scored
+    .map(r => ({
+      name: r.condition.name,
+      icon: r.condition.icon,
+      color: r.condition.color,
+      causes: r.condition.causes,
+      action: r.condition.action,
+      tests: r.condition.tests,
+      doctorCategory: r.condition.doctorCategory,
+      percent: Math.round((r.raw / totalRaw) * 100),
+      urgency: urgencyFromScore(r.condition, r.raw, inputs.symptoms, inputs.duration)
+    }))
+    .sort((a, b) => b.percent - a.percent)
+    .slice(0, 4);
+  return results;
+}
+
+function renderSkinResults(results, meta) {
+  const container = document.getElementById('skin-results');
+
+  let banners = '';
+  if (results.some(r => r.urgency === 'High' || r.urgency === 'Critical')) {
+    banners += `<div class="rounded-2xl px-5 py-4 text-sm font-semibold flex items-start gap-3" style="background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.5);color:#fca5a5;">
+      <i class="fa-solid fa-triangle-exclamation text-red-400 mt-0.5 text-base"></i>
+      <span>⚠️ This photo shows patterns worth a prompt dermatologist visit. Don't wait for it to worsen before getting it checked.</span>
+    </div>`;
+  }
+
+  const cards = results.map((r, i) => `
+    <div class="glass glass-hover rounded-3xl p-6 card-hover" style="border-left:3px solid ${r.color};">
+      <div class="flex flex-wrap justify-between items-start gap-2">
+        ${urgencyBadge(r.urgency)}
+        <span class="text-xs px-2 py-1 rounded-full" style="background:rgba(255,255,255,0.07);color:var(--text-muted)">${r.percent}% visual match</span>
+      </div>
+
+      <div class="text-xl font-bold mt-4 font-display"><i class="fa-solid ${r.icon} mr-2" style="color:${r.color}"></i>${i===0?'🔴 ':''}${r.name}</div>
+
+      <div class="mt-4">
+        <div class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#2dd4bf;">
+          <i class="fa-solid fa-circle-question mr-1"></i> Possible Causes
+        </div>
+        <ul class="space-y-1.5">
+          ${r.causes.map(c => `<li class="text-sm flex items-start gap-2" style="color:var(--text-muted)">
+            <i class="fa-solid fa-angle-right text-teal-400/70 mt-0.5 flex-shrink-0"></i>${c}
+          </li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="mt-4 rounded-2xl p-4 flex items-center gap-3" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+        <div class="flex-shrink-0 rounded-xl p-2.5" style="background:${r.doctorCategory?.color+'22' || '#2dd4bf22'};">
+          <i class="fa-solid ${r.doctorCategory?.icon || 'fa-user-doctor'} text-lg" style="color:${r.doctorCategory?.color || '#2dd4bf'};"></i>
+        </div>
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider mb-0.5" style="color:${r.doctorCategory?.color || '#2dd4bf'};">See a Doctor</div>
+          <div class="text-sm font-semibold" style="color:var(--text-base)">${r.doctorCategory?.type || 'Dermatologist'}</div>
+        </div>
+      </div>
+
+      <div class="mt-4 pt-4 border-t border-white/10">
+        <div class="text-xs uppercase tracking-wider text-teal-400 mb-1.5 font-bold">
+          <i class="fa-solid fa-clipboard-check mr-1"></i> Recommended Action
+        </div>
+        <p class="text-sm leading-relaxed" style="color:var(--text-base)">${r.action}</p>
+      </div>
+
+      ${r.tests && r.tests.length ? `
+      <div class="mt-3 flex flex-wrap gap-2">
+        ${r.tests.map(t => `<span class="text-xs px-2.5 py-1 rounded-full" style="background:rgba(45,212,191,0.1);color:#2dd4bf;border:1px solid rgba(45,212,191,0.25);">
+          <i class="fa-solid fa-vial mr-1 text-xs"></i>${t}
+        </span>`).join('')}
+      </div>` : ''}
+    </div>
+  `).join('');
+
+  const doctors = (typeof DOCTOR_DIRECTORY !== 'undefined' && DOCTOR_DIRECTORY['Dermatologist']) || [];
+  const cityDoctors = doctors.filter(d => d.city === meta.city);
+  const showDoctors = cityDoctors.length ? cityDoctors : doctors;
+  const doctorsHtml = showDoctors.length ? `
+    <div class="mt-6">
+      <h3 class="font-semibold mb-3 flex items-center gap-x-2">
+        <i class="fa-solid fa-user-doctor text-teal-400"></i> Recommended Dermatologists${cityDoctors.length ? ' in ' + meta.city : ' near you'}
+      </h3>
+      <div class="grid sm:grid-cols-2 gap-5">
+        ${showDoctors.map(d => (typeof renderDoctorCard === 'function' ? renderDoctorCard(d, 'Dermatologist') : '')).join('')}
+      </div>
+      ${!cityDoctors.length ? `<p class="text-xs mt-3" style="color:var(--text-muted)">No listed dermatologist in ${meta.city} yet — showing nearby options. You can also search <a href="#clinics" data-nav class="text-teal-400 hover:underline">Find Clinics</a> by your city.</p>` : ''}
+    </div>` : '';
+
+  container.innerHTML = `
+    <div class="space-y-3">${banners}</div>
+    <div class="space-y-4 mt-3">${cards}</div>
+    ${doctorsHtml}
+    <p class="text-xs mt-4 text-center px-2" style="color:var(--text-muted)">
+      <i class="fa-solid fa-circle-info mr-1"></i>
+      This is an AI-assisted visual screening from on-device photo analysis — not a medical diagnosis. Lighting, camera quality and skin tone all affect accuracy. Always have a qualified dermatologist examine the area, especially for anything bleeding, growing, or changing.
+    </p>
+    <p class="text-xs text-center mt-2 max-w-xl mx-auto" style="color:var(--text-muted)">
+      Medicore only provides recommendations — it does not offer appointments or treatment. Contact the doctor/clinic directly to confirm availability.
+    </p>`;
+}
+
+function analyzeSkinImage() {
+  const errBox = document.getElementById('skin-error');
+  errBox.classList.add('hidden');
+
+  if (!skinSelectedFile) {
+    errBox.textContent = 'Please upload a photo of the skin area first.';
+    errBox.classList.remove('hidden');
+    return;
+  }
+
+  const loading = document.getElementById('skin-loading');
+  const btn = document.getElementById('skin-analyze-btn');
+  document.getElementById('skin-results').closest('div').querySelector('#skin-results');
+  loading.classList.remove('hidden');
+  btn.disabled = true;
+
+  const inputs = {
+    location: document.getElementById('skin-location').value,
+    duration: document.getElementById('skin-duration').value,
+    city: document.getElementById('skin-city').value,
+    symptoms: {
+      itch: document.getElementById('skin-sym-itch').checked,
+      pain: document.getElementById('skin-sym-pain').checked,
+      bleed: document.getElementById('skin-sym-bleed').checked,
+      spread: document.getElementById('skin-sym-spread').checked,
+      change: document.getElementById('skin-sym-change').checked,
+      fever: document.getElementById('skin-sym-fever').checked
+    }
+  };
+
+  const img = document.getElementById('skin-preview-img');
+  const run = () => {
+    const features = computeSkinImageFeatures(img);
+    loading.classList.add('hidden');
+    btn.disabled = false;
+
+    if (!features) {
+      errBox.textContent = 'Could not analyze this photo. Try a different image (JPG/PNG, taken directly on your device).';
+      errBox.classList.remove('hidden');
+      return;
+    }
+
+    const results = runSkinEngine(features, inputs);
+    renderSkinResults(results, inputs);
+    popResults('skin-results', 'Your Skin Analysis Results', 'fa-solid fa-microscope');
+
+    if (typeof htSave === 'function') {
+      const skinEntry = {
+        location: inputs.location, duration: inputs.duration, city: inputs.city, symptoms: inputs.symptoms,
+        top: results[0] ? { name: results[0].name, urgency: results[0].urgency, percent: results[0].percent, action: results[0].action } : null,
+        date: new Date().toISOString()
+      };
+      htSave('Medicore_skin_result_v1', skinEntry);
+      if (typeof htPushHistory === 'function') htPushHistory('Medicore_skin_history_v1', skinEntry, 10);
+    }
+    if (typeof renderPreviousAssessments === 'function') renderPreviousAssessments();
+  };
+
+  if (img.complete && img.naturalWidth > 0) run();
+  else img.onload = run;
+}
+
+function resetSkinUpload() {
+  skinSelectedFile = null;
+  document.getElementById('skin-file-input').value = '';
+  document.getElementById('skin-dropzone-empty').classList.remove('hidden');
+  document.getElementById('skin-dropzone-preview').classList.add('hidden');
+  document.getElementById('skin-error').classList.add('hidden');
+  document.getElementById('skin-loading').classList.add('hidden');
+  const resultsBox = document.getElementById('skin-results');
+  resultsBox.innerHTML = `
+    <div class="glass glass-hover rounded-3xl p-8 text-center h-full flex flex-col items-center justify-center min-h-[300px]" style="color:var(--text-muted)">
+      <i class="fa-solid fa-hand-dots text-4xl mb-4 text-teal-400/60" aria-hidden="true"></i>
+      <p class="font-medium">Your skin analysis will appear here.</p>
+      <p class="text-sm mt-2">Upload a photo, answer a few questions, then tap Analyze.</p>
+    </div>`;
+}
+
+function handleSkinFile(file) {
+  const errBox = document.getElementById('skin-error');
+  if (!file || !file.type.startsWith('image/')) {
+    errBox.textContent = 'Please upload an image file (JPG/PNG).';
+    errBox.classList.remove('hidden');
+    return;
+  }
+  errBox.classList.add('hidden');
+  skinSelectedFile = file;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    document.getElementById('skin-preview-img').src = e.target.result;
+    document.getElementById('skin-dropzone-empty').classList.add('hidden');
+    document.getElementById('skin-dropzone-preview').classList.remove('hidden');
+  };
+  reader.readAsDataURL(file);
+}
+
+function initSkinCheck() {
+  const dropzone = document.getElementById('skin-dropzone');
+  const fileInput = document.getElementById('skin-file-input');
+  if (!dropzone || !fileInput) return;
+
+  dropzone.addEventListener('click', (e) => {
+    if (e.target.closest('button')) return;
+    if (!skinSelectedFile) fileInput.click();
+  });
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files && e.target.files[0]) handleSkinFile(e.target.files[0]);
+  });
+  ['dragover','dragenter'].forEach(evt => {
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('border-teal-400/70'); });
+  });
+  ['dragleave','drop'].forEach(evt => {
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('border-teal-400/70'); });
+  });
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleSkinFile(e.dataTransfer.files[0]);
   });
 }
 
@@ -4620,6 +5371,248 @@ function initClinicFinder() {
         } else {
           status.textContent = 'Could not detect your location. Please choose your city manually.';
         }
+      },
+      { timeout: 8000 }
+    );
+  });
+}
+
+/* =========================================================
+   3B. LOCATION FEATURES — Hospitals, Pharmacies, Blood Banks,
+   Ambulance, Labs. Uses the same Google Maps deep-link pattern
+   as the Clinic Finder (no API key needed) plus on-device
+   geolocation to sort results by distance.
+   ========================================================= */
+const AMBULANCE_SERVICES = [
+  { name:'Rescue 1122',            area:'Punjab & Khyber Pakhtunkhwa — nationwide emergency response', phone:'1122', color:'#ef4444', icon:'fa-truck-medical' },
+  { name:'Edhi Ambulance',         area:'Nationwide — Pakistan\'s largest free ambulance network',       phone:'115',  color:'#00C896', icon:'fa-truck-medical' },
+  { name:'Chhipa Ambulance',       area:'Karachi & Sindh',                                                phone:'1020', color:'#06b6d4', icon:'fa-truck-medical' },
+  { name:'Aman Foundation Ambulance', area:'Karachi',                                                     phone:'1021', color:'#8b5cf6', icon:'fa-truck-medical' }
+];
+
+const LOCATION_DIRECTORY = [
+  // ---- Hospitals ----
+  { category:'hospital', name:'Aga Khan University Hospital', city:'Karachi', address:'Stadium Road, Karachi', hours:'24 hours', phone:'+92 21 3486 1051', rating:4.7, lat:24.8926, lng:67.0714 },
+  { category:'hospital', name:'Liaquat National Hospital', city:'Karachi', address:'National Stadium Road, Karachi', hours:'24 hours', phone:'+92 21 3412 1101', rating:4.5, lat:24.8798, lng:67.0562 },
+  { category:'hospital', name:'Jinnah Postgraduate Medical Centre (JPMC)', city:'Karachi', address:'Rafiqui Shaheed Road, Karachi', hours:'24 hours', phone:'+92 21 9921 1101', rating:4.1, lat:24.8542, lng:67.0298 },
+  { category:'hospital', name:'Shifa International Hospital', city:'Islamabad', address:'H-8/4, Islamabad', hours:'24 hours', phone:'+92 51 8463 333', rating:4.6, lat:33.6648, lng:73.0630 },
+  { category:'hospital', name:'Pakistan Institute of Medical Sciences (PIMS)', city:'Islamabad', address:'G-8/3, Islamabad', hours:'24 hours', phone:'+92 51 9261 170', rating:4.0, lat:33.6931, lng:73.0491 },
+  { category:'hospital', name:'Doctors Hospital & Medical Centre', city:'Lahore', address:'152-G/1, Canal Bank, Lahore', hours:'24 hours', phone:'+92 42 3811 4444', rating:4.5, lat:31.5204, lng:74.3587 },
+  { category:'hospital', name:'Mayo Hospital', city:'Lahore', address:'Hospital Road, Lahore', hours:'24 hours', phone:'+92 42 9921 1500', rating:4.0, lat:31.5636, lng:74.3132 },
+  { category:'hospital', name:'Allied Hospital', city:'Faisalabad', address:'Susan Road, Faisalabad', hours:'24 hours', phone:'+92 41 9220 070', rating:3.9, lat:31.4181, lng:73.0776 },
+
+  // ---- Pharmacies ----
+  { category:'pharmacy', name:'D.Watson Pharmacy — Clifton', city:'Karachi', address:'Khayaban-e-Iqbal, Clifton, Karachi', hours:'9am–1am', phone:'+92 21 3587 4141', rating:4.3, lat:24.8148, lng:67.0301 },
+  { category:'pharmacy', name:'Chase Pharmacy — DHA', city:'Karachi', address:'Khayaban-e-Shahbaz, DHA Phase 6, Karachi', hours:'24 hours', phone:'+92 21 3585 0505', rating:4.2, lat:24.8021, lng:67.0654 },
+  { category:'pharmacy', name:"Fazal Din's Pharma Plus — Gulberg", city:'Lahore', address:'Main Boulevard, Gulberg III, Lahore', hours:'24 hours', phone:'+92 42 3587 1234', rating:4.3, lat:31.5109, lng:74.3467 },
+  { category:'pharmacy', name:'Servaid Pharmacy — Blue Area', city:'Islamabad', address:'Jinnah Avenue, Blue Area, Islamabad', hours:'8am–midnight', phone:'+92 51 2271 890', rating:4.1, lat:33.7108, lng:73.0563 },
+  { category:'pharmacy', name:'Al-Shifa Pharmacy — Model Town', city:'Lahore', address:'Model Town Link Road, Lahore', hours:'9am–midnight', phone:'+92 42 3589 2233', rating:4.0, lat:31.4805, lng:74.3230 },
+
+  // ---- Blood Banks ----
+  { category:'bloodbank', name:'Fatimid Foundation Blood Bank', city:'Karachi', address:'Nazimabad, Karachi', hours:'24 hours', phone:'+92 21 3662 0301', rating:4.6, lat:24.9089, lng:67.0300 },
+  { category:'bloodbank', name:'Sindh Blood Transfusion Authority', city:'Karachi', address:'Karachi Blood Bank, Saddar, Karachi', hours:'8am–8pm', phone:'+92 21 9921 2345', rating:4.0, lat:24.8567, lng:67.0225 },
+  { category:'bloodbank', name:'Al-Mustafa Welfare Blood Bank', city:'Lahore', address:'Ferozepur Road, Lahore', hours:'24 hours', phone:'+92 42 3751 0101', rating:4.3, lat:31.5312, lng:74.3400 },
+  { category:'bloodbank', name:'Pakistan Red Crescent Blood Bank', city:'Islamabad', address:'Sector G-6, Islamabad', hours:'8am–8pm', phone:'+92 51 9250 404', rating:4.2, lat:33.7089, lng:73.0895 },
+  { category:'bloodbank', name:'Chhipa Blood Bank', city:'Karachi', address:'Old Sabzi Mandi, MA Jinnah Road, Karachi', hours:'24 hours', phone:'+92 21 3221 3232', rating:4.1, lat:24.8615, lng:67.0100 },
+
+  // ---- Labs / Diagnostic Centres ----
+  { category:'lab', name:'Dr. Essa Laboratory & Diagnostic Centre', city:'Karachi', address:'Gulshan-e-Iqbal, Karachi', hours:'9am–9pm', phone:'+92 21 111 113 772', rating:4.2, lat:24.9292, lng:67.1101 },
+  { category:'lab', name:'Excel Labs', city:'Karachi', address:'Shahrah-e-Faisal, Karachi', hours:'8am–10pm', phone:'+92 21 111 392 543', rating:4.1, lat:24.8698, lng:67.0658 },
+  { category:'lab', name:'Chughtai Lab', city:'Lahore', address:'Johar Town, Lahore', hours:'24 hours', phone:'+92 42 111 456 789', rating:4.4, lat:31.4697, lng:74.2728 },
+  { category:'lab', name:'Shaukat Khanum Diagnostic Labs', city:'Lahore', address:'Johar Town, Lahore', hours:'8am–8pm', phone:'+92 42 3590 5000', rating:4.6, lat:31.4718, lng:74.2691 },
+  { category:'lab', name:'Islamabad Diagnostic Centre (IDC)', city:'Islamabad', address:'F-8 Markaz, Islamabad', hours:'8am–9pm', phone:'+92 51 111 000 432', rating:4.3, lat:33.7089, lng:73.0323 }
+];
+
+const LOCATOR_CATEGORY_META = {
+  hospital:  { label:'Hospital',   icon:'fa-hospital',                        color:'#2dd4bf' },
+  pharmacy:  { label:'Pharmacy',   icon:'fa-prescription-bottle-medical',     color:'#f59e0b' },
+  bloodbank: { label:'Blood Bank', icon:'fa-droplet',                         color:'#ef4444' },
+  lab:       { label:'Lab',        icon:'fa-flask',                           color:'#a855f7' }
+};
+
+let locatorState = { category: 'hospital', userLat: null, userLng: null };
+
+function haversineKm(lat1, lng1, lat2, lng2) {
+  const toRad = d => d * Math.PI / 180;
+  const R = 6371;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function renderAmbulanceQuickdial() {
+  const grid = document.getElementById('ambulance-quickdial');
+  if (!grid) return;
+  grid.innerHTML = AMBULANCE_SERVICES.map(a => `
+    <a href="tel:${a.phone}" class="glass rounded-2xl p-5 card-hover block" style="border-left:3px solid ${a.color};">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="rounded-xl p-2.5" style="background:${a.color}22;">
+          <i class="fa-solid ${a.icon}" style="color:${a.color}"></i>
+        </div>
+        <div class="font-semibold text-sm">${a.name}</div>
+      </div>
+      <div class="text-xs mb-3" style="color:var(--text-muted)">${a.area}</div>
+      <div class="w-full text-center px-4 py-2.5 rounded-xl font-bold text-lg" style="background:${a.color}22;color:${a.color}">
+        <i class="fa-solid fa-phone mr-1"></i> ${a.phone}
+      </div>
+    </a>`).join('');
+}
+
+function openLocationModal(idx) {
+  const l = LOCATION_DIRECTORY[idx];
+  const meta = LOCATOR_CATEGORY_META[l.category];
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(l.name + ' ' + l.address)}`;
+  const dirUrl = locatorState.userLat !== null
+    ? `https://www.google.com/maps/dir/?api=1&origin=${locatorState.userLat},${locatorState.userLng}&destination=${encodeURIComponent(l.name + ' ' + l.address)}`
+    : mapsUrl;
+  const stars = Math.round(l.rating || 0);
+  let starsHtml = '';
+  for (let i=1;i<=5;i++) starsHtml += `<i class="fa-${i<=stars?'solid':'regular'} fa-star text-amber-300 text-sm"></i>`;
+
+  const overlay = document.createElement('div');
+  overlay.id = 'location-modal-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;';
+  overlay.innerHTML = `
+    <div style="background:var(--card-bg,#0f2a3a);border:1px solid rgba(255,255,255,0.12);border-radius:24px;max-width:480px;width:100%;padding:28px;position:relative;max-height:90vh;overflow-y:auto;">
+      <button onclick="document.getElementById('location-modal-overlay').remove()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;color:var(--text-base,#fff);font-size:16px;display:flex;align-items:center;justify-content:center;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
+        <div style="background:${meta.color}22;border-radius:12px;padding:10px 12px;">
+          <i class="fa-solid ${meta.icon}" style="color:${meta.color};font-size:20px;"></i>
+        </div>
+        <div>
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-base,#fff);margin:0;line-height:1.3;">${l.name}</h3>
+          <div style="color:${meta.color};font-size:0.82rem;margin-top:2px;">${meta.label}</div>
+        </div>
+      </div>
+
+      ${l.rating ? `<div style="display:flex;align-items:center;gap:6px;margin:12px 0 4px;">
+        ${starsHtml}
+        <span style="color:#fcd34d;font-size:0.85rem;font-weight:600;margin-left:2px;">${l.rating}</span>
+      </div>` : ''}
+
+      <div style="background:rgba(255,255,255,0.05);border-radius:14px;padding:14px;margin-top:12px;font-size:0.83rem;color:var(--text-muted,#94a3b8);display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <i class="fa-solid fa-location-dot" style="color:${meta.color};margin-top:2px;width:14px;"></i>
+          <span>${l.address}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="fa-regular fa-clock" style="color:${meta.color};width:14px;"></i>
+          <span>${l.hours}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="fa-solid fa-phone" style="color:${meta.color};width:14px;"></i>
+          <a href="tel:${l.phone}" style="color:var(--text-muted,#94a3b8);text-decoration:none;">${l.phone}</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:18px;">
+        <a href="tel:${l.phone}"
+          style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;background:rgba(0,200,150,0.15);border:1px solid rgba(0,200,150,0.35);border-radius:14px;color:#00C896;font-weight:600;font-size:0.9rem;text-decoration:none;">
+          <i class="fa-solid fa-phone"></i> Call
+        </a>
+        <a href="${dirUrl}" target="_blank" rel="noopener noreferrer"
+          style="flex:1.4;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);border-radius:14px;color:#fff;font-weight:600;font-size:0.9rem;text-decoration:none;">
+          <i class="fa-brands fa-google"></i> Directions
+        </a>
+      </div>
+    </div>
+  `;
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+}
+
+function filterLocations() {
+  const city = document.getElementById('locator-city').value;
+  let list = LOCATION_DIRECTORY.filter(l => l.category === locatorState.category && (!city || l.city === city));
+  if (locatorState.userLat !== null) {
+    list = list.map(l => ({ ...l, distanceKm: haversineKm(locatorState.userLat, locatorState.userLng, l.lat, l.lng) }))
+               .sort((a,b) => a.distanceKm - b.distanceKm);
+  }
+  return list;
+}
+
+function renderLocationResults() {
+  const container = document.getElementById('locator-results');
+  const list = filterLocations();
+  const meta = LOCATOR_CATEGORY_META[locatorState.category];
+
+  if (list.length === 0) {
+    container.innerHTML = `<p class="text-sm col-span-full" style="color:var(--text-muted)">No ${meta.label.toLowerCase()} listings match that city yet. Try "Any city" or another category.</p>`;
+    return;
+  }
+
+  container.innerHTML = list.map(l => {
+    const idx = LOCATION_DIRECTORY.indexOf(LOCATION_DIRECTORY.find(d => d.name === l.name && d.city === l.city && d.category === l.category));
+    return `
+    <div class="glass rounded-2xl p-5 card-hover" onclick="openLocationModal(${idx})" style="cursor:pointer;" role="button" tabindex="0" aria-label="View details for ${l.name}">
+      <div class="flex justify-between items-start">
+        <div class="font-semibold">${l.name}</div>
+        ${l.rating ? `<div class="text-xs text-amber-300 flex items-center gap-x-1 shrink-0"><i class="fa-solid fa-star" aria-hidden="true"></i> ${l.rating}</div>` : ''}
+      </div>
+      <div class="text-sm mt-1" style="color:${meta.color}">${meta.label}</div>
+      <div class="text-xs mt-3 space-y-1" style="color:var(--text-muted)">
+        <div><i class="fa-solid fa-location-dot w-4" aria-hidden="true"></i> ${l.city}${l.distanceKm !== undefined ? ` • ${l.distanceKm.toFixed(1)} km away` : ''}</div>
+        <div><i class="fa-regular fa-clock w-4" aria-hidden="true"></i> ${l.hours}</div>
+        <div><i class="fa-solid fa-phone w-4" aria-hidden="true"></i> ${l.phone}</div>
+      </div>
+      <div class="mt-3 text-xs font-medium" style="color:var(--text-muted)">
+        <i class="fa-solid fa-circle-info mr-1" style="color:${meta.color};"></i> Tap for details &amp; directions
+      </div>
+    </div>`;
+  }).join('');
+
+  container.querySelectorAll('[role="button"]').forEach(el => {
+    el.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') el.click(); });
+  });
+}
+
+function setLocatorActiveTab(cat) {
+  document.querySelectorAll('.locator-tab-btn').forEach(btn => {
+    const active = btn.dataset.cat === cat;
+    btn.style.background = active ? 'rgba(0,200,150,0.18)' : '';
+    btn.style.color = active ? '#00C896' : 'var(--text-muted)';
+    btn.style.border = active ? '1px solid rgba(0,200,150,0.35)' : '1px solid rgba(255,255,255,0.15)';
+    btn.classList.toggle('glass', !active);
+  });
+}
+
+function initLocator() {
+  renderAmbulanceQuickdial();
+  setLocatorActiveTab(locatorState.category);
+  renderLocationResults();
+
+  document.querySelectorAll('.locator-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      locatorState.category = btn.dataset.cat;
+      setLocatorActiveTab(locatorState.category);
+      renderLocationResults();
+    });
+  });
+
+  document.getElementById('locator-city').addEventListener('change', renderLocationResults);
+
+  document.getElementById('locator-locate-btn').addEventListener('click', () => {
+    const status = document.getElementById('locator-status');
+    if (!('geolocation' in navigator)) {
+      status.textContent = 'Geolocation is not supported in this browser. Please select a city manually.';
+      return;
+    }
+    status.textContent = 'Requesting your location…';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        locatorState.userLat = pos.coords.latitude;
+        locatorState.userLng = pos.coords.longitude;
+        status.textContent = `Location detected — results sorted by distance from you.`;
+        renderLocationResults();
+      },
+      (err) => {
+        status.textContent = err.code === err.PERMISSION_DENIED
+          ? 'Location access denied. Please choose your city manually.'
+          : 'Could not detect your location. Please choose your city manually.';
       },
       { timeout: 8000 }
     );
@@ -5013,8 +6006,10 @@ function initRiskCalculator() {
    ========================================================= */
 const TOOLS = [
   { icon:'fa-stethoscope',      title:'Symptom Checker',           desc:'Rules-based guidance with urgency levels',              href:'#symptom'   },
+  { icon:'fa-microscope',       title:'AI Skin Disease Detection', desc:'Upload a photo for instant skin condition screening',   href:'#skincheck' },
   { icon:'fa-pills',            title:'Medicine Tracker',          desc:'Daily checklist so doses are never missed',             href:'#medicine'  },
   { icon:'fa-hospital',         title:'Find Clinics & Doctors',    desc:'Search by specialty, city, or your location',           href:'#clinics'   },
+  { icon:'fa-map-location-dot', title:'Location Features',         desc:'Hospitals, pharmacies, blood banks, ambulance & labs',  href:'#locator'   },
   { icon:'fa-bowl-food',        title:'Budget Diet Planner',       desc:'Local, affordable meals for your budget',               href:'#diet'      },
   { icon:'fa-chart-line',       title:'Health Risk Calculator',    desc:'BMI plus heart & diabetes risk indicator',              href:'#risk'      },
   { icon:'fa-brain',            title:'Mental Health Check-In',    desc:'Log your mood and get daily wellness tips',             href:'#mental'    },
@@ -5198,7 +6193,10 @@ const DOCTOR_DIRECTORY = {
   ],
   'Dermatologist': [
     { name:'Dr. Zara Hashmi',   hospital:'Skin Care Clinic Karachi',       experience:10, rating:4.6, city:'Karachi', phone:'+92 21 3583 4021', website:'skincareclinic.pk' },
-    { name:'Dr. Omar Farooqui', hospital:'Aga Khan University Hospital',   experience:14, rating:4.7, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' }
+    { name:'Dr. Omar Farooqui', hospital:'Aga Khan University Hospital',   experience:14, rating:4.7, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' },
+    { name:'Dr. Mariam Sultan', hospital:'Skin Care Clinic Islamabad',     experience:9,  rating:4.5, city:'Islamabad', phone:'+92 51 2271 122', website:'skincareclinic.pk' },
+    { name:'Dr. Bilal Chaudhry',hospital:'Shifa International Hospital',   experience:13, rating:4.6, city:'Islamabad', phone:'+92 51 8463 333', website:'shifa.com.pk' },
+    { name:'Dr. Anum Sheikh',   hospital:'Fatima Memorial Hospital',       experience:11, rating:4.5, city:'Lahore', phone:'+92 42 3511 1201', website:'fmh.edu.pk' }
   ],
   'ENT Specialist': [
     { name:'Dr. Salman Yousuf', hospital:'Liaquat National Hospital', experience:15, rating:4.5, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk' },
@@ -5234,12 +6232,20 @@ const DOCTOR_DIRECTORY = {
   ]
 };
 
+const GENERAL_HEALTH_KEYWORDS = ['bukhar','fever','dard','pain','bemar','bemari','sick','ill','unwell','tabiyat','symptom','alamaat','mareez','ilaj','treatment','infection','weakness','kamzori','thakan','fatigue','ubkai','nausea','sujan','swelling','zakhm','wound','injury','chot','bukhaar','takleef'];
+
+function isHealthRelated(text) {
+  const t = ' ' + text.toLowerCase() + ' ';
+  return SPECIALIST_RULES.some(rule => rule.keywords.some(k => t.includes(k))) ||
+         GENERAL_HEALTH_KEYWORDS.some(k => t.includes(k));
+}
+
 function detectSpecialist(text) {
   const t = ' ' + text.toLowerCase() + ' ';
   for (const rule of SPECIALIST_RULES) {
     if (rule.keywords.some(k => t.includes(k))) return rule.specialist;
   }
-  return 'General Physician';
+  return isHealthRelated(text) ? 'General Physician' : null;
 }
 
 function renderDoctorCard(d, specialist) {
@@ -5284,13 +6290,13 @@ function renderDoctorRecommendation(text) {
     ${isUrgent ? `
     <div class="glass rounded-2xl p-4 mb-6 border border-red-400/40 text-red-300 text-sm flex items-start gap-2">
       <i class="fa-solid fa-triangle-exclamation mt-0.5" aria-hidden="true"></i>
-      <span>Agar dard shadeed ho, achanak shuru hua ho, ya bazu/jabray ki taraf phael raha ho, to yeh emergency ho sakti hai. Foran 1122 par call karein ya nazdeeki hospital ER jaayein.</span>
+      <span>If the pain is severe, started suddenly, or is spreading to the arm/jaw, this could be an emergency. Call 1122 immediately or go to your nearest hospital ER.</span>
     </div>` : ''}
     <div class="grid sm:grid-cols-2 gap-5">
       ${doctors.map(d => renderDoctorCard(d, specialist)).join('')}
     </div>
     <p class="text-xs text-center mt-8 max-w-xl mx-auto" style="color:var(--text-muted)">
-      Apni condition ke mutabiq in doctors se rabta karein. <strong>Medicore sirf recommendation deta hai, appointment ya treatment provide nahi karta.</strong>
+      Contact these doctors according to your condition. <strong>Medicore only provides recommendations, it does not offer appointments or treatment.</strong>
     </p>
   `;
   el.classList.remove('hidden');
@@ -5305,10 +6311,17 @@ function initDoctorRecommendation() {
     e.preventDefault();
     const input = document.getElementById('doc-symptom-input');
     const errorBox = document.getElementById('doc-recommend-error');
+    const resultsEl = document.getElementById('doc-recommend-results');
     const text = input.value.trim();
     errorBox.classList.add('hidden');
     if (!text || text.length < 5) {
-      errorBox.textContent = 'Meherbani kar ke apni problem tafseel se likhein.';
+      errorBox.textContent = 'Please describe your problem in more detail.';
+      errorBox.classList.remove('hidden');
+      return;
+    }
+    if (!isHealthRelated(text)) {
+      if (resultsEl) resultsEl.classList.add('hidden');
+      errorBox.textContent = 'This does not look like a health concern. To get a doctor recommendation, please describe a health-related symptom (such as pain, fever, cough, etc.).';
       errorBox.classList.remove('hidden');
       return;
     }
@@ -5327,9 +6340,11 @@ window.addEventListener('DOMContentLoaded', () => {
   initSymptomChecker();
   initMedicineTracker();
   initPrescriptionUpload();
+  initSkinCheck();
   initGoalReminders();
   initSimpleReminders();
   initClinicFinder();
+  initLocator();
   initDietPlanner();
   initRiskCalculator();
   populateTools();
@@ -5338,6 +6353,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initFormValidation();
   populateFirstAid();
   initDoctorRecommendation();
+  initHealthCoach();
 });
 
 /* =========================================================
@@ -7116,6 +8132,250 @@ document.getElementById('stress-form')?.addEventListener('submit', function(e) {
 function updateStressUI() { renderStressUI(); }
 
 /* =========================================================
+   AI HEALTH COACH
+   Rules-based coaching engine: combines the selected goal,
+   activity level, age range and flagged conditions into a
+   personalised plan. Persisted locally via ht* helpers.
+   ========================================================= */
+const COACH_KEY = 'Medicore_coach_v1';
+const COACH_HISTORY_KEY = 'Medicore_coach_history_v1';
+
+var coachSelections = { goal: null, activity: null, age: null, conditions: new Set() };
+
+function selectCoachChip(btn) {
+  const group = btn.dataset.group;
+  coachSelections[group] = btn.dataset.value;
+  document.querySelectorAll(`.coach-chip[data-group="${group}"]`).forEach(b => b.classList.remove('ring-2', 'ring-teal-400'));
+  btn.classList.add('ring-2', 'ring-teal-400');
+  document.getElementById('coach-error')?.classList.add('hidden');
+}
+
+function toggleCoachCondition(btn) {
+  const value = btn.dataset.value;
+  const allConditionBtns = document.querySelectorAll('#coach-condition-group .coach-chip');
+  if (value === 'none') {
+    coachSelections.conditions = new Set(['none']);
+    allConditionBtns.forEach(b => b.classList.toggle('ring-2', b.dataset.value === 'none') );
+    allConditionBtns.forEach(b => b.classList.toggle('ring-teal-400', b.dataset.value === 'none') );
+    return;
+  }
+  coachSelections.conditions.delete('none');
+  document.querySelector('#coach-condition-group .coach-chip[data-value="none"]')?.classList.remove('ring-2', 'ring-teal-400');
+  if (coachSelections.conditions.has(value)) {
+    coachSelections.conditions.delete(value);
+    btn.classList.remove('ring-2', 'ring-teal-400');
+  } else {
+    coachSelections.conditions.add(value);
+    btn.classList.add('ring-2', 'ring-teal-400');
+  }
+}
+
+const COACH_GOAL_PLANS = {
+  weight: {
+    label: 'Lose Weight', icon: 'fa-weight-scale', color: '#00C896',
+    habits: [
+      'Eat protein and vegetables first at every meal to stay fuller for longer.',
+      'Aim for a moderate calorie deficit — avoid extreme or crash dieting.',
+      'Walk at least 7,000–8,000 steps today.',
+      'Swap one sugary drink for water or unsweetened tea.'
+    ],
+    weekly: ['Weigh in once, at the same time of day, and track the weekly trend — not daily swings.', 'Do 3–4 sessions that combine cardio and light resistance training.'],
+    nutrition: 'Build meals around protein, fibre-rich vegetables and whole grains; keep fried and ultra-processed food occasional, not daily.',
+    motivation: 'Sustainable weight loss is slow and steady — small consistent choices beat drastic short-term diets.'
+  },
+  strength: {
+    label: 'Build Strength', icon: 'fa-dumbbell', color: '#00C896',
+    habits: [
+      'Do a short resistance or bodyweight session (squats, push-ups, rows) today.',
+      'Eat enough protein across the day to support muscle repair.',
+      'Warm up for 5 minutes before any strength work.',
+      'Prioritise 7–8 hours of sleep — this is when muscle actually recovers.'
+    ],
+    weekly: ['Train major muscle groups 3 times this week with at least one rest day between sessions.', 'Gradually increase reps or resistance rather than jumping too fast.'],
+    nutrition: 'Spread protein across 3–4 meals a day (lentils, eggs, chicken, dairy, beans) rather than one large serving.',
+    motivation: 'Strength is built through consistency, not intensity alone — recovery days are part of the plan, not a break from it.'
+  },
+  sleep: {
+    label: 'Improve Sleep', icon: 'fa-moon', color: '#00C896',
+    habits: [
+      'Set a fixed wake-up time — even on days off — to anchor your body clock.',
+      'Stop caffeine at least 8 hours before bedtime.',
+      'Dim screens and bright lights 30–45 minutes before bed.',
+      'Keep your bedroom cool, dark and quiet.'
+    ],
+    weekly: ['Aim for 7–9 hours of sleep on at least 5 nights this week.', 'Avoid long naps after 4pm so they don\'t affect night-time sleep.'],
+    nutrition: 'Avoid heavy meals and excess sugar close to bedtime; a light snack is fine if you\'re genuinely hungry.',
+    motivation: 'Good sleep compounds — a few consistent nights usually improve energy and mood noticeably.'
+  },
+  stress: {
+    label: 'Reduce Stress', icon: 'fa-spa', color: '#00C896',
+    habits: [
+      'Practice 5 minutes of slow breathing or the 4-7-8 technique today.',
+      'Take at least one short screen-free break during your day.',
+      'Write down your top 3 priorities instead of an endless to-do list.',
+      'Step outside for a short walk if you can.'
+    ],
+    weekly: ['Log your stress level daily using the Stress Checker above to spot patterns.', 'Protect one activity this week that is purely for rest, not productivity.'],
+    nutrition: 'Limit excess caffeine — it can amplify feelings of anxiety and restlessness.',
+    motivation: 'You can\'t eliminate every stressor, but small daily resets build real resilience over time.'
+  },
+  condition: {
+    label: 'Manage a Condition', icon: 'fa-notes-medical', color: '#00C896',
+    habits: [
+      'Take any prescribed medication on schedule — use the Medicine Tracker to stay on time.',
+      'Log relevant readings (blood sugar, blood pressure, heart rate) consistently.',
+      'Keep meals balanced and consistent in timing where your condition requires it.',
+      'Note any new or worsening symptoms so you can raise them with your doctor.'
+    ],
+    weekly: ['Review your tracked readings for the week and flag anything unusual to your doctor.', 'Keep your next follow-up appointment — don\'t skip routine checks.'],
+    nutrition: 'Follow the dietary guidance your doctor has already given you for your specific condition.',
+    motivation: 'Consistent day-to-day management matters more than any single day — small habits protect long-term health.'
+  },
+  wellness: {
+    label: 'General Wellness', icon: 'fa-heart-pulse', color: '#00C896',
+    habits: [
+      'Drink water regularly through the day — use the Water Intake Tracker to stay on target.',
+      'Get some form of movement in today, even a 20-minute walk.',
+      'Eat at least one home-cooked, balanced meal.',
+      'Take a few minutes for yourself, screen-free.'
+    ],
+    weekly: ['Aim for consistency across sleep, movement and meals rather than perfection on any one day.', 'Try one new healthy habit this week and see how it feels.'],
+    nutrition: 'Focus on variety — vegetables, fruit, whole grains and protein spread across your meals.',
+    motivation: 'Wellness is built from small, repeatable habits — you don\'t need to overhaul everything at once.'
+  }
+};
+
+const COACH_ACTIVITY_NOTES = {
+  sedentary: 'You\'re starting from a sedentary baseline — begin with short 10-minute walks after meals rather than jumping into intense workouts.',
+  light: 'Build on your current activity with one extra 20–30 minute walk or light workout this week.',
+  active: 'Keep your current routine going, and add one mobility or stretching session for recovery.',
+  very: 'With a high activity load, prioritise 7–8 hours of sleep and at least one full rest day to avoid overtraining.'
+};
+
+const COACH_AGE_NOTES = {
+  u18: 'Focus on balanced nutrition, sleep and normal activity for healthy growth — avoid restrictive dieting at this age.',
+  '46-60': 'Favour joint-friendly activities like swimming, cycling or brisk walking, and include some strength work to protect bone density.',
+  '60plus': 'Include balance and flexibility exercises to reduce fall risk, and check with your doctor before starting any new routine.'
+};
+
+const COACH_CONDITION_NOTES = {
+  diabetes: { text: 'Monitor your blood sugar regularly, and avoid intense exercise on an empty stomach.', link: '#bloodsugar', linkText: 'Open Blood Sugar Log', icon: 'fa-vial' },
+  bp: { text: 'Favour steady-state activity over heavy straining exercises, and keep an eye on your blood pressure readings.', link: '#heartrate', linkText: 'Open Heart Rate Tracker', icon: 'fa-heart' },
+  heart: { text: 'Have any new exercise plan cleared by your cardiologist before starting.', link: '#heartrate', linkText: 'Open Heart Rate Tracker', icon: 'fa-heart' },
+  pregnancy: { text: 'Stick to pregnancy-safe activity such as walking, swimming or prenatal yoga, and avoid starting new strenuous programmes.', link: '#pregnancy', linkText: 'Open Pregnancy Tracker', icon: 'fa-person-pregnant' },
+  joint: { text: 'Choose low-impact activities like swimming, cycling or walking, and warm up thoroughly beforehand.', link: '#physioscan', linkText: 'Try AI Physiotherapy Scan', icon: 'fa-person-walking' }
+};
+
+const COACH_AGE_LABELS = { u18: 'Under 18', '18-30': '18–30', '31-45': '31–45', '46-60': '46–60', '60plus': '60+' };
+const COACH_ACTIVITY_LABELS = { sedentary: 'Sedentary', light: 'Lightly Active', active: 'Active', very: 'Very Active' };
+
+function buildCoachPlanHTML(entry) {
+  const plan = COACH_GOAL_PLANS[entry.goal];
+  const habits = plan.habits.slice();
+  if (COACH_ACTIVITY_NOTES[entry.activity]) habits.push(COACH_ACTIVITY_NOTES[entry.activity]);
+  if (entry.age && COACH_AGE_NOTES[entry.age]) habits.push(COACH_AGE_NOTES[entry.age]);
+
+  const habitsHtml = habits.map(h => `<li class="flex items-start gap-x-2"><i class="fa-solid fa-circle-check mt-0.5 text-xs" style="color:${plan.color}"></i><span>${h}</span></li>`).join('');
+  const weeklyHtml = plan.weekly.map(w => `<li class="flex items-start gap-x-2"><i class="fa-solid fa-calendar-week mt-0.5 text-xs text-cyan-400"></i><span>${w}</span></li>`).join('');
+
+  const flaggedConditions = (entry.conditions || []).filter(c => c !== 'none');
+  const watchHtml = flaggedConditions.length
+    ? flaggedConditions.map(c => {
+        const note = COACH_CONDITION_NOTES[c];
+        if (!note) return '';
+        return `<li class="flex items-start gap-x-2"><i class="fa-solid ${note.icon} mt-0.5 text-xs text-amber-400"></i><span>${note.text}${note.link ? ` <a href="${note.link}" data-nav class="text-teal-400 hover:text-cyan-300 font-medium">${note.linkText} →</a>` : ''}</span></li>`;
+      }).join('')
+    : `<li class="flex items-start gap-x-2"><i class="fa-solid fa-circle-check mt-0.5 text-xs text-amber-400"></i><span>No specific conditions flagged — the general guidance above applies.</span></li>`;
+
+  const history = htLoad(COACH_HISTORY_KEY, []);
+  const historyHtml = history.length
+    ? history.map(h => `
+      <div class="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
+        <span class="text-sm font-medium">${COACH_GOAL_PLANS[h.goal] ? COACH_GOAL_PLANS[h.goal].label : h.goal}</span>
+        <span class="text-xs" style="color:var(--text-muted)">${h.dateLabel}</span>
+      </div>`).join('')
+    : '';
+
+  return `
+    <div class="glass glass-hover rounded-3xl p-6 space-y-5">
+      <div class="flex items-center gap-x-3">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00C896] to-[#00E5FF] flex items-center justify-center text-2xl text-[#06121f]">
+          <i class="fa-solid ${plan.icon}" aria-hidden="true"></i>
+        </div>
+        <div>
+          <div class="font-bold text-xl font-display">${plan.label}</div>
+          <div class="text-sm" style="color:var(--text-muted)">${COACH_ACTIVITY_LABELS[entry.activity] || ''}${entry.age ? ' · ' + (COACH_AGE_LABELS[entry.age] || entry.age) : ''}</div>
+        </div>
+      </div>
+      <div>
+        <div class="font-semibold mb-3">Today's focus habits</div>
+        <ul class="space-y-2 text-sm" style="color:var(--text-muted)">${habitsHtml}</ul>
+      </div>
+      <div>
+        <div class="font-semibold mb-3">This week's targets</div>
+        <ul class="space-y-2 text-sm" style="color:var(--text-muted)">${weeklyHtml}</ul>
+      </div>
+      <div class="glass rounded-2xl p-4">
+        <div class="text-cyan-400 font-semibold text-sm mb-2"><i class="fa-solid fa-apple-whole mr-2" aria-hidden="true"></i>Nutrition pointer</div>
+        <p class="text-sm" style="color:var(--text-muted)">${plan.nutrition}</p>
+      </div>
+      <div>
+        <div class="font-semibold mb-3">Things to watch for</div>
+        <ul class="space-y-2 text-sm" style="color:var(--text-muted)">${watchHtml}</ul>
+      </div>
+      <div class="glass rounded-2xl p-4 text-sm italic" style="color:var(--text-muted)">"${plan.motivation}"</div>
+      ${historyHtml ? `<div><div class="font-semibold mb-3">Your recent plans</div>${historyHtml}</div>` : ''}
+      <p class="text-xs" style="color:var(--text-muted)">This is general, rules-based guidance — not a medical diagnosis or treatment plan. Stop and consult a qualified doctor if you experience chest pain, severe shortness of breath, dizziness, or any symptom that concerns you.</p>
+    </div>`;
+}
+
+function renderCoachResults(entry) {
+  document.getElementById('coach-results').innerHTML = buildCoachPlanHTML(entry);
+}
+
+function generateCoachPlan() {
+  const errorBox = document.getElementById('coach-error');
+  errorBox.classList.add('hidden');
+  if (!coachSelections.goal || !coachSelections.activity) {
+    errorBox.textContent = 'Please select a goal and your current activity level to continue.';
+    errorBox.classList.remove('hidden');
+    showToast('Please complete the goal and activity questions.');
+    return;
+  }
+
+  const entry = {
+    goal: coachSelections.goal,
+    activity: coachSelections.activity,
+    age: coachSelections.age,
+    conditions: Array.from(coachSelections.conditions),
+    date: new Date().toISOString(),
+    dateLabel: htDayLabel(htTodayISO())
+  };
+
+  htSave(COACH_KEY, entry);
+  htPushHistory(COACH_HISTORY_KEY, entry, 5);
+  renderCoachResults(entry);
+  showToast('Your coaching plan is ready!');
+  popResults('coach-results', 'Your Personalised Coaching Plan', 'fa-solid fa-route');
+}
+
+function initHealthCoach() {
+  const saved = htLoad(COACH_KEY, null);
+  if (!saved) return;
+
+  coachSelections = { goal: saved.goal, activity: saved.activity, age: saved.age, conditions: new Set(saved.conditions || []) };
+
+  if (saved.goal) document.querySelector(`.coach-chip[data-group="goal"][data-value="${saved.goal}"]`)?.classList.add('ring-2', 'ring-teal-400');
+  if (saved.activity) document.querySelector(`.coach-chip[data-group="activity"][data-value="${saved.activity}"]`)?.classList.add('ring-2', 'ring-teal-400');
+  if (saved.age) document.querySelector(`.coach-chip[data-group="age"][data-value="${saved.age}"]`)?.classList.add('ring-2', 'ring-teal-400');
+  (saved.conditions || []).forEach(c => {
+    document.querySelector(`#coach-condition-group .coach-chip[data-value="${c}"]`)?.classList.add('ring-2', 'ring-teal-400');
+  });
+
+  renderCoachResults(saved);
+}
+
+/* =========================================================
    HEALTH DASHBOARD
    Health Statistics Cards + Weekly Health Progress Graph +
    Health Risk Score + Heart Rate & Blood Sugar mini-widgets.
@@ -7546,6 +8806,18 @@ function buildHealthReportSections() {
         ${symptom.top ? `<div><span style="color:var(--text-muted)">Most likely condition:</span> <strong>${symptom.top.name}</strong> — <span class="font-semibold">${symptom.top.urgency} urgency</span></div>
         <div><span style="color:var(--text-muted)">Recommended action:</span> ${symptom.top.action}</div>` : ''}
         <div class="text-xs pt-1" style="color:var(--text-muted)">Checked on ${reportDate(symptom.date)}</div>
+      </div>`));
+  }
+
+  // 2B. AI Skin Disease Detection
+  const skin = htLoad('Medicore_skin_result_v1', null);
+  if (skin) {
+    sections.push(reportCard('fa-microscope', '#a855f7', 'AI Skin Disease Detection', `
+      <div class="text-sm space-y-2">
+        <div><span style="color:var(--text-muted)">Location checked:</span> <strong>${skin.location}</strong></div>
+        ${skin.top ? `<div><span style="color:var(--text-muted)">Most likely match:</span> <strong>${skin.top.name}</strong> — <span class="font-semibold">${skin.top.urgency} urgency</span> (${skin.top.percent}% visual match)</div>
+        <div><span style="color:var(--text-muted)">Recommended action:</span> ${skin.top.action}</div>` : ''}
+        <div class="text-xs pt-1" style="color:var(--text-muted)">Checked on ${reportDate(skin.date)}</div>
       </div>`));
   }
 
