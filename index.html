@@ -596,11 +596,11 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
         <span class="hidden sm:inline" id="login-nav-label">Login</span>
       </button>
 
-      <!-- SOS -->
-      <button onclick="emergencySOS()" aria-label="Emergency SOS"
-        class="px-4 py-2.5 bg-red-500/90 hover:bg-red-600 rounded-2xl font-semibold flex items-center gap-x-2 transition-all text-sm focus-ring text-white">
+      <!-- Emergency -->
+      <button onclick="emergencySOS()" aria-label="Emergency Health Mode"
+        class="px-4 py-2.5 bg-red-500/90 hover:bg-red-600 rounded-2xl font-semibold flex items-center gap-x-2 transition-all text-sm focus-ring text-white animate-pulse">
         <i class="fa-solid fa-truck-medical" aria-hidden="true"></i>
-        <span class="hidden sm:inline">SOS</span>
+        <span class="hidden sm:inline">Emergency</span>
       </button>
 
       <!-- Hamburger -->
@@ -621,6 +621,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
       <a href="#about"    data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">ℹ️ About Us</a>
       <a href="#contact"  data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">✉️ Contact</a>
       <a href="#feedback" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">⭐ Feedback</a>
+      <button type="button" onclick="emergencySOS(); document.getElementById('mobile-menu').classList.add('hidden')" class="px-3 py-2.5 rounded-xl text-left bg-red-500/15 border border-red-500/40 text-red-400 font-bold flex items-center transition-colors mb-1"><i class="fa-solid fa-truck-medical w-5 mr-1"></i> 🚨 Emergency Health Mode</button>
       <div class="pt-2 pb-1 px-3 text-xs uppercase tracking-widest font-semibold text-teal-400/70">— Health Tools —</div>
       <a href="#coach"     data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-route text-teal-400 w-5 mr-1"></i> AI Health Coach</a>
       <a href="#diet"      data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-bowl-food text-teal-400 w-5 mr-1"></i> Budget Diet Planner</a>
@@ -1461,7 +1462,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
     <div class="text-center max-w-2xl mx-auto mb-10">
       <div class="section-eyebrow uppercase text-teal-400 text-sm mb-3">FEATURE 12 — AI-POWERED CARE MATCHING</div>
       <h2 id="appointments-heading" class="text-4xl md:text-5xl font-bold font-display">AI Doctor Recommendation</h2>
-      <p class="mt-4" style="color:var(--text-muted)">Describe your problem in your own words — our AI will analyze it, suggest the right specialist, and recommend experienced doctors in Karachi.</p>
+      <p class="mt-4" style="color:var(--text-muted)">Describe your problem in your own words — our AI analyzes it, flags the priority level, and matches you with nearby specialists, complete with hospital, distance, and directions.</p>
     </div>
 
     <div class="max-w-3xl mx-auto">
@@ -1472,11 +1473,28 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
             placeholder="e.g. I have had chest pain for 3 days and I'm having trouble breathing."
             class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring"></textarea>
         </div>
+        <div>
+          <label for="doc-city-select" class="block text-sm font-medium mb-2"><i class="fa-solid fa-city text-teal-400 mr-1"></i> Preferred city (optional)</label>
+          <select id="doc-city-select" class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring">
+            <option value="">Any city</option>
+            <option>Karachi</option>
+            <option>Lahore</option>
+            <option>Islamabad</option>
+          </select>
+        </div>
         <div id="doc-recommend-error" class="text-red-400 text-sm hidden" role="alert"></div>
         <button type="submit" class="w-full px-6 py-3.5 bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] font-semibold rounded-2xl hover:scale-[1.02] transition-all focus-ring">
           <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> ANALYZE WITH AI
         </button>
       </form>
+
+      <!-- Browse by specialty directly, without describing symptoms -->
+      <div class="mt-8">
+        <div class="text-xs font-bold uppercase tracking-wider mb-3" style="color:var(--text-muted)">
+          <i class="fa-solid fa-list-ul mr-1 text-teal-400"></i> Or browse available specialties directly
+        </div>
+        <div id="specialty-browse-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+      </div>
 
       <div id="doc-recommend-results" class="mt-8 hidden" aria-live="polite"></div>
     </div>
@@ -2729,60 +2747,110 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
   }
 </style>
 
-<!-- ============ SOS EMERGENCY MODAL ============ -->
+<!-- ============ EMERGENCY HEALTH MODE MODAL ============ -->
 <div id="sos-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px)" role="dialog" aria-modal="true" aria-labelledby="sos-title">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(90vw,480px);background:var(--navy);border:1.5px solid rgba(239,68,68,0.5);border-radius:1.5rem;padding:2rem;box-shadow:0 0 60px rgba(239,68,68,0.3)">
-    <!-- Pulsing header -->
-    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
-      <div style="width:3rem;height:3rem;background:linear-gradient(135deg,#ef4444,#dc2626);border-radius:1rem;display:flex;align-items:center;justify-content:center;animation:sos-pulse 1.2s ease-in-out infinite">
-        <i class="fa-solid fa-truck-medical" style="color:#fff;font-size:1.25rem"></i>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(94vw,520px);max-height:88vh;overflow-y:auto;background:var(--navy);border:1.5px solid rgba(239,68,68,0.5);border-radius:1.5rem;padding:2rem;box-shadow:0 0 60px rgba(239,68,68,0.3)">
+
+    <!-- ===== VIEW 1: CATEGORY PICKER ===== -->
+    <div id="sos-view-categories">
+      <!-- Pulsing header -->
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
+        <div style="width:3rem;height:3rem;background:linear-gradient(135deg,#ef4444,#dc2626);border-radius:1rem;display:flex;align-items:center;justify-content:center;animation:sos-pulse 1.2s ease-in-out infinite;flex-shrink:0">
+          <i class="fa-solid fa-truck-medical" style="color:#fff;font-size:1.25rem"></i>
+        </div>
+        <div>
+          <div id="sos-title" style="color:#ef4444;font-size:1.25rem;font-weight:800;letter-spacing:0.05em">EMERGENCY HEALTH MODE</div>
+          <div style="color:var(--text-muted);font-size:0.8rem">Select what's happening for instant guidance</div>
+        </div>
       </div>
-      <div>
-        <div id="sos-title" style="color:#ef4444;font-size:1.25rem;font-weight:800;letter-spacing:0.05em">EMERGENCY SOS</div>
-        <div style="color:var(--text-muted);font-size:0.8rem">Call immediately — do not delay</div>
+
+      <!-- Emergency numbers -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1.25rem">
+        <a href="tel:1122" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:0.85rem;padding:0.65rem;text-decoration:none;text-align:center;transition:background 0.2s" onmouseover="this.style.background='rgba(239,68,68,0.22)'" onmouseout="this.style.background='rgba(239,68,68,0.12)'">
+          <div style="font-size:1.25rem;font-weight:800;color:#ef4444">1122</div>
+          <div style="font-size:0.72rem;color:var(--text-muted)">Rescue Punjab</div>
+        </a>
+        <a href="tel:115" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:0.85rem;padding:0.65rem;text-decoration:none;text-align:center;transition:background 0.2s" onmouseover="this.style.background='rgba(239,68,68,0.22)'" onmouseout="this.style.background='rgba(239,68,68,0.12)'">
+          <div style="font-size:1.25rem;font-weight:800;color:#ef4444">115</div>
+          <div style="font-size:0.72rem;color:var(--text-muted)">Rescue Sindh</div>
+        </a>
+      </div>
+
+      <!-- Category grid -->
+      <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.6rem">
+        <i class="fa-solid fa-triangle-exclamation" style="color:#ef4444;margin-right:0.3rem"></i>What's happening?
+      </div>
+      <div id="sos-category-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:1.25rem"></div>
+
+      <!-- Info note -->
+      <div style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:0.75rem;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:0.8rem;color:var(--text-muted)">
+        <i class="fa-solid fa-circle-info" style="color:#fbbf24;margin-right:0.4rem"></i>
+        This guidance does not replace professional care. If in doubt, call <strong>1122</strong> immediately.
+      </div>
+
+      <!-- Action buttons -->
+      <div style="display:flex;gap:0.75rem">
+        <button onclick="findNearestHospital()" style="flex:1;padding:0.75rem;background:linear-gradient(135deg,#00C896,#00E5FF);color:#06121f;font-weight:700;border:none;border-radius:0.85rem;cursor:pointer;font-size:0.87rem">
+          <i class="fa-solid fa-map-location-dot" style="margin-right:0.4rem"></i>Nearest Hospital/ER
+        </button>
+        <button onclick="closeSosModal()" style="flex:1;padding:0.75rem;background:rgba(255,255,255,0.08);color:var(--text-base);font-weight:600;border:1px solid rgba(255,255,255,0.15);border-radius:0.85rem;cursor:pointer;font-size:0.87rem">
+          Close
+        </button>
       </div>
     </div>
 
-    <!-- Emergency numbers -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:1.25rem">
-      <a href="tel:1122" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:0.85rem;padding:0.75rem;text-decoration:none;text-align:center;transition:background 0.2s" onmouseover="this.style.background='rgba(239,68,68,0.22)'" onmouseout="this.style.background='rgba(239,68,68,0.12)'">
-        <div style="font-size:1.4rem;font-weight:800;color:#ef4444">1122</div>
-        <div style="font-size:0.75rem;color:var(--text-muted)">Rescue Punjab</div>
+    <!-- ===== VIEW 2: CONDITION GUIDANCE ===== -->
+    <div id="sos-view-guidance" style="display:none">
+      <!-- Header -->
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
+        <div id="sos-guidance-icon" style="width:3rem;height:3rem;border-radius:1rem;display:flex;align-items:center;justify-content:center;animation:sos-pulse 1.2s ease-in-out infinite;flex-shrink:0">
+          <i class="fa-solid fa-heart-pulse" style="color:#fff;font-size:1.25rem"></i>
+        </div>
+        <div>
+          <div id="sos-guidance-title" style="color:#ef4444;font-size:1.15rem;font-weight:800;letter-spacing:0.02em">CHEST PAIN</div>
+          <div id="sos-guidance-subtitle" style="color:var(--text-muted);font-size:0.8rem">Act immediately — every minute matters</div>
+        </div>
+      </div>
+
+      <!-- Call now strip -->
+      <a id="sos-guidance-call" href="tel:1122" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-weight:800;border-radius:0.85rem;padding:0.9rem;margin-bottom:1.25rem;text-decoration:none;font-size:1rem">
+        <i class="fa-solid fa-phone"></i> CALL 1122 NOW
       </a>
-      <a href="tel:115" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:0.85rem;padding:0.75rem;text-decoration:none;text-align:center;transition:background 0.2s" onmouseover="this.style.background='rgba(239,68,68,0.22)'" onmouseout="this.style.background='rgba(239,68,68,0.12)'">
-        <div style="font-size:1.4rem;font-weight:800;color:#ef4444">115</div>
-        <div style="font-size:0.75rem;color:var(--text-muted)">Rescue Sindh</div>
-      </a>
-      <a href="tel:15" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:0.85rem;padding:0.75rem;text-decoration:none;text-align:center;transition:background 0.2s" onmouseover="this.style.background='rgba(239,68,68,0.22)'" onmouseout="this.style.background='rgba(239,68,68,0.12)'">
-        <div style="font-size:1.4rem;font-weight:800;color:#ef4444">15</div>
-        <div style="font-size:0.75rem;color:var(--text-muted)">Police</div>
-      </a>
-      <a href="tel:1021" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:0.85rem;padding:0.75rem;text-decoration:none;text-align:center;transition:background 0.2s" onmouseover="this.style.background='rgba(239,68,68,0.22)'" onmouseout="this.style.background='rgba(239,68,68,0.12)'">
-        <div style="font-size:1.4rem;font-weight:800;color:#ef4444">1021</div>
-        <div style="font-size:0.75rem;color:var(--text-muted)">Edhi Foundation</div>
-      </a>
+
+      <!-- Steps -->
+      <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.6rem">
+        <i class="fa-solid fa-list-check" style="margin-right:0.3rem"></i>Do this right now
+      </div>
+      <ol id="sos-guidance-steps" style="display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.25rem;padding-left:0;list-style:none;counter-reset:sos-step"></ol>
+
+      <!-- Warning note -->
+      <div id="sos-guidance-warning" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:0.75rem;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:0.8rem;color:#fca5a5"></div>
+
+      <!-- Action buttons -->
+      <div style="display:flex;gap:0.75rem;margin-bottom:0.75rem">
+        <button onclick="findNearestHospital()" style="flex:1;padding:0.75rem;background:linear-gradient(135deg,#00C896,#00E5FF);color:#06121f;font-weight:700;border:none;border-radius:0.85rem;cursor:pointer;font-size:0.87rem">
+          <i class="fa-solid fa-map-location-dot" style="margin-right:0.4rem"></i>Nearest Hospital/ER
+        </button>
+        <button onclick="document.getElementById('sos-modal').style.display='none'; document.getElementById('firstaid') && document.getElementById('firstaid').scrollIntoView({behavior:'smooth'})" style="flex:1;padding:0.75rem;background:rgba(255,255,255,0.08);color:var(--text-base);font-weight:600;border:1px solid rgba(255,255,255,0.15);border-radius:0.85rem;cursor:pointer;font-size:0.87rem">
+          <i class="fa-solid fa-kit-medical" style="margin-right:0.4rem"></i>Full First Aid Guide
+        </button>
+      </div>
+      <button onclick="backToEmergencyCategories()" style="width:100%;padding:0.6rem;background:none;color:var(--text-muted);font-weight:600;border:none;cursor:pointer;font-size:0.82rem">
+        <i class="fa-solid fa-arrow-left" style="margin-right:0.3rem"></i>Back to Emergency Menu
+      </button>
     </div>
 
-    <!-- Info note -->
-    <div style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:0.75rem;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:0.82rem;color:var(--text-muted)">
-      <i class="fa-solid fa-triangle-exclamation" style="color:#fbbf24;margin-right:0.4rem"></i>
-      Tap a number above to call directly. If abroad, contact local emergency services.
-    </div>
-
-    <!-- Action buttons -->
-    <div style="display:flex;gap:0.75rem">
-      <button onclick="document.getElementById('sos-modal').style.display='none'; document.getElementById('firstaid') && document.getElementById('firstaid').scrollIntoView({behavior:'smooth'})" style="flex:1;padding:0.75rem;background:linear-gradient(135deg,#00C896,#00E5FF);color:#06121f;font-weight:700;border:none;border-radius:0.85rem;cursor:pointer;font-size:0.9rem">
-        <i class="fa-solid fa-kit-medical" style="margin-right:0.4rem"></i>First Aid Guide
-      </button>
-      <button onclick="document.getElementById('sos-modal').style.display='none'" style="flex:1;padding:0.75rem;background:rgba(255,255,255,0.08);color:var(--text-base);font-weight:600;border:1px solid rgba(255,255,255,0.15);border-radius:0.85rem;cursor:pointer;font-size:0.9rem">
-        Close
-      </button>
-    </div>
   </div>
 </div>
 
 <style>
 @keyframes sos-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.6)} 50%{box-shadow:0 0 0 10px rgba(239,68,68,0)} }
+.sos-cat-btn{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:0.9rem;padding:0.85rem 0.6rem;text-align:center;cursor:pointer;transition:all 0.2s;color:var(--text-base)}
+.sos-cat-btn:hover{background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.6);transform:translateY(-2px)}
+.sos-cat-btn i{font-size:1.4rem;display:block;margin-bottom:0.4rem;color:#ef4444}
+.sos-cat-btn span{font-size:0.8rem;font-weight:700;line-height:1.2}
+#sos-guidance-steps li{display:flex;gap:0.65rem;align-items:flex-start;font-size:0.87rem;line-height:1.5;color:var(--text-base)}
+#sos-guidance-steps li .sos-step-num{flex-shrink:0;width:1.5rem;height:1.5rem;border-radius:9999px;background:rgba(239,68,68,0.18);color:#ef4444;font-weight:800;font-size:0.78rem;display:flex;align-items:center;justify-content:center;margin-top:0.05rem}
 </style>
 
 <!-- ============ IN-PAGE NOTIFICATION BANNER ============ -->
@@ -3190,9 +3258,133 @@ function initNav() {
 }
 
 /* ---------- Emergency SOS ---------- */
+/* ---------- Emergency Health Mode: condition data ---------- */
+const EMERGENCY_MODES = {
+  chestpain: {
+    label: 'Chest Pain', icon: 'fa-heart-pulse',
+    title: 'CHEST PAIN', subtitle: 'Possible heart attack — act immediately',
+    steps: [
+      'Call 1122 (or your local ambulance) right now — do not drive yourself to hospital.',
+      'Help the person sit down, stay calm, and loosen any tight clothing.',
+      'If not allergic and available, chew and swallow one 300mg aspirin tablet.',
+      'Note the exact time the pain started — tell the paramedics.',
+      'If the person becomes unresponsive and stops breathing normally, begin CPR immediately.'
+    ],
+    warning: 'Warning signs: pain spreading to the arm, jaw or back, cold sweat, nausea, or shortness of breath — these confirm a likely heart attack.'
+  },
+  breathing: {
+    label: 'Difficulty Breathing', icon: 'fa-lungs',
+    title: 'DIFFICULTY BREATHING', subtitle: 'Restore airflow and get help fast',
+    steps: [
+      'Call 1122 immediately.',
+      'Help the person sit upright, leaning slightly forward — never lay them flat.',
+      'Loosen tight clothing around the neck and chest.',
+      'If they have a prescribed inhaler (e.g. for asthma), help them use it.',
+      'Keep the area calm and well-ventilated; do not crowd around the person.',
+      'If breathing stops completely, begin rescue breaths / CPR right away.'
+    ],
+    warning: 'Bluish lips or face, confusion, or inability to speak full sentences are signs of a life-threatening emergency.'
+  },
+  stroke: {
+    label: 'Stroke Symptoms', icon: 'fa-brain',
+    title: 'STROKE (FAST)', subtitle: 'Every minute of delay costs brain function',
+    steps: [
+      'Call 1122 immediately — note the time symptoms started.',
+      'Face — ask them to smile. Is one side drooping?',
+      'Arms — ask them to raise both arms. Does one drift downward?',
+      'Speech — ask them to repeat a simple sentence. Is it slurred or strange?',
+      'Time — if any sign is present, this is an emergency. Tell paramedics exactly when it began.',
+      'Do not give food, water, or medication — swallowing may be impaired.'
+    ],
+    warning: 'Sudden numbness, confusion, trouble seeing, or severe headache with no known cause are also stroke warning signs.'
+  },
+  bleeding: {
+    label: 'Severe Bleeding', icon: 'fa-droplet',
+    title: 'SEVERE BLEEDING', subtitle: 'Control the bleeding while help is on the way',
+    steps: [
+      'Call 1122 immediately if bleeding is heavy or will not stop.',
+      'Apply firm, direct pressure on the wound with a clean cloth, bandage, or your hand.',
+      'Keep pressing continuously — do not lift the cloth to check.',
+      'Raise the injured limb above heart level if possible.',
+      'If blood soaks through, add more cloth on top — do not remove the first layer.',
+      'Watch for shock: pale/cold skin, rapid breathing, weakness, or fainting — lay the person down and raise their legs if this happens.'
+    ],
+    warning: 'For deep wounds, embedded objects, or spurting blood, do not remove the object — stabilise it and get emergency help immediately.'
+  },
+  unconscious: {
+    label: 'Unconsciousness', icon: 'fa-user-injured',
+    title: 'UNCONSCIOUSNESS', subtitle: 'Check breathing and respond fast',
+    steps: [
+      'Call 1122 immediately.',
+      'Check for a response — tap the shoulders firmly and shout their name.',
+      'Check if they are breathing normally by watching the chest.',
+      'If breathing, place them in the recovery position on their side.',
+      'If not breathing normally, begin CPR immediately: 30 chest compressions, then 2 breaths, repeat.',
+      'Do not give anything to eat or drink. Check for a medical ID bracelet or card (diabetes, allergy, epilepsy).'
+    ],
+    warning: 'If breathing stops or becomes irregular at any point, start CPR without delay and continue until help arrives.'
+  }
+};
+
+function renderEmergencyCategoryGrid() {
+  const grid = document.getElementById('sos-category-grid');
+  if (!grid || grid.children.length) return;
+  grid.innerHTML = Object.entries(EMERGENCY_MODES).map(([key, m]) => `
+    <button type="button" class="sos-cat-btn focus-ring" onclick="selectEmergencyMode('${key}')">
+      <i class="fa-solid ${m.icon}" aria-hidden="true"></i>
+      <span>${m.label}</span>
+    </button>
+  `).join('');
+}
+
+function selectEmergencyMode(key) {
+  const m = EMERGENCY_MODES[key];
+  if (!m) return;
+  document.getElementById('sos-view-categories').style.display = 'none';
+  document.getElementById('sos-view-guidance').style.display = 'block';
+  document.getElementById('sos-guidance-icon').style.background = 'linear-gradient(135deg,#ef4444,#dc2626)';
+  document.getElementById('sos-guidance-icon').innerHTML = `<i class="fa-solid ${m.icon}" style="color:#fff;font-size:1.25rem"></i>`;
+  document.getElementById('sos-guidance-title').textContent = m.title;
+  document.getElementById('sos-guidance-subtitle').textContent = m.subtitle;
+  document.getElementById('sos-guidance-steps').innerHTML = m.steps.map((s, i) => `
+    <li><span class="sos-step-num">${i + 1}</span><span>${s}</span></li>
+  `).join('');
+  document.getElementById('sos-guidance-warning').innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color:#fca5a5;margin-right:0.4rem"></i>${m.warning}`;
+  const modalBody = document.getElementById('sos-modal').querySelector('div');
+  if (modalBody) modalBody.scrollTop = 0;
+}
+
+function backToEmergencyCategories() {
+  document.getElementById('sos-view-guidance').style.display = 'none';
+  document.getElementById('sos-view-categories').style.display = 'block';
+}
+
+function closeSosModal() {
+  const modal = document.getElementById('sos-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+/* Jump to the location locator, force "Hospitals" category, and try to auto-locate the user */
+function findNearestHospital() {
+  closeSosModal();
+  const locatorSection = document.getElementById('locator');
+  if (!locatorSection) return;
+  locatorSection.scrollIntoView({ behavior: 'smooth' });
+  if (typeof locatorState !== 'undefined') {
+    locatorState.category = 'hospital';
+    if (typeof setLocatorActiveTab === 'function') setLocatorActiveTab('hospital');
+    if (typeof renderLocationResults === 'function') renderLocationResults();
+  }
+  const locateBtn = document.getElementById('locator-locate-btn');
+  if (locateBtn) setTimeout(() => locateBtn.click(), 400);
+}
+
 function emergencySOS() {
   const modal = document.getElementById('sos-modal');
   if (modal) {
+    renderEmergencyCategoryGrid();
+    document.getElementById('sos-view-guidance').style.display = 'none';
+    document.getElementById('sos-view-categories').style.display = 'block';
     modal.style.display = 'flex';
     // Close on backdrop click
     modal.onclick = function(e) { if(e.target === modal) modal.style.display = 'none'; };
@@ -6169,66 +6361,83 @@ const SPECIALIST_RULES = [
   { specialist: 'Psychiatrist',       keywords: ['anxiety','depression','neend na ana','ghabrahat','mental','panic attack'] }
 ];
 
+const SPECIALIST_META = {
+  'Cardiologist':       { icon:'fa-heart-pulse',    color:'#ef4444', desc:'Heart, chest pain & blood pressure', emergencyCapable:true  },
+  'Pulmonologist':      { icon:'fa-lungs',           color:'#0ea5e9', desc:'Lungs, asthma & breathing issues',   emergencyCapable:true  },
+  'Gastroenterologist': { icon:'fa-stethoscope',     color:'#f59e0b', desc:'Stomach, liver & digestion',         emergencyCapable:false },
+  'Neurologist':         { icon:'fa-brain',           color:'#8b5cf6', desc:'Brain, nerves, stroke & headaches',  emergencyCapable:true  },
+  'Orthopedic':          { icon:'fa-bone',            color:'#f97316', desc:'Bones, joints & fractures',          emergencyCapable:false },
+  'Dermatologist':       { icon:'fa-hand-dots',       color:'#eab308', desc:'Skin, hair & allergies',             emergencyCapable:false },
+  'ENT Specialist':      { icon:'fa-ear-listen',      color:'#06b6d4', desc:'Ear, nose & throat',                 emergencyCapable:false },
+  'Ophthalmologist':     { icon:'fa-eye',             color:'#3b82f6', desc:'Eyes & vision',                      emergencyCapable:false },
+  'Dentist':              { icon:'fa-tooth',           color:'#14b8a6', desc:'Teeth & gums',                       emergencyCapable:false },
+  'Urologist':            { icon:'fa-droplet',         color:'#6366f1', desc:'Kidneys, urinary & prostate',        emergencyCapable:false },
+  'Gynecologist':         { icon:'fa-person-pregnant', color:'#ec4899', desc:'Women\'s health & pregnancy',        emergencyCapable:false },
+  'Pediatrician':         { icon:'fa-child',           color:'#22c55e', desc:'Infants & children',                 emergencyCapable:false },
+  'Psychiatrist':         { icon:'fa-comment-medical', color:'#a855f7', desc:'Mental & emotional health',          emergencyCapable:false },
+  'General Physician':    { icon:'fa-user-doctor',     color:'#00C896', desc:'General & everyday illness',         emergencyCapable:false }
+};
+
 const DOCTOR_DIRECTORY = {
   'Cardiologist': [
-    { name:'Dr. Ahmed Ali',      hospital:'Aga Khan University Hospital',                         experience:15, rating:4.8, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' },
-    { name:'Dr. Sara Khan',      hospital:'National Institute of Cardiovascular Diseases (NICVD)', experience:12, rating:4.7, city:'Karachi', phone:'+92 21 9920 1300', website:'nicvd.gov.pk' },
-    { name:'Dr. Imran Siddiqui', hospital:'South City Hospital',                                   experience:18, rating:4.6, city:'Karachi', phone:'+92 21 3493 0051', website:'southcityhospital.com' }
+    { name:'Dr. Ahmed Ali',      hospital:'Aga Khan University Hospital',                         experience:15, rating:4.8, city:'Karachi',   phone:'+92 21 3486 1051', website:'agakhan.edu',        address:'Stadium Road, Karachi',              lat:24.8926, lng:67.0714, qualifications:'MBBS, FCPS (Cardiology)',          timing:'Mon–Sat, 5:00 PM – 8:00 PM', fee:'PKR 3,000', bio:'Interventional cardiologist with 15 years of experience in angioplasty and cardiac emergencies.' },
+    { name:'Dr. Sara Khan',      hospital:'National Institute of Cardiovascular Diseases (NICVD)', experience:12, rating:4.7, city:'Karachi',   phone:'+92 21 9920 1300', website:'nicvd.gov.pk',       address:'Rafiqui Shaheed Road, Karachi',      lat:24.8571, lng:67.0307, qualifications:'MBBS, FCPS (Cardiology)',          timing:'Mon–Sat, 8:00 AM – 2:00 PM', fee:'Free (Govt.)', bio:'Specialises in heart attack management and free 24/7 emergency cardiac care.' },
+    { name:'Dr. Imran Siddiqui', hospital:'South City Hospital',                                   experience:18, rating:4.6, city:'Karachi',   phone:'+92 21 3493 0051', website:'southcityhospital.com', address:'Off Khayaban-e-Roomi, Karachi',  lat:24.8016, lng:67.0654, qualifications:'MBBS, FCPS, FACC',                 timing:'Mon–Fri, 6:00 PM – 9:00 PM', fee:'PKR 3,500', bio:'Consultant cardiologist focused on hypertension and preventive heart care.' }
   ],
   'Pulmonologist': [
-    { name:'Dr. Bilal Farooq', hospital:'Ojha Institute of Chest Diseases',    experience:14, rating:4.5, city:'Karachi', phone:'+92 21 9926 1300', website:'duhs.edu.pk' },
-    { name:'Dr. Nadia Hassan', hospital:'Aga Khan University Hospital',       experience:10, rating:4.6, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' }
+    { name:'Dr. Bilal Farooq', hospital:'Ojha Institute of Chest Diseases', experience:14, rating:4.5, city:'Karachi', phone:'+92 21 9926 1300', website:'duhs.edu.pk',  address:'Ojha Campus, Karachi',            lat:24.9385, lng:67.1189, qualifications:'MBBS, FCPS (Pulmonology)', timing:'Mon–Sat, 9:00 AM – 1:00 PM', fee:'PKR 1,500', bio:'Chest specialist treating asthma, TB and chronic breathing disorders.' },
+    { name:'Dr. Nadia Hassan', hospital:'Aga Khan University Hospital',    experience:10, rating:4.6, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu',  address:'Stadium Road, Karachi',           lat:24.8926, lng:67.0714, qualifications:'MBBS, FCPS (Pulmonology)', timing:'Tue & Thu, 4:00 PM – 7:00 PM', fee:'PKR 3,000', bio:'Manages asthma, COPD and post-viral breathing complications.' }
   ],
   'Gastroenterologist': [
-    { name:'Dr. Kamran Aziz', hospital:'Liaquat National Hospital', experience:16, rating:4.6, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk' },
-    { name:'Dr. Hina Malik',  hospital:'Ziauddin Hospital',         experience:11, rating:4.4, city:'Karachi', phone:'+92 21 3662 1001', website:'zu.edu.pk' }
+    { name:'Dr. Kamran Aziz', hospital:'Liaquat National Hospital', experience:16, rating:4.6, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk', address:'National Stadium Road, Karachi', lat:24.8798, lng:67.0562, qualifications:'MBBS, FCPS (Gastroenterology)', timing:'Mon–Sat, 5:00 PM – 8:00 PM', fee:'PKR 2,500', bio:'Treats acidity, ulcers and liver disease with a focus on endoscopy.' },
+    { name:'Dr. Hina Malik',  hospital:'Ziauddin Hospital',         experience:11, rating:4.4, city:'Karachi', phone:'+92 21 3662 1001', website:'zu.edu.pk',  address:'North Nazimabad, Karachi',       lat:24.9315, lng:67.0678, qualifications:'MBBS, FCPS (Medicine)',          timing:'Mon–Fri, 3:00 PM – 6:00 PM', fee:'PKR 2,000', bio:'General gastro consultant for digestive and stomach complaints.' }
   ],
   'Neurologist': [
-    { name:'Dr. Faisal Qureshi', hospital:'Jinnah Postgraduate Medical Centre (JPMC)', experience:20, rating:4.5, city:'Karachi', phone:'+92 21 9921 1101', website:'jpmc.gov.pk' },
-    { name:'Dr. Ayesha Rehman', hospital:'Liaquat National Hospital',                  experience:13, rating:4.6, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk' }
+    { name:'Dr. Faisal Qureshi', hospital:'Jinnah Postgraduate Medical Centre (JPMC)', experience:20, rating:4.5, city:'Karachi', phone:'+92 21 9921 1101', website:'jpmc.gov.pk', address:'Rafiqui Shaheed Road, Karachi', lat:24.8542, lng:67.0298, qualifications:'MBBS, FCPS (Neurology)', timing:'Mon–Sat, 8:00 AM – 2:00 PM', fee:'Free (Govt.)', bio:'Manages stroke, epilepsy and neurological emergencies at a public tertiary hospital.' },
+    { name:'Dr. Ayesha Rehman', hospital:'Liaquat National Hospital',                  experience:13, rating:4.6, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk',  address:'National Stadium Road, Karachi', lat:24.8798, lng:67.0562, qualifications:'MBBS, FCPS (Neurology)', timing:'Mon–Sat, 6:00 PM – 9:00 PM', fee:'PKR 2,800', bio:'Specialises in migraines, seizures and post-stroke rehabilitation.' }
   ],
   'Orthopedic': [
-    { name:'Dr. Usman Sheikh', hospital:'Jinnah Postgraduate Medical Centre (JPMC)', experience:17, rating:4.4, city:'Karachi', phone:'+92 21 9921 1101', website:'jpmc.gov.pk' },
-    { name:'Dr. Farah Iqbal',  hospital:'South City Hospital',                       experience:9,  rating:4.3, city:'Karachi', phone:'+92 21 3493 0051', website:'southcityhospital.com' }
+    { name:'Dr. Usman Sheikh', hospital:'Jinnah Postgraduate Medical Centre (JPMC)', experience:17, rating:4.4, city:'Karachi', phone:'+92 21 9921 1101', website:'jpmc.gov.pk', address:'Rafiqui Shaheed Road, Karachi', lat:24.8542, lng:67.0298, qualifications:'MBBS, FCPS (Orthopedic Surgery)', timing:'Mon–Sat, 8:00 AM – 2:00 PM', fee:'Free (Govt.)', bio:'Handles fractures, joint pain and trauma surgery.' },
+    { name:'Dr. Farah Iqbal',  hospital:'South City Hospital',                       experience:9,  rating:4.3, city:'Karachi', phone:'+92 21 3493 0051', website:'southcityhospital.com', address:'Off Khayaban-e-Roomi, Karachi', lat:24.8016, lng:67.0654, qualifications:'MBBS, FCPS (Orthopedic Surgery)', timing:'Mon–Fri, 5:00 PM – 8:00 PM', fee:'PKR 2,500', bio:'Focuses on sports injuries, back pain and joint replacement.' }
   ],
   'Dermatologist': [
-    { name:'Dr. Zara Hashmi',   hospital:'Skin Care Clinic Karachi',       experience:10, rating:4.6, city:'Karachi', phone:'+92 21 3583 4021', website:'skincareclinic.pk' },
-    { name:'Dr. Omar Farooqui', hospital:'Aga Khan University Hospital',   experience:14, rating:4.7, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' },
-    { name:'Dr. Mariam Sultan', hospital:'Skin Care Clinic Islamabad',     experience:9,  rating:4.5, city:'Islamabad', phone:'+92 51 2271 122', website:'skincareclinic.pk' },
-    { name:'Dr. Bilal Chaudhry',hospital:'Shifa International Hospital',   experience:13, rating:4.6, city:'Islamabad', phone:'+92 51 8463 333', website:'shifa.com.pk' },
-    { name:'Dr. Anum Sheikh',   hospital:'Fatima Memorial Hospital',       experience:11, rating:4.5, city:'Lahore', phone:'+92 42 3511 1201', website:'fmh.edu.pk' }
+    { name:'Dr. Zara Hashmi',   hospital:'Skin Care Clinic Karachi',       experience:10, rating:4.6, city:'Karachi',   phone:'+92 21 3583 4021', website:'skincareclinic.pk',   address:'Saddar, Karachi',            lat:24.8607, lng:67.0424, qualifications:'MBBS, DDV',       timing:'Mon–Sat, 4:00 PM – 8:00 PM', fee:'PKR 1,800', bio:'Treats acne, eczema and pigmentation with a patient-first approach.' },
+    { name:'Dr. Omar Farooqui', hospital:'Aga Khan University Hospital',   experience:14, rating:4.7, city:'Karachi',   phone:'+92 21 3486 1051', website:'agakhan.edu',         address:'Stadium Road, Karachi',      lat:24.8926, lng:67.0714, qualifications:'MBBS, FCPS (Dermatology)', timing:'Mon–Fri, 2:00 PM – 5:00 PM', fee:'PKR 3,200', bio:'Consultant dermatologist for chronic skin conditions and minor procedures.' },
+    { name:'Dr. Mariam Sultan', hospital:'Skin Care Clinic Islamabad',     experience:9,  rating:4.5, city:'Islamabad', phone:'+92 51 2271 122',  website:'skincareclinic.pk',   address:'Blue Area, Islamabad',       lat:33.7128, lng:73.0567, qualifications:'MBBS, DDV',       timing:'Mon–Sat, 3:00 PM – 7:00 PM', fee:'PKR 2,000', bio:'Cosmetic and medical dermatology for all skin types.' },
+    { name:'Dr. Bilal Chaudhry',hospital:'Shifa International Hospital',   experience:13, rating:4.6, city:'Islamabad', phone:'+92 51 8463 333',  website:'shifa.com.pk',        address:'H-8/4, Islamabad',           lat:33.6648, lng:73.0630, qualifications:'MBBS, FCPS (Dermatology)', timing:'Tue & Sat, 10:00 AM – 1:00 PM', fee:'PKR 3,000', bio:'Handles allergic skin reactions and complex dermatological cases.' },
+    { name:'Dr. Anum Sheikh',   hospital:'Fatima Memorial Hospital',       experience:11, rating:4.5, city:'Lahore',    phone:'+92 42 3511 1201', website:'fmh.edu.pk',          address:'Shadman, Lahore',            lat:31.5091, lng:74.3237, qualifications:'MBBS, DDV',       timing:'Mon–Sat, 5:00 PM – 8:00 PM', fee:'PKR 2,200', bio:'Skin specialist popular for acne and allergy management.' }
   ],
   'ENT Specialist': [
-    { name:'Dr. Salman Yousuf', hospital:'Liaquat National Hospital', experience:15, rating:4.5, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk' },
-    { name:'Dr. Rabia Sheikh',  hospital:'Ziauddin Hospital',         experience:8,  rating:4.3, city:'Karachi', phone:'+92 21 3662 1001', website:'zu.edu.pk' }
+    { name:'Dr. Salman Yousuf', hospital:'Liaquat National Hospital', experience:15, rating:4.5, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk', address:'National Stadium Road, Karachi', lat:24.8798, lng:67.0562, qualifications:'MBBS, FCPS (ENT)', timing:'Mon–Sat, 5:00 PM – 8:00 PM', fee:'PKR 2,000', bio:'Treats sinus, throat infections and hearing complaints.' },
+    { name:'Dr. Rabia Sheikh',  hospital:'Ziauddin Hospital',         experience:8,  rating:4.3, city:'Karachi', phone:'+92 21 3662 1001', website:'zu.edu.pk',  address:'North Nazimabad, Karachi',       lat:24.9315, lng:67.0678, qualifications:'MBBS, FCPS (ENT)', timing:'Mon–Fri, 4:00 PM – 7:00 PM', fee:'PKR 1,800', bio:'Manages tonsillitis, ear pain and nasal allergies.' }
   ],
   'Ophthalmologist': [
-    { name:'Dr. Tariq Mehmood', hospital:'Al-Ibrahim Eye Hospital',      experience:19, rating:4.7, city:'Karachi', phone:'+92 21 3272 1291', website:'lrbt.org.pk' },
-    { name:'Dr. Sadia Anwar',   hospital:'Aga Khan University Hospital', experience:11, rating:4.5, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' }
+    { name:'Dr. Tariq Mehmood', hospital:'Al-Ibrahim Eye Hospital',      experience:19, rating:4.7, city:'Karachi', phone:'+92 21 3272 1291', website:'lrbt.org.pk', address:'Softa Line, Karachi',        lat:24.8898, lng:67.0364, qualifications:'MBBS, FCPS (Ophthalmology)', timing:'Mon–Sat, 9:00 AM – 3:00 PM', fee:'PKR 500', bio:'High-volume eye surgeon known for cataract and vision correction.' },
+    { name:'Dr. Sadia Anwar',   hospital:'Aga Khan University Hospital', experience:11, rating:4.5, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu', address:'Stadium Road, Karachi',      lat:24.8926, lng:67.0714, qualifications:'MBBS, FCPS (Ophthalmology)', timing:'Wed & Fri, 2:00 PM – 5:00 PM', fee:'PKR 3,000', bio:'Treats eye infections, blurry vision and retinal conditions.' }
   ],
   'Dentist': [
-    { name:'Dr. Hassan Raza',  hospital:'Smile Dental Studio',   experience:9,  rating:4.6, city:'Karachi', phone:'+92 21 3585 2020', website:'smiledentalstudio.pk' },
-    { name:'Dr. Mahnoor Baig', hospital:'Dow Dental College',    experience:12, rating:4.4, city:'Karachi', phone:'+92 21 9920 1300', website:'duhs.edu.pk' }
+    { name:'Dr. Hassan Raza',  hospital:'Smile Dental Studio',   experience:9,  rating:4.6, city:'Karachi', phone:'+92 21 3585 2020', website:'smiledentalstudio.pk', address:'Clifton, Karachi',        lat:24.8138, lng:67.0299, qualifications:'BDS',              timing:'Mon–Sat, 11:00 AM – 8:00 PM', fee:'PKR 1,500', bio:'General dentistry, root canals and cosmetic dental work.' },
+    { name:'Dr. Mahnoor Baig', hospital:'Dow Dental College',    experience:12, rating:4.4, city:'Karachi', phone:'+92 21 9920 1300', website:'duhs.edu.pk',          address:'Ojha Campus, Karachi',    lat:24.9385, lng:67.1189, qualifications:'BDS, FCPS (Oral Surgery)', timing:'Mon–Sat, 8:00 AM – 1:00 PM', fee:'PKR 500', bio:'Handles extractions, gum disease and oral surgery.' }
   ],
   'Urologist': [
-    { name:'Dr. Adeel Anjum',  hospital:'Sindh Institute of Urology & Transplantation (SIUT)', experience:16, rating:4.8, city:'Karachi', phone:'+92 21 9921 5754', website:'siut.org' },
-    { name:'Dr. Naveed Ashraf', hospital:'Liaquat National Hospital',                          experience:10, rating:4.4, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk' }
+    { name:'Dr. Adeel Anjum',  hospital:'Sindh Institute of Urology & Transplantation (SIUT)', experience:16, rating:4.8, city:'Karachi', phone:'+92 21 9921 5754', website:'siut.org',   address:'Chand Bibi Road, Karachi', lat:24.8575, lng:67.0292, qualifications:'MBBS, FCPS (Urology)', timing:'Mon–Sat, 8:00 AM – 2:00 PM', fee:'Free (Govt.)', bio:'Kidney stone and urinary tract specialist at a leading free-treatment hospital.' },
+    { name:'Dr. Naveed Ashraf', hospital:'Liaquat National Hospital',                          experience:10, rating:4.4, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk', address:'National Stadium Road, Karachi', lat:24.8798, lng:67.0562, qualifications:'MBBS, FCPS (Urology)', timing:'Mon–Fri, 5:00 PM – 8:00 PM', fee:'PKR 2,500', bio:'Treats urinary infections, kidney stones and prostate issues.' }
   ],
   'Gynecologist': [
-    { name:'Dr. Mehwish Ali', hospital:'Liaquat National Hospital', experience:14, rating:4.6, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk' },
-    { name:'Dr. Sana Tariq',  hospital:'South City Hospital',       experience:12, rating:4.5, city:'Karachi', phone:'+92 21 3493 0051', website:'southcityhospital.com' }
+    { name:'Dr. Mehwish Ali', hospital:'Liaquat National Hospital', experience:14, rating:4.6, city:'Karachi', phone:'+92 21 3412 1101', website:'lnh.edu.pk', address:'National Stadium Road, Karachi', lat:24.8798, lng:67.0562, qualifications:'MBBS, FCPS (Gynecology & Obstetrics)', timing:'Mon–Sat, 5:00 PM – 8:00 PM', fee:'PKR 2,500', bio:'Manages pregnancy care, deliveries and women\'s health concerns.' },
+    { name:'Dr. Sana Tariq',  hospital:'South City Hospital',       experience:12, rating:4.5, city:'Karachi', phone:'+92 21 3493 0051', website:'southcityhospital.com', address:'Off Khayaban-e-Roomi, Karachi', lat:24.8016, lng:67.0654, qualifications:'MBBS, FCPS (Gynecology & Obstetrics)', timing:'Mon–Fri, 4:00 PM – 7:00 PM', fee:'PKR 3,000', bio:'High-risk pregnancy specialist with a dedicated maternity unit.' }
   ],
   'Pediatrician': [
-    { name:'Dr. Zainab Qadir', hospital:'National Institute of Child Health (NICH)', experience:18, rating:4.7, city:'Karachi', phone:'+92 21 9920 1400', website:'nich.edu.pk' },
-    { name:'Dr. Junaid Akhtar', hospital:'Aga Khan University Hospital',             experience:13, rating:4.6, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' }
+    { name:'Dr. Zainab Qadir', hospital:'National Institute of Child Health (NICH)', experience:18, rating:4.7, city:'Karachi', phone:'+92 21 9920 1400', website:'nich.edu.pk', address:'Rafiqui Shaheed Road, Karachi', lat:24.8590, lng:67.0284, qualifications:'MBBS, FCPS (Pediatrics)', timing:'Mon–Sat, 8:00 AM – 2:00 PM', fee:'Free (Govt.)', bio:'Child specialist treating infants and children at Pakistan\'s largest children\'s hospital.' },
+    { name:'Dr. Junaid Akhtar', hospital:'Aga Khan University Hospital',             experience:13, rating:4.6, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu', address:'Stadium Road, Karachi', lat:24.8926, lng:67.0714, qualifications:'MBBS, FCPS (Pediatrics)', timing:'Mon–Fri, 3:00 PM – 6:00 PM', fee:'PKR 3,000', bio:'General pediatrics with a focus on newborn and infant care.' }
   ],
   'Psychiatrist': [
-    { name:'Dr. Kiran Shah', hospital:'Aga Khan University Hospital', experience:11, rating:4.5, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' },
-    { name:'Dr. Waqas Nabi', hospital:'Karwan-e-Hayat',               experience:15, rating:4.4, city:'Karachi', phone:'+92 21 3494 6666', website:'karwanehayat.org' }
+    { name:'Dr. Kiran Shah', hospital:'Aga Khan University Hospital', experience:11, rating:4.5, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu',        address:'Stadium Road, Karachi',   lat:24.8926, lng:67.0714, qualifications:'MBBS, FCPS (Psychiatry)', timing:'Tue & Thu, 3:00 PM – 6:00 PM', fee:'PKR 3,500', bio:'Treats anxiety, depression and panic disorders with therapy and medication.' },
+    { name:'Dr. Waqas Nabi', hospital:'Karwan-e-Hayat',               experience:15, rating:4.4, city:'Karachi', phone:'+92 21 3494 6666', website:'karwanehayat.org',  address:'Gulshan-e-Iqbal, Karachi', lat:24.8971, lng:67.0653, qualifications:'MBBS, FCPS (Psychiatry)', timing:'Mon–Sat, 9:00 AM – 4:00 PM', fee:'PKR 800', bio:'Affordable mental health care with counselling and psychiatric support.' }
   ],
   'General Physician': [
-    { name:'Dr. Bushra Naeem',     hospital:'Aga Khan University Hospital',                experience:9,  rating:4.5, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu' },
-    { name:'Dr. Ali Raza Kazmi',   hospital:'Dr. Essa Laboratory & Diagnostic Centre',      experience:12, rating:4.3, city:'Karachi', phone:'+92 21 111 113 772', website:'dressa.com.pk' }
+    { name:'Dr. Bushra Naeem',     hospital:'Aga Khan University Hospital',                experience:9,  rating:4.5, city:'Karachi', phone:'+92 21 3486 1051', website:'agakhan.edu',        address:'Stadium Road, Karachi',        lat:24.8926, lng:67.0714, qualifications:'MBBS, FCPS (Family Medicine)', timing:'Mon–Sat, 9:00 AM – 5:00 PM', fee:'PKR 2,500', bio:'First point of contact for everyday illness, fever and general checkups.' },
+    { name:'Dr. Ali Raza Kazmi',   hospital:'Dr. Essa Laboratory & Diagnostic Centre',      experience:12, rating:4.3, city:'Karachi', phone:'+92 21 111 113 772', website:'dressa.com.pk',    address:'Gulshan-e-Iqbal, Karachi',     lat:24.9292, lng:67.1101, qualifications:'MBBS',                         timing:'Mon–Sat, 10:00 AM – 9:00 PM', fee:'PKR 1,000', bio:'Walk-in general physician attached to a diagnostic centre for quick lab follow-ups.' }
   ]
 };
 
@@ -6248,68 +6457,271 @@ function detectSpecialist(text) {
   return isHealthRelated(text) ? 'General Physician' : null;
 }
 
+/* ---------- Doctor Recommendation 2.0 state ---------- */
+let doctorRecState = { specialist: null, sourceText: '', userLat: null, userLng: null, city: '' };
+
+const EMERGENCY_TEXT_KEYWORDS = ['severe','shadeed','sudden','achanak','unconscious','be-hosh','behosh','can\'t breathe','nahi aa raha saans','stroke','falij','heavy bleeding','zyada khoon','fainted','collapse','crushing','unbearable'];
+
+function computeDoctorPriority(specialist, text) {
+  const meta = SPECIALIST_META[specialist] || SPECIALIST_META['General Physician'];
+  const t = ' ' + (text || '').toLowerCase() + ' ';
+  const hasEmergencyKeyword = EMERGENCY_TEXT_KEYWORDS.some(k => t.includes(k));
+  if (meta.emergencyCapable && hasEmergencyKeyword) {
+    return { level: 'emergency', label: '🔴 Emergency Priority', color: '#ef4444', note: 'Symptoms described match an emergency pattern. Call 1122 or go to your nearest hospital ER right away — don\'t wait for a clinic appointment.' };
+  }
+  if (meta.emergencyCapable) {
+    return { level: 'urgent', label: '🟠 See a Doctor Soon', color: '#f97316', note: 'This type of symptom can escalate quickly. Try to get seen within 24 hours, and seek emergency care if it suddenly worsens.' };
+  }
+  return { level: 'routine', label: '🟢 Routine / Normal Priority', color: '#22c55e', note: null };
+}
+
+function getDoctorsForSpecialist(specialist) {
+  let list = (DOCTOR_DIRECTORY[specialist] || DOCTOR_DIRECTORY['General Physician']).slice();
+  if (doctorRecState.city) list = list.filter(d => d.city === doctorRecState.city);
+  if (doctorRecState.userLat !== null) {
+    list = list.map(d => ({ ...d, distanceKm: haversineKm(doctorRecState.userLat, doctorRecState.userLng, d.lat, d.lng) }))
+               .sort((a, b) => a.distanceKm - b.distanceKm);
+  }
+  return list;
+}
+
 function renderDoctorCard(d, specialist) {
+  const meta = SPECIALIST_META[specialist] || SPECIALIST_META['General Physician'];
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.hospital + ' ' + d.address)}`;
+  const dirUrl = doctorRecState.userLat !== null
+    ? `https://www.google.com/maps/dir/?api=1&origin=${doctorRecState.userLat},${doctorRecState.userLng}&destination=${encodeURIComponent(d.hospital + ' ' + d.address)}`
+    : mapsUrl;
   return `
     <div class="glass glass-hover rounded-2xl p-5 border border-white/10">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#00C896] to-[#00E5FF] flex items-center justify-center text-xl">👨‍⚕️</div>
-        <div>
-          <div class="font-semibold">${d.name}</div>
-          <div class="text-xs" style="color:var(--text-muted)">${specialist}</div>
+        <div class="w-12 h-12 rounded-full flex items-center justify-center text-lg flex-shrink-0" style="background:${meta.color}22">
+          <i class="fa-solid ${meta.icon}" style="color:${meta.color}" aria-hidden="true"></i>
         </div>
+        <div class="min-w-0">
+          <div class="font-semibold truncate">${d.name}</div>
+          <div class="text-xs" style="color:var(--text-muted)">${specialist} • ${d.qualifications}</div>
+        </div>
+        ${typeof d.distanceKm === 'number' ? `<div class="ml-auto text-right flex-shrink-0"><div class="text-sm font-bold" style="color:${meta.color}">${d.distanceKm.toFixed(1)} km</div><div class="text-[0.65rem]" style="color:var(--text-muted)">away</div></div>` : ''}
       </div>
       <div class="text-sm space-y-1.5" style="color:var(--text-muted)">
         <div><i class="fa-solid fa-hospital w-4 mr-1 text-teal-400" aria-hidden="true"></i>${d.hospital}</div>
         <div><i class="fa-solid fa-briefcase-medical w-4 mr-1 text-teal-400" aria-hidden="true"></i>${d.experience} years experience</div>
         <div><i class="fa-solid fa-star w-4 mr-1 text-amber-300" aria-hidden="true"></i>${d.rating}/5</div>
+        <div><i class="fa-regular fa-clock w-4 mr-1 text-teal-400" aria-hidden="true"></i>${d.timing}</div>
+        <div><i class="fa-solid fa-money-bill w-4 mr-1 text-teal-400" aria-hidden="true"></i>Fee: ${d.fee}</div>
         <div><i class="fa-solid fa-location-dot w-4 mr-1 text-teal-400" aria-hidden="true"></i>${d.city}</div>
-        <div><i class="fa-solid fa-phone w-4 mr-1 text-teal-400" aria-hidden="true"></i>${d.phone}</div>
-        <div><i class="fa-solid fa-globe w-4 mr-1 text-teal-400" aria-hidden="true"></i>${d.website}</div>
+      </div>
+      <div class="grid grid-cols-3 gap-2 mt-4">
+        <a href="tel:${d.phone}" class="text-center px-2 py-2 rounded-xl text-xs font-semibold" style="background:rgba(0,200,150,0.15);border:1px solid rgba(0,200,150,0.35);color:#00C896">
+          <i class="fa-solid fa-phone mr-1" aria-hidden="true"></i>Call
+        </a>
+        <a href="${dirUrl}" target="_blank" rel="noopener noreferrer" class="text-center px-2 py-2 rounded-xl text-xs font-semibold text-white" style="background:linear-gradient(135deg,#1a73e8,#0d47a1)">
+          <i class="fa-brands fa-google mr-1" aria-hidden="true"></i>Directions
+        </a>
+        <button type="button" onclick="openDoctorProfile('${specialist.replace(/'/g,"\\'")}','${d.name.replace(/'/g,"\\'")}')" class="text-center px-2 py-2 rounded-xl text-xs font-semibold glass border border-white/20 hover:bg-white/10">
+          <i class="fa-regular fa-id-card mr-1" aria-hidden="true"></i>Profile
+        </button>
       </div>
     </div>`;
 }
 
-function renderDoctorRecommendation(text) {
-  const specialist = detectSpecialist(text);
-  const doctors = DOCTOR_DIRECTORY[specialist] || DOCTOR_DIRECTORY['General Physician'];
+function renderDoctorResults() {
+  const specialist = doctorRecState.specialist;
+  if (!specialist) return;
+  const meta = SPECIALIST_META[specialist] || SPECIALIST_META['General Physician'];
+  const priority = computeDoctorPriority(specialist, doctorRecState.sourceText);
+  const doctors = getDoctorsForSpecialist(specialist);
   const el = document.getElementById('doc-recommend-results');
   if (!el) return;
 
-  const lower = text.toLowerCase();
-  const isUrgent = (lower.includes('chest pain') || lower.includes('seene mein dard') || lower.includes('seenay mein dard'))
-    && (lower.includes('saans') || lower.includes('breath'));
-
   el.innerHTML = `
-    <div class="glass rounded-2xl p-5 mb-4 border border-teal-400/30 flex items-center gap-3">
-      <i class="fa-solid fa-user-doctor text-2xl text-teal-400" aria-hidden="true"></i>
-      <div>
-        <div class="text-xs uppercase tracking-wide" style="color:var(--text-muted)">Recommended Specialist</div>
-        <div class="text-xl font-bold font-display text-teal-300">${specialist}</div>
+    <div class="glass rounded-2xl p-5 mb-4 border border-teal-400/30 flex flex-wrap items-center gap-3">
+      <div class="rounded-xl p-2.5" style="background:${meta.color}22">
+        <i class="fa-solid ${meta.icon} text-2xl" style="color:${meta.color}" aria-hidden="true"></i>
       </div>
+      <div class="flex-1 min-w-[160px]">
+        <div class="text-xs uppercase tracking-wide" style="color:var(--text-muted)">Recommended Specialist</div>
+        <div class="text-xl font-bold font-display" style="color:${meta.color}">${specialist}</div>
+        <div class="text-xs mt-0.5" style="color:var(--text-muted)">${meta.desc}</div>
+      </div>
+      <div class="px-3 py-1.5 rounded-full text-xs font-bold" style="background:${priority.color}22;color:${priority.color};border:1px solid ${priority.color}55">${priority.label}</div>
     </div>
-    ${isUrgent ? `
-    <div class="glass rounded-2xl p-4 mb-6 border border-red-400/40 text-red-300 text-sm flex items-start gap-2">
+    ${priority.note ? `
+    <div class="glass rounded-2xl p-4 mb-6 border ${priority.level === 'emergency' ? 'border-red-400/40 text-red-300' : 'border-orange-400/40 text-orange-300'} text-sm flex items-start gap-2">
       <i class="fa-solid fa-triangle-exclamation mt-0.5" aria-hidden="true"></i>
-      <span>If the pain is severe, started suddenly, or is spreading to the arm/jaw, this could be an emergency. Call 1122 immediately or go to your nearest hospital ER.</span>
+      <span>${priority.note}</span>
     </div>` : ''}
+
+    <!-- Distance & city controls -->
+    <div class="glass rounded-2xl p-4 mb-6 border border-white/10 flex flex-wrap items-center gap-3">
+      <select id="doc-results-city" class="border rounded-xl px-3 py-2 text-sm outline-none focus-ring">
+        <option value="">Any city</option>
+        <option ${doctorRecState.city === 'Karachi' ? 'selected' : ''}>Karachi</option>
+        <option ${doctorRecState.city === 'Lahore' ? 'selected' : ''}>Lahore</option>
+        <option ${doctorRecState.city === 'Islamabad' ? 'selected' : ''}>Islamabad</option>
+      </select>
+      <button type="button" id="doc-locate-btn" class="px-4 py-2 glass border border-white/20 hover:bg-white/10 rounded-xl text-sm font-semibold flex items-center gap-x-2 focus-ring">
+        <i class="fa-solid fa-location-crosshairs" aria-hidden="true"></i> Use my location &amp; sort by distance
+      </button>
+      <span id="doc-locate-status" class="text-xs" style="color:var(--text-muted)" aria-live="polite"></span>
+    </div>
+
     <div class="grid sm:grid-cols-2 gap-5">
-      ${doctors.map(d => renderDoctorCard(d, specialist)).join('')}
+      ${doctors.length ? doctors.map(d => renderDoctorCard(d, specialist)).join('') : `<div class="col-span-2 text-center text-sm py-8" style="color:var(--text-muted)">No doctors found for this city. Try "Any city" instead.</div>`}
     </div>
     <p class="text-xs text-center mt-8 max-w-xl mx-auto" style="color:var(--text-muted)">
       Contact these doctors according to your condition. <strong>Medicore only provides recommendations, it does not offer appointments or treatment.</strong>
     </p>
   `;
   el.classList.remove('hidden');
+  bindDoctorResultsControls();
   el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function bindDoctorResultsControls() {
+  const citySel = document.getElementById('doc-results-city');
+  if (citySel) citySel.addEventListener('change', () => { doctorRecState.city = citySel.value; renderDoctorResults(); });
+
+  const locateBtn = document.getElementById('doc-locate-btn');
+  if (locateBtn) locateBtn.addEventListener('click', () => {
+    const status = document.getElementById('doc-locate-status');
+    if (!('geolocation' in navigator)) { if (status) status.textContent = 'Geolocation not supported in this browser.'; return; }
+    if (status) status.textContent = 'Requesting your location…';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        doctorRecState.userLat = pos.coords.latitude;
+        doctorRecState.userLng = pos.coords.longitude;
+        renderDoctorResults();
+      },
+      (err) => { if (status) status.textContent = err.code === err.PERMISSION_DENIED ? 'Location access denied.' : 'Could not detect your location.'; },
+      { timeout: 8000 }
+    );
+  });
+}
+
+function renderDoctorRecommendation(text) {
+  doctorRecState.specialist = detectSpecialist(text);
+  doctorRecState.sourceText = text;
+  renderDoctorResults();
+}
+
+/* ---------- Browse by specialty (no symptom text required) ---------- */
+function renderSpecialtyBrowseGrid() {
+  const grid = document.getElementById('specialty-browse-grid');
+  if (!grid || grid.children.length) return;
+  grid.innerHTML = Object.keys(DOCTOR_DIRECTORY).map(specialist => {
+    const meta = SPECIALIST_META[specialist] || SPECIALIST_META['General Physician'];
+    return `
+    <button type="button" onclick="browseSpecialty('${specialist.replace(/'/g,"\\'")}')" class="glass glass-hover rounded-2xl p-4 text-left border border-white/10 focus-ring">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center mb-2" style="background:${meta.color}22">
+        <i class="fa-solid ${meta.icon}" style="color:${meta.color}" aria-hidden="true"></i>
+      </div>
+      <div class="text-sm font-semibold">${specialist}</div>
+      <div class="text-xs mt-0.5" style="color:var(--text-muted)">${meta.desc}</div>
+    </button>`;
+  }).join('');
+}
+
+function browseSpecialty(specialist) {
+  doctorRecState.specialist = specialist;
+  doctorRecState.sourceText = '';
+  renderDoctorResults();
+  document.getElementById('doc-recommend-error').classList.add('hidden');
+}
+
+/* ---------- Doctor profile modal ---------- */
+function openDoctorProfile(specialist, doctorName) {
+  const doctor = (DOCTOR_DIRECTORY[specialist] || []).find(d => d.name === doctorName);
+  if (!doctor) return;
+  const meta = SPECIALIST_META[specialist] || SPECIALIST_META['General Physician'];
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctor.hospital + ' ' + doctor.address)}`;
+  const dirUrl = doctorRecState.userLat !== null
+    ? `https://www.google.com/maps/dir/?api=1&origin=${doctorRecState.userLat},${doctorRecState.userLng}&destination=${encodeURIComponent(doctor.hospital + ' ' + doctor.address)}`
+    : mapsUrl;
+  const stars = Math.round(doctor.rating || 0);
+  let starsHtml = '';
+  for (let i = 1; i <= 5; i++) starsHtml += `<i class="fa-${i <= stars ? 'solid' : 'regular'} fa-star text-amber-300 text-sm"></i>`;
+
+  const overlay = document.createElement('div');
+  overlay.id = 'doctor-profile-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;';
+  overlay.innerHTML = `
+    <div style="background:var(--card-bg,#0f2a3a);border:1px solid rgba(255,255,255,0.12);border-radius:24px;max-width:480px;width:100%;padding:28px;position:relative;max-height:90vh;overflow-y:auto;">
+      <button onclick="document.getElementById('doctor-profile-overlay').remove()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;color:var(--text-base,#fff);font-size:16px;display:flex;align-items:center;justify-content:center;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
+        <div style="background:${meta.color}22;border-radius:12px;padding:10px 12px;">
+          <i class="fa-solid ${meta.icon}" style="color:${meta.color};font-size:20px;"></i>
+        </div>
+        <div>
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-base,#fff);margin:0;line-height:1.3;">${doctor.name}</h3>
+          <div style="color:${meta.color};font-size:0.82rem;margin-top:2px;">${specialist} • ${doctor.qualifications}</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:6px;margin:12px 0 4px;">
+        ${starsHtml}
+        <span style="color:#fcd34d;font-size:0.85rem;font-weight:600;margin-left:2px;">${doctor.rating}</span>
+        <span style="color:var(--text-muted,#94a3b8);font-size:0.8rem;margin-left:6px;">• ${doctor.experience} yrs experience</span>
+      </div>
+
+      <p style="color:var(--text-muted,#94a3b8);font-size:0.88rem;line-height:1.65;margin:12px 0 16px;">${doctor.bio}</p>
+
+      <div style="background:rgba(255,255,255,0.05);border-radius:14px;padding:14px;font-size:0.83rem;color:var(--text-muted,#94a3b8);display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <i class="fa-solid fa-hospital" style="color:${meta.color};margin-top:2px;width:14px;"></i>
+          <span>${doctor.hospital} — ${doctor.address}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="fa-regular fa-clock" style="color:${meta.color};width:14px;"></i>
+          <span>${doctor.timing}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="fa-solid fa-money-bill" style="color:${meta.color};width:14px;"></i>
+          <span>Consultation fee: ${doctor.fee}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="fa-solid fa-phone" style="color:${meta.color};width:14px;"></i>
+          <a href="tel:${doctor.phone}" style="color:var(--text-muted,#94a3b8);text-decoration:none;">${doctor.phone}</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="fa-solid fa-globe" style="color:${meta.color};width:14px;"></i>
+          <span>${doctor.website}</span>
+        </div>
+        ${typeof doctor.distanceKm === 'number' ? `
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="fa-solid fa-route" style="color:${meta.color};width:14px;"></i>
+          <span>${doctor.distanceKm.toFixed(1)} km from your location</span>
+        </div>` : ''}
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:18px;">
+        <a href="tel:${doctor.phone}"
+          style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;background:rgba(0,200,150,0.15);border:1px solid rgba(0,200,150,0.35);border-radius:14px;color:#00C896;font-weight:600;font-size:0.9rem;text-decoration:none;">
+          <i class="fa-solid fa-phone"></i> Call
+        </a>
+        <a href="${dirUrl}" target="_blank" rel="noopener noreferrer"
+          style="flex:1.4;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;background:linear-gradient(135deg,#1a73e8,#0d47a1);border-radius:14px;color:#fff;font-weight:600;font-size:0.9rem;text-decoration:none;">
+          <i class="fa-brands fa-google"></i> Directions
+        </a>
+      </div>
+    </div>
+  `;
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
 }
 
 /* ---------- Init ---------- */
 function initDoctorRecommendation() {
+  renderSpecialtyBrowseGrid();
   const form = document.getElementById('doc-recommend-form');
   if (!form) return;
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const input = document.getElementById('doc-symptom-input');
+    const citySelect = document.getElementById('doc-city-select');
     const errorBox = document.getElementById('doc-recommend-error');
     const resultsEl = document.getElementById('doc-recommend-results');
     const text = input.value.trim();
@@ -6325,6 +6737,7 @@ function initDoctorRecommendation() {
       errorBox.classList.remove('hidden');
       return;
     }
+    doctorRecState.city = citySelect ? citySelect.value : '';
     renderDoctorRecommendation(text);
   });
 }
