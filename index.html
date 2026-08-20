@@ -1722,7 +1722,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
       <div class="lg:col-span-2">
         <div class="section-eyebrow uppercase text-teal-400 text-sm mb-3">FEATURE 7 — EXPECTANT MOTHERS</div>
         <h2 id="pregnancy-heading" class="text-4xl font-bold font-display">Pregnancy Care Tracker</h2>
-        <p class="mt-4" style="color:var(--text-muted)">Enter your current week of pregnancy (1–40) to see fetal development updates, dietary tips, safe exercises, and upcoming checkup reminders.</p>
+        <p class="mt-4" style="color:var(--text-muted)">Enter your current week of pregnancy (1–40) for a full overview dashboard — days remaining, due date, progress, baby size — plus week-by-week baby development, diet tips, safe exercises, and checkup reminders.</p>
         <div class="glass glass-hover rounded-3xl p-6 mt-8 space-y-5">
           <div>
             <label for="preg-week" class="block text-sm font-medium mb-2">Current week of pregnancy</label>
@@ -1742,7 +1742,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
       <div class="lg:col-span-3" id="preg-results">
         <div class="glass glass-hover rounded-3xl p-8 text-center min-h-[300px] flex flex-col items-center justify-center" style="color:var(--text-muted)">
           <i class="fa-solid fa-person-pregnant text-5xl mb-4 text-teal-400/60" aria-hidden="true"></i>
-          <p>Enter your pregnancy week to see guidance for that stage.</p>
+          <p>Enter your pregnancy week to see your overview dashboard and baby development guide.</p>
         </div>
       </div>
     </div>
@@ -1755,11 +1755,61 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
     <div class="text-center max-w-2xl mx-auto mb-12">
       <div class="section-eyebrow uppercase text-teal-400 text-sm mb-3">FEATURE 8 — EMERGENCY REFERENCE</div>
       <h2 id="firstaid-heading" class="text-4xl md:text-5xl font-bold font-display">First Aid Guide</h2>
-      <p class="mt-4" style="color:var(--text-muted)">Step-by-step first aid for common emergencies — written in plain language so you can act fast.</p>
+      <p class="mt-4" style="color:var(--text-muted)">Tap any emergency below for step-by-step instructions and one-tap emergency calling.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="firstaid-cards"></div>
   </div>
 </section>
+
+<!-- ============ FIRST AID — FULL-SCREEN GUIDANCE MODAL ============ -->
+<div id="firstaid-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px)" role="dialog" aria-modal="true" aria-labelledby="firstaid-modal-title" onclick="if(event.target===this) closeFirstAidModal()">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(96vw,640px);max-height:92vh;overflow-y:auto;background:var(--navy);border:1.5px solid rgba(239,68,68,0.5);border-radius:1.5rem;padding:2rem;box-shadow:0 0 70px rgba(239,68,68,0.28)">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;gap:0.9rem;margin-bottom:1.25rem">
+      <div id="firstaid-modal-icon" style="width:3.25rem;height:3.25rem;border-radius:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:sos-pulse 1.2s ease-in-out infinite">
+        <i class="fa-solid fa-kit-medical" style="color:#fff;font-size:1.4rem"></i>
+      </div>
+      <div style="flex:1;min-width:0">
+        <div id="firstaid-modal-emoji" style="font-size:1.4rem;line-height:1;margin-bottom:0.15rem"></div>
+        <div id="firstaid-modal-title" style="font-size:1.35rem;font-weight:800;color:var(--text-base);line-height:1.2">Emergency</div>
+      </div>
+      <button onclick="closeFirstAidModal()" aria-label="Close" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:var(--text-base);width:2.25rem;height:2.25rem;border-radius:0.75rem;cursor:pointer;flex-shrink:0;font-size:0.95rem">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Call now strip -->
+    <a id="firstaid-modal-call" href="tel:1122" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-weight:800;border-radius:0.85rem;padding:0.95rem;margin-bottom:1.35rem;text-decoration:none;font-size:1.02rem;box-shadow:0 8px 24px -6px rgba(239,68,68,0.6)">
+      <i class="fa-solid fa-phone"></i> CALL EMERGENCY HELP — 1122
+    </a>
+
+    <!-- Steps -->
+    <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.6rem">
+      <i class="fa-solid fa-list-check" style="margin-right:0.3rem"></i>Step-by-step instructions
+    </div>
+    <ol id="firstaid-modal-steps" style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.35rem;padding-left:0;list-style:none"></ol>
+
+    <!-- Warning note -->
+    <div id="firstaid-modal-warning" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:0.75rem;padding:0.8rem 1rem;margin-bottom:1.35rem;font-size:0.82rem;color:#fca5a5"></div>
+
+    <!-- Action buttons -->
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="findNearestHospital()" style="flex:1;padding:0.8rem;background:linear-gradient(135deg,#00C896,#00E5FF);color:#06121f;font-weight:700;border:none;border-radius:0.85rem;cursor:pointer;font-size:0.87rem">
+        <i class="fa-solid fa-map-location-dot" style="margin-right:0.4rem"></i>Nearest Hospital/ER
+      </button>
+      <button onclick="closeFirstAidModal()" style="flex:1;padding:0.8rem;background:rgba(255,255,255,0.08);color:var(--text-base);font-weight:600;border:1px solid rgba(255,255,255,0.15);border-radius:0.85rem;cursor:pointer;font-size:0.87rem">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+#firstaid-cards .firstaid-card{cursor:pointer}
+#firstaid-modal-steps li{display:flex;gap:0.65rem;align-items:flex-start;font-size:0.9rem;line-height:1.55;color:var(--text-base)}
+#firstaid-modal-steps li .firstaid-step-num{flex-shrink:0;width:1.6rem;height:1.6rem;border-radius:9999px;background:rgba(239,68,68,0.18);color:#ef4444;font-weight:800;font-size:0.8rem;display:flex;align-items:center;justify-content:center;margin-top:0.05rem}
+</style>
 
 <!-- ============ POSTURE & SCREEN TIME TRACKER ============ -->
 <section id="posture" class="py-20 md:py-24 border-t border-white/10" aria-labelledby="posture-heading">
@@ -6518,7 +6568,7 @@ function renderDoctorCard(d, specialist) {
         <a href="${dirUrl}" target="_blank" rel="noopener noreferrer" class="text-center px-2 py-2 rounded-xl text-xs font-semibold text-white" style="background:linear-gradient(135deg,#1a73e8,#0d47a1)">
           <i class="fa-brands fa-google mr-1" aria-hidden="true"></i>Directions
         </a>
-        <button type="button" onclick="openDoctorProfile('${specialist.replace(/'/g,"\\'")}','${d.name.replace(/'/g,"\\'")}')" class="text-center px-2 py-2 rounded-xl text-xs font-semibold glass border border-white/20 hover:bg-white/10">
+        <button type="button" onclick="openDoctorProfile('${specialist.replace(/'/g,"\'")}','${d.name.replace(/'/g,"\'")}')" class="text-center px-2 py-2 rounded-xl text-xs font-semibold glass border border-white/20 hover:bg-white/10">
           <i class="fa-regular fa-id-card mr-1" aria-hidden="true"></i>Profile
         </button>
       </div>
@@ -6612,7 +6662,7 @@ function renderSpecialtyBrowseGrid() {
   grid.innerHTML = Object.keys(DOCTOR_DIRECTORY).map(specialist => {
     const meta = SPECIALIST_META[specialist] || SPECIALIST_META['General Physician'];
     return `
-    <button type="button" onclick="browseSpecialty('${specialist.replace(/'/g,"\\'")}')" class="glass glass-hover rounded-2xl p-4 text-left border border-white/10 focus-ring">
+    <button type="button" onclick="browseSpecialty('${specialist.replace(/'/g,"\'")}')" class="glass glass-hover rounded-2xl p-4 text-left border border-white/10 focus-ring">
       <div class="w-9 h-9 rounded-lg flex items-center justify-center mb-2" style="background:${meta.color}22">
         <i class="fa-solid ${meta.icon}" style="color:${meta.color}" aria-hidden="true"></i>
       </div>
@@ -6834,65 +6884,158 @@ function logMood() {
    PREGNANCY CARE TRACKER
    ========================================================= */
 const PREG_DATA = {
-  1:  { size:'Poppy seed',    dev:'The fertilised egg implants in the uterus. Neural tube begins forming.',                   diet:'Folic acid 400 mcg/day is critical now.',          exercise:'Light walking is ideal.',           checkup:'Schedule your first prenatal appointment.' },
-  4:  { size:'Lentil',        dev:'Heart begins beating; facial features start forming.',                                      diet:'Iron-rich foods: lentils, spinach, red meat.',     exercise:'Swimming and yoga are safe.',       checkup:'Book dating scan (around week 8–10).' },
-  8:  { size:'Kidney bean',   dev:'All major organs are forming; tiny fingers and toes appear.',                              diet:'Ginger tea helps with morning sickness.',          exercise:'Keep walks to 20–30 min.',          checkup:'First trimester blood tests (weeks 10–13).' },
-  12: { size:'Lime',          dev:'Reflexes develop; baby can make facial expressions.',                                       diet:'Increase calcium: milk, yoghurt, cheese.',         exercise:'Prenatal yoga is beneficial.',      checkup:'NT scan (nuchal translucency) this week.' },
-  16: { size:'Avocado',       dev:'Baby can hear sounds; skeleton hardens from cartilage to bone.',                           diet:'Omega-3 from fish (low-mercury) supports brain.',  exercise:'Water aerobics is excellent.',      checkup:'Anomaly screening blood tests.' },
-  20: { size:'Banana',        dev:'Halfway! Baby kicks regularly; gender often visible on scan.',                              diet:'Increase protein: eggs, chicken, legumes.',        exercise:'Pelvic floor exercises daily.',     checkup:'Anomaly scan (morphology scan) at 20 weeks.' },
-  24: { size:'Corn cob',      dev:'Lungs developing; baby responds to light and sound.',                                       diet:'Hydration is vital — 2–3 litres of water daily.', exercise:'Stationary cycling is safe.',       checkup:'Glucose tolerance test (24–28 weeks).' },
-  28: { size:'Eggplant',      dev:'Eyes can open; brain develops rapidly.',                                                    diet:'Iron supplementation review with doctor.',         exercise:'Reduce intensity; rest more.',      checkup:'Rh factor test if blood group is negative.' },
-  32: { size:'Squash',        dev:'Baby practices breathing movements; skeleton fully formed.',                                diet:'Smaller, frequent meals to ease heartburn.',       exercise:'Gentle stretching and walking.',    checkup:'Third trimester scans begin.' },
-  36: { size:'Honeydew',      dev:'Baby is "full term" at 37 weeks — most organs ready.',                                     diet:'Dates may support cervical ripening (research-backed).', exercise:'Walking helps engagement.',  checkup:'Weekly midwife/OB visits from week 36.' },
-  40: { size:'Watermelon',    dev:'Baby is full term and ready for birth. Position should be head-down.',                     diet:'Stay nourished; light snacks help energy.',        exercise:'Gentle walking; rest is key.',      checkup:'Induction discussed if not delivered by week 42.' },
+  1:  { size:'Poppy seed',  emoji:'🌱', weight:'Not yet measurable',  dev:'The fertilised egg implants in the uterus. Neural tube begins forming.',                   brain:'The neural tube — the earliest foundation of the brain and spinal cord — is just beginning to form.', organ:'Cells are dividing into the layers that will eventually form every organ.',              movement:'None yet — baby is still microscopic.',                                   notice:'You likely don\'t feel pregnant yet; this is right around conception and implantation.',                     diet:'Folic acid 400 mcg/day is critical now.',          exercise:'Light walking is ideal.',           checkup:'Schedule your first prenatal appointment.' },
+  4:  { size:'Lentil',      emoji:'🫘', weight:'Less than 1 gram',    dev:'Heart begins beating; facial features start forming.',                                      brain:'The neural tube is closing, forming the earliest brain and spinal structures.',                    organ:'The heart is forming and will start beating within days.',                              movement:'None yet — too early to feel anything.',                                   notice:'A missed period is often the first sign; home pregnancy tests can usually detect hCG now.',                    diet:'Iron-rich foods: lentils, spinach, red meat.',     exercise:'Swimming and yoga are safe.',       checkup:'Book dating scan (around week 8–10).' },
+  8:  { size:'Kidney bean', emoji:'🫘', weight:'About 1 gram',        dev:'All major organs are forming; tiny fingers and toes appear.',                              brain:'Brain hemispheres are growing rapidly, and basic reflex pathways are forming.',                    organ:'All major organs — heart, lungs, kidneys, liver — have begun forming.',                  movement:'Tiny reflexive movements begin, but far too small to feel.',                notice:'Morning sickness, fatigue, and breast tenderness are common around this stage.',                              diet:'Ginger tea helps with morning sickness.',          exercise:'Keep walks to 20–30 min.',          checkup:'First trimester blood tests (weeks 10–13).' },
+  12: { size:'Lime',        emoji:'🟢', weight:'About 14 grams',      dev:'Reflexes develop; baby can make facial expressions.',                                       brain:'Brain signals are starting to coordinate basic reflexes like sucking and swallowing.',              organ:'Kidneys begin producing urine; the digestive system practises muscle contractions.',     movement:'Baby moves and stretches, but it\'s still too small to feel.',              notice:'Morning sickness often starts easing as the first trimester ends.',                                           diet:'Increase calcium: milk, yoghurt, cheese.',         exercise:'Prenatal yoga is beneficial.',      checkup:'NT scan (nuchal translucency) this week.' },
+  16: { size:'Avocado',     emoji:'🥑', weight:'About 100 grams',     dev:'Baby can hear sounds; skeleton hardens from cartilage to bone.',                           brain:'Facial muscles are developing, allowing early expressions; hearing pathways are forming.',          organ:'The skeleton is hardening from soft cartilage into bone.',                               movement:'You may start noticing the first faint flutters ("quickening").',           notice:'Some mothers feel their very first flutters of movement around now.',                                         diet:'Omega-3 from fish (low-mercury) supports brain.',  exercise:'Water aerobics is excellent.',      checkup:'Anomaly screening blood tests.' },
+  20: { size:'Banana',      emoji:'🍌', weight:'About 300 grams',     dev:'Halfway! Baby kicks regularly; gender often visible on scan.',                              brain:'Brain regions for the five senses are developing quickly.',                                        organ:'Reproductive organs are well-formed; sex is often visible on an anatomy scan.',           movement:'Regular kicks and rolls become noticeably stronger.',                       notice:'You\'ve reached the halfway point — the anatomy scan usually happens this week.',                              diet:'Increase protein: eggs, chicken, legumes.',        exercise:'Pelvic floor exercises daily.',     checkup:'Anomaly scan (morphology scan) at 20 weeks.' },
+  24: { size:'Corn cob',    emoji:'🌽', weight:'About 600 grams',     dev:'Lungs developing; baby responds to light and sound.',                                       brain:'Brain growth is rapid, and taste buds are forming.',                                                organ:'Lungs are developing tiny air sacs, preparing for eventual breathing.',                   movement:'Strong, regular kicks — baby now responds to light and sound.',             notice:'The glucose tolerance test is usually scheduled between weeks 24–28.',                                        diet:'Hydration is vital — 2–3 litres of water daily.', exercise:'Stationary cycling is safe.',       checkup:'Glucose tolerance test (24–28 weeks).' },
+  28: { size:'Eggplant',    emoji:'🍆', weight:'About 1 kg',          dev:'Eyes can open; brain develops rapidly.',                                                    brain:'Brain tissue is increasing fast, and some regions are becoming more active.',                       organ:'Eyes can open and close; eyelashes have fully grown in.',                                movement:'Movements are becoming more coordinated, with emerging sleep-wake cycles.', notice:'The third trimester begins — checkups typically become more frequent from here.',                              diet:'Iron supplementation review with doctor.',         exercise:'Reduce intensity; rest more.',      checkup:'Rh factor test if blood group is negative.' },
+  32: { size:'Squash',      emoji:'🎃', weight:'About 1.7 kg',        dev:'Baby practices breathing movements; skeleton fully formed.',                                brain:'Brain activity is approaching a pattern closer to a newborn\'s.',                                   organ:'Lungs and skeleton are nearly fully formed.',                                             movement:'Movements may feel tighter and more cramped as space becomes limited.',     notice:'Practice breathing movements can sometimes cause hiccups you\'ll feel as little rhythmic jerks.',              diet:'Smaller, frequent meals to ease heartburn.',       exercise:'Gentle stretching and walking.',    checkup:'Third trimester scans begin.' },
+  36: { size:'Honeydew',    emoji:'🍈', weight:'About 2.6 kg',        dev:'Baby is "full term" at 37 weeks — most organs ready.',                                     brain:'Brain development continues rapidly right up until birth.',                                        organ:'Most organs are now ready for life outside the womb.',                                   movement:'Movements shift toward stretching and pressing rather than big rolls, as space tightens.', notice:'Baby is considered "early term" soon; weekly midwife/OB visits typically begin now.',                        diet:'Dates may support cervical ripening (research-backed).', exercise:'Walking helps engagement.',  checkup:'Weekly midwife/OB visits from week 36.' },
+  40: { size:'Watermelon',  emoji:'🍉', weight:'About 3.4 kg',        dev:'Baby is full term and ready for birth. Position should be head-down.',                     brain:'Brain and nervous system are mature enough to coordinate life outside the womb.',                   organ:'All organs are mature and ready for birth.',                                              movement:'Movements slow slightly with little room left, but should still be felt daily.', notice:'Baby is full term — labour could begin any day now.',                                                          diet:'Stay nourished; light snacks help energy.',        exercise:'Gentle walking; rest is key.',      checkup:'Induction discussed if not delivered by week 42.' },
 };
+
+function getPregWeekData(week) {
+  const key = [40,36,32,28,24,20,16,12,8,4,1].find(k => week >= k);
+  return PREG_DATA[key];
+}
 
 function showPregnancyInfo() {
   const week = parseInt(document.getElementById('preg-week').value);
   const name = document.getElementById('preg-name').value.trim();
   if (!week || week < 1 || week > 40) { showToast('Please enter a week between 1 and 40.'); return; }
 
-  const key = [40,36,32,28,24,20,16,12,8,4,1].find(k => week >= k);
-  const d = PREG_DATA[key];
+  const d = getPregWeekData(week);
   const trimester = week <= 13 ? '1st Trimester' : week <= 26 ? '2nd Trimester' : '3rd Trimester';
   const greeting = name ? `${name}, you` : 'You';
 
+  /* Overview dashboard math */
+  const totalDays = 280; // 40 weeks
+  const daysElapsed = Math.min(totalDays, week * 7);
+  const daysRemaining = Math.max(0, totalDays - daysElapsed);
+  const progressPct = Math.min(100, Math.round((week / 40) * 100));
+  const dueDate = new Date();
+  dueDate.setDate(dueDate.getDate() + daysRemaining);
+  const dueDateStr = dueDate.toLocaleDateString(undefined, { day:'numeric', month:'long', year:'numeric' });
+
   document.getElementById('preg-results').innerHTML = `
-    <div class="glass glass-hover rounded-3xl p-6 space-y-5">
-      <div class="flex items-center gap-x-4">
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00C896] to-[#00E5FF] flex items-center justify-center text-2xl text-[#06121f]">
-          <i class="fa-solid fa-baby" aria-hidden="true"></i>
+    <div class="space-y-6">
+
+      <!-- ===== PREGNANCY OVERVIEW DASHBOARD ===== -->
+      <div class="glass glass-hover rounded-3xl p-6 md:p-8 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-x-4">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00C896] to-[#00E5FF] flex items-center justify-center text-2xl text-[#06121f]">
+              <i class="fa-solid fa-baby" aria-hidden="true"></i>
+            </div>
+            <div>
+              <div class="text-2xl md:text-3xl font-bold font-display">Week ${week} <span style="color:var(--text-muted);font-weight:600">· ${trimester}</span></div>
+              <p class="text-sm mt-1" style="color:var(--text-muted)">${greeting}'re in week ${week}. Here's your pregnancy overview.</p>
+            </div>
+          </div>
         </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="glass rounded-2xl p-4 text-center">
+            <div class="text-xs font-semibold mb-1" style="color:var(--text-muted)"><i class="fa-solid fa-calendar-week mr-1"></i>Current Week</div>
+            <div class="text-2xl font-bold font-display text-teal-400">${week}<span class="text-sm" style="color:var(--text-muted)">/40</span></div>
+          </div>
+          <div class="glass rounded-2xl p-4 text-center">
+            <div class="text-xs font-semibold mb-1" style="color:var(--text-muted)"><i class="fa-solid fa-hourglass-half mr-1"></i>Days Remaining</div>
+            <div class="text-2xl font-bold font-display text-cyan-400">${daysRemaining}</div>
+          </div>
+          <div class="glass rounded-2xl p-4 text-center">
+            <div class="text-xs font-semibold mb-1" style="color:var(--text-muted)"><i class="fa-solid fa-layer-group mr-1"></i>Trimester</div>
+            <div class="text-lg font-bold font-display text-amber-400">${trimester.replace(' Trimester','')}</div>
+          </div>
+          <div class="glass rounded-2xl p-4 text-center">
+            <div class="text-xs font-semibold mb-1" style="color:var(--text-muted)"><i class="fa-solid fa-calendar-check mr-1"></i>Est. Due Date</div>
+            <div class="text-base font-bold font-display text-purple-400">${dueDateStr}</div>
+          </div>
+        </div>
+
         <div>
-          <div class="text-2xl font-bold font-display">Week ${week}</div>
-          <div class="text-sm text-teal-400">${trimester} · Baby is about the size of a <strong>${d.size}</strong></div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-semibold">Pregnancy Progress</span>
+            <span class="text-sm font-bold text-teal-400">${progressPct}%</span>
+          </div>
+          <div style="height:0.65rem;border-radius:9999px;background:rgba(255,255,255,0.08);overflow:hidden">
+            <div style="height:100%;width:${progressPct}%;border-radius:9999px;background:linear-gradient(90deg,#00C896,#00E5FF);transition:width 1s ease"></div>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-5 flex items-center gap-x-4" style="background:var(--card-alt)">
+          <div style="font-size:2.75rem;line-height:1">${d.emoji}</div>
+          <div>
+            <div class="text-xs font-semibold" style="color:var(--text-muted)">BABY SIZE COMPARISON</div>
+            <div class="text-lg font-bold font-display">Baby is approximately the size of a <span class="text-teal-400">${d.size}</span></div>
+          </div>
         </div>
       </div>
-      <p class="text-sm" style="color:var(--text-muted)">${greeting}'re in week ${week}. Here's your guidance for this stage.</p>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="glass rounded-2xl p-4">
-          <div class="text-teal-400 font-semibold text-sm mb-2"><i class="fa-solid fa-dna mr-2"></i>Development</div>
-          <p class="text-sm" style="color:var(--text-muted)">${d.dev}</p>
+
+      <!-- ===== BABY DEVELOPMENT ===== -->
+      <div class="glass glass-hover rounded-3xl p-6 md:p-8 space-y-5">
+        <div class="flex items-center gap-x-3">
+          <i class="fa-solid fa-dna text-teal-400 text-xl" aria-hidden="true"></i>
+          <h3 class="text-xl font-bold font-display">Baby Development — Week ${week}</h3>
         </div>
-        <div class="glass rounded-2xl p-4">
-          <div class="text-cyan-400 font-semibold text-sm mb-2"><i class="fa-solid fa-apple-whole mr-2"></i>Diet Tip</div>
-          <p class="text-sm" style="color:var(--text-muted)">${d.diet}</p>
-        </div>
-        <div class="glass rounded-2xl p-4">
-          <div class="text-amber-400 font-semibold text-sm mb-2"><i class="fa-solid fa-person-walking mr-2"></i>Safe Exercise</div>
-          <p class="text-sm" style="color:var(--text-muted)">${d.exercise}</p>
-        </div>
-        <div class="glass rounded-2xl p-4">
-          <div class="text-purple-400 font-semibold text-sm mb-2"><i class="fa-solid fa-calendar-check mr-2"></i>Checkup Reminder</div>
-          <p class="text-sm" style="color:var(--text-muted)">${d.checkup}</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="glass rounded-2xl p-4">
+            <div class="text-teal-400 font-semibold text-sm mb-2"><i class="fa-solid fa-ruler mr-2"></i>Size &amp; Weight</div>
+            <p class="text-sm" style="color:var(--text-muted)">About the size of a ${d.size} ${d.emoji} · <strong>${d.weight}</strong></p>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-cyan-400 font-semibold text-sm mb-2"><i class="fa-solid fa-star mr-2"></i>Major Development</div>
+            <p class="text-sm" style="color:var(--text-muted)">${d.dev}</p>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-purple-400 font-semibold text-sm mb-2"><i class="fa-solid fa-brain mr-2"></i>Brain Development</div>
+            <p class="text-sm" style="color:var(--text-muted)">${d.brain}</p>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-amber-400 font-semibold text-sm mb-2"><i class="fa-solid fa-lungs mr-2"></i>Organ Development</div>
+            <p class="text-sm" style="color:var(--text-muted)">${d.organ}</p>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-pink-400 font-semibold text-sm mb-2"><i class="fa-solid fa-shoe-prints mr-2"></i>Movement Changes</div>
+            <p class="text-sm" style="color:var(--text-muted)">${d.movement}</p>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-teal-400 font-semibold text-sm mb-2"><i class="fa-solid fa-eye mr-2"></i>What You May Notice This Week</div>
+            <p class="text-sm" style="color:var(--text-muted)">${d.notice}</p>
+          </div>
         </div>
       </div>
-      <p class="text-xs" style="color:var(--text-muted)">Always follow your doctor's or midwife's personalised advice.</p>
+
+      <!-- ===== CARE TIPS ===== -->
+      <div class="glass glass-hover rounded-3xl p-6 md:p-8 space-y-5">
+        <div class="flex items-center gap-x-3">
+          <i class="fa-solid fa-heart-circle-check text-teal-400 text-xl" aria-hidden="true"></i>
+          <h3 class="text-xl font-bold font-display">Care Tips For This Week</h3>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="glass rounded-2xl p-4">
+            <div class="text-teal-400 font-semibold text-sm mb-2"><i class="fa-solid fa-apple-whole mr-2"></i>Diet Tip</div>
+            <p class="text-sm" style="color:var(--text-muted)">${d.diet}</p>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-amber-400 font-semibold text-sm mb-2"><i class="fa-solid fa-person-walking mr-2"></i>Safe Exercise</div>
+            <p class="text-sm" style="color:var(--text-muted)">${d.exercise}</p>
+          </div>
+          <div class="glass rounded-2xl p-4">
+            <div class="text-purple-400 font-semibold text-sm mb-2"><i class="fa-solid fa-calendar-check mr-2"></i>Checkup Reminder</div>
+            <p class="text-sm" style="color:var(--text-muted)">${d.checkup}</p>
+          </div>
+        </div>
+        <p class="text-xs" style="color:var(--text-muted)">Always follow your doctor's or midwife's personalised advice. Due date and progress shown here are estimates only.</p>
+      </div>
     </div>`;
-  popResults('preg-results', 'Your Pregnancy Week Guide', 'fa-solid fa-baby');
+  popResults('preg-results', 'Your Pregnancy Overview', 'fa-solid fa-baby');
 
   if (typeof htSave === 'function') {
-    const pregEntry = { week, name, trimester, date: new Date().toISOString() };
+    const pregEntry = { week, name, trimester, dueDate: dueDateStr, progressPct, date: new Date().toISOString() };
     htSave('Medicore_pregnancy_v1', pregEntry);
     htPushHistory('Medicore_pregnancy_history_v1', pregEntry);
     if (typeof renderPreviousAssessments === 'function') renderPreviousAssessments();
@@ -6903,31 +7046,106 @@ function showPregnancyInfo() {
    FIRST AID GUIDE
    ========================================================= */
 const FIRSTAID_DATA = [
-  { icon:'fa-fire', color:'#F97316', title:'Burns',     steps:['Cool the burn under running cold water for at least 10 minutes.','Do NOT use ice, butter, or toothpaste.','Cover loosely with a clean non-stick dressing.','For large or deep burns, call emergency services immediately.','Remove jewellery near the burn but do not remove stuck clothing.'] },
-  { icon:'fa-droplet', color:'#F87171', title:'Cuts & Bleeding', steps:['Apply direct pressure with a clean cloth or bandage.','Elevate the injured limb above the level of the heart.','Do not remove an embedded object — apply pressure around it.','Clean minor wounds gently with clean water after bleeding slows.','Seek medical care if bleeding does not stop in 10 minutes or the wound is deep.'] },
-  { icon:'fa-bone', color:'#818CF8', title:'Fractures', steps:['Immobilise the limb in the position you find it — do not try to straighten.','Apply a splint using a rigid object (stick, board) and bandage loosely.','Apply ice wrapped in cloth to reduce swelling.','Do not give food or water — surgery may be needed.','Call emergency services for spine, neck, or pelvis injuries.'] },
-  { icon:'fa-hand', color:'#FBBF24', title:'Choking',  steps:['Ask "Are you choking?" — if they can speak or cough, encourage coughing.','For severe obstruction: give 5 firm back blows between shoulder blades.','Follow with 5 abdominal thrusts (Heimlich manoeuvre).','Alternate back blows and abdominal thrusts until object is dislodged.','Call emergency services if the person loses consciousness.'] },
-  { icon:'fa-heart-pulse', color:'#F87171', title:'CPR (Adults)', steps:['Check the scene is safe. Call emergency services or ask someone else to call.','Lay the person on their back on a firm surface.','Give 30 chest compressions: push hard and fast in the centre of the chest (depth ~5cm, rate 100–120/min).','Give 2 rescue breaths: tilt head, lift chin, pinch nose, seal lips, blow 1 second each.','Continue 30:2 cycle until help arrives or the person recovers.'] },
-  { icon:'fa-brain', color:'#818CF8', title:'Stroke (FAST)', steps:['Face — Ask them to smile. Is one side drooping?','Arms — Ask them to raise both arms. Does one drift down?','Speech — Ask them to repeat a sentence. Is it slurred or strange?','Time — Call emergency services immediately if any sign is present.','Note the exact time symptoms started — it is vital for treatment decisions.'] },
+  { icon:'fa-fire', emoji:'🔥', color:'#F97316', title:'Burn',
+    subtitle:'Stop the burning, then cool the area',
+    steps:['Cool the burn under running cold water for at least 10 minutes.','Do NOT use ice, butter, or toothpaste.','Cover loosely with a clean non-stick dressing.','Remove jewellery near the burn but do not remove stuck clothing.','For large, deep, or chemical/electrical burns, call emergency services immediately.'],
+    warning:'Burns bigger than the person\'s palm, on the face/hands/genitals, or that look white/charred need emergency care right away.' },
+  { icon:'fa-droplet', emoji:'🩸', color:'#F87171', title:'Bleeding',
+    subtitle:'Control blood loss with firm pressure',
+    steps:['Apply direct, firm pressure with a clean cloth or bandage.','Keep pressing continuously — do not lift the cloth to check.','Elevate the injured limb above the level of the heart.','Do not remove an embedded object — apply pressure around it instead.','If blood soaks through, add more cloth on top of the first layer.','Call emergency services if bleeding does not stop in 10 minutes, is spurting, or the wound is deep.'],
+    warning:'Watch for shock: pale/cold skin, rapid breathing, weakness or fainting — lay the person down and raise their legs if this happens.' },
+  { icon:'fa-user-injured', emoji:'😵', color:'#A78BFA', title:'Unconscious',
+    subtitle:'Check breathing and respond fast',
+    steps:['Check for a response — tap the shoulders firmly and shout their name.','Call emergency services immediately.','Check if they are breathing normally by watching the chest rise and fall.','If breathing, place them in the recovery position on their side.','If not breathing normally, begin CPR immediately: 30 chest compressions, then 2 breaths, repeat.','Do not give anything to eat or drink. Check for a medical ID bracelet or card (diabetes, allergy, epilepsy).'],
+    warning:'If breathing stops or becomes irregular at any point, start CPR without delay and continue until help arrives.' },
+  { icon:'fa-heart-pulse', emoji:'❤️', color:'#F87171', title:'CPR (Adults)',
+    subtitle:'Chest compressions to restart circulation',
+    steps:['Check the scene is safe. Call emergency services or ask someone else to call.','Lay the person on their back on a firm surface.','Give 30 chest compressions: push hard and fast in the centre of the chest (depth ~5cm, rate 100–120/min).','Give 2 rescue breaths: tilt head, lift chin, pinch nose, seal lips, blow 1 second each.','Continue the 30:2 cycle until help arrives, an AED is available, or the person recovers.'],
+    warning:'If an Automated External Defibrillator (AED) is nearby, use it as soon as possible and follow its voice prompts.' },
+  { icon:'fa-brain', emoji:'🧠', color:'#818CF8', title:'Stroke',
+    subtitle:'Think FAST — every minute matters',
+    steps:['Face — Ask them to smile. Is one side drooping?','Arms — Ask them to raise both arms. Does one drift down?','Speech — Ask them to repeat a sentence. Is it slurred or strange?','Time — Call emergency services immediately if any sign is present.','Note the exact time symptoms started — it is vital for treatment decisions.','Do not give food, water, or medication — swallowing may be impaired.'],
+    warning:'Sudden numbness, confusion, trouble seeing, or a severe headache with no known cause are also stroke warning signs.' },
+  { icon:'fa-lungs', emoji:'😮\u200d💨', color:'#FBBF24', title:'Choking',
+    subtitle:'Clear a blocked airway quickly',
+    steps:['Ask "Are you choking?" — if they can speak or cough, encourage coughing.','For severe obstruction: give 5 firm back blows between the shoulder blades.','Follow with 5 abdominal thrusts (Heimlich manoeuvre).','Alternate back blows and abdominal thrusts until the object is dislodged.','Call emergency services if the object does not clear or the person loses consciousness.','If they become unconscious, lower them to the ground carefully and begin CPR.'],
+    warning:'Never do a blind finger sweep in the mouth — you may push the object further down.' },
+  { icon:'fa-bug', emoji:'🐝', color:'#FACC15', title:'Bite / Sting',
+    subtitle:'Insect and animal bites or stings',
+    steps:['Move away from the insect or animal to avoid further bites/stings.','If a stinger is visible, scrape it out sideways with a card edge — do not squeeze with tweezers.','Wash the area with soap and water; apply a cold compress to reduce swelling.','For an animal bite, wash the wound well and apply a clean dressing.','Watch for a severe allergic reaction: swelling of the face/throat or difficulty breathing.','Call emergency services immediately for any breathing difficulty or a known severe allergy.'],
+    warning:'For a known severe allergy, use a prescribed epinephrine auto-injector (EpiPen) immediately if available, then call for help.' },
+  { icon:'fa-bolt', emoji:'⚡', color:'#EAB308', title:'Electric Shock',
+    subtitle:'Do not touch the person until the power is off',
+    steps:['Do NOT touch the person if they are still in contact with the electrical source.','Turn off the power at the switch or breaker before approaching.','If you cannot turn off the power, use a dry, non-conductive object (wood, plastic) to separate them from the source.','Once safe, check breathing and responsiveness — begin CPR if needed.','Call emergency services immediately, even if the person seems fine.','Do not move the person unless they are in immediate danger.'],
+    warning:'Electric shock can cause invisible internal injuries — always seek medical assessment even for a "minor" shock.' },
+  { icon:'fa-staff-snake', emoji:'🐍', color:'#4ADE80', title:'Snake Bite',
+    subtitle:'Keep still and get antivenom fast',
+    steps:['Keep the person calm and completely still — movement speeds venom spread.','Remove tight clothing, rings, or jewellery near the bite before swelling starts.','Keep the bitten limb below heart level and immobilised, like a splint.','Do NOT cut the wound, suck out venom, apply ice, or use a tourniquet.','If safely possible, note the snake\'s colour and shape — do not try to catch or kill it.','Call emergency services or get to a hospital immediately for antivenom.'],
+    warning:'Symptoms can be delayed — treat every snake bite as an emergency, even if it seems mild at first.' },
+  { icon:'fa-temperature-full', emoji:'🌡️', color:'#FB923C', title:'Heat Stroke',
+    subtitle:'Cool the body down urgently',
+    steps:['Move the person to a cool, shaded area immediately.','Remove excess clothing and cool the body with wet cloths, fanning, or a cool (not ice-cold) bath.','Apply cold packs to the neck, armpits, and groin.','Give small sips of water only if the person is fully conscious and able to swallow.','Call emergency services immediately if confusion, seizures, or loss of consciousness occurs.','Do not give aspirin or paracetamol to try to lower body temperature.'],
+    warning:'Heat stroke is life-threatening — a body temperature above 40°C with confusion needs emergency care immediately.' },
+  { icon:'fa-eye', emoji:'👁️', color:'#38BDF8', title:'Eye Injury',
+    subtitle:'Protect the eye and flush if needed',
+    steps:['Do NOT rub the eye or try to remove an embedded object.','For a chemical splash, flush the eye continuously with clean water for at least 15 minutes.','For a foreign particle, try gentle flushing with clean water or saline.','Loosely cover both eyes with a clean cloth to limit movement.','Avoid pain medication that thins the blood (e.g. aspirin) unless advised by a doctor.','Call emergency services or go to hospital immediately for penetrating injuries, chemical burns, or vision loss.'],
+    warning:'Never apply pressure to an injured eye and never try to remove anything stuck in it yourself.' },
+  { icon:'fa-skull-crossbones', emoji:'☠️', color:'#EF4444', title:'Poisoning',
+    subtitle:'Identify the substance and get help fast',
+    steps:['Call emergency services or a poison control helpline immediately — keep the substance/container ready.','Do NOT induce vomiting unless specifically instructed by a medical professional.','If poison is on the skin or in the eyes, rinse the area thoroughly with water.','If swallowed and the person is conscious, keep them calm and do not give food or drink unless told to.','If unconscious but breathing, place them in the recovery position and monitor closely.','If not breathing, begin CPR and continue until help arrives.'],
+    warning:'Bring the container, packet, or plant sample with you — it helps responders treat the person correctly.' },
 ];
 
 function populateFirstAid() {
   const grid = document.getElementById('firstaid-cards');
   if (!grid) return;
-  grid.innerHTML = FIRSTAID_DATA.map(item => `
-    <div class="glass glass-hover rounded-3xl p-6 card-hover">
+  grid.innerHTML = FIRSTAID_DATA.map((item, idx) => `
+    <div class="glass glass-hover rounded-3xl p-6 card-hover firstaid-card" onclick="openFirstAidModal(${idx})" role="button" tabindex="0"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openFirstAidModal(${idx})}"
+      aria-label="View emergency guidance for ${item.title}">
       <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background:${item.color}22">
         <i class="fa-solid ${item.icon} text-xl" style="color:${item.color}"></i>
       </div>
-      <div class="font-bold text-xl font-display mb-4">${item.title}</div>
-      <ol class="space-y-2">
-        ${item.steps.map((s,i) => `<li class="flex items-start gap-x-3 text-sm" style="color:var(--text-muted)">
-          <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-xs font-bold text-[#06121f]" style="background:${item.color}">${i+1}</span>
-          ${s}
-        </li>`).join('')}
-      </ol>
+      <div class="flex items-center gap-x-2 mb-2">
+        <span style="font-size:1.35rem;line-height:1">${item.emoji}</span>
+        <span class="font-bold text-xl font-display">${item.title}</span>
+      </div>
+      <p class="text-sm mb-4" style="color:var(--text-muted)">${item.subtitle}</p>
+      <div class="text-xs font-semibold flex items-center gap-x-1.5" style="color:${item.color}">
+        View emergency steps <i class="fa-solid fa-arrow-right text-[10px]"></i>
+      </div>
     </div>`).join('');
 }
+
+/* Opens the large full-screen guidance modal for a given first aid card */
+function openFirstAidModal(idx) {
+  const item = FIRSTAID_DATA[idx];
+  if (!item) return;
+  document.getElementById('firstaid-modal-icon').style.background = `linear-gradient(135deg,${item.color},${item.color}cc)`;
+  document.getElementById('firstaid-modal-icon').innerHTML = `<i class="fa-solid ${item.icon}" style="color:#fff;font-size:1.4rem"></i>`;
+  document.getElementById('firstaid-modal-emoji').textContent = item.emoji;
+  document.getElementById('firstaid-modal-title').textContent = item.title;
+  document.getElementById('firstaid-modal-steps').innerHTML = item.steps.map((s, i) => `
+    <li><span class="firstaid-step-num">${i + 1}</span><span>${s}</span></li>
+  `).join('');
+  document.getElementById('firstaid-modal-warning').innerHTML = item.warning
+    ? `<i class="fa-solid fa-triangle-exclamation" style="color:#fca5a5;margin-right:0.4rem"></i>${item.warning}`
+    : '';
+  document.getElementById('firstaid-modal-warning').style.display = item.warning ? 'block' : 'none';
+  const modal = document.getElementById('firstaid-modal');
+  modal.style.display = 'block';
+  const box = modal.querySelector('div');
+  if (box) box.scrollTop = 0;
+}
+
+function closeFirstAidModal() {
+  const modal = document.getElementById('firstaid-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeFirstAidModal();
+});
 
 /* =========================================================
    POSTURE & SCREEN TIME TRACKER
@@ -9270,6 +9488,7 @@ function buildHealthReportSections() {
   if (preg) {
     sections.push(reportCard('fa-person-pregnant', '#F97316', 'Pregnancy Care Tracker', `
       <div class="text-sm"><span style="color:var(--text-muted)">Week checked:</span> <strong>Week ${preg.week}</strong> — ${preg.trimester}</div>
+      ${preg.dueDate ? `<div class="text-sm mt-1"><span style="color:var(--text-muted)">Estimated due date:</span> <strong>${preg.dueDate}</strong> ${preg.progressPct ? `(${preg.progressPct}% along)` : ''}</div>` : ''}
       <div class="text-xs mt-2" style="color:var(--text-muted)">Checked on ${reportDate(preg.date)}</div>`));
   }
 
