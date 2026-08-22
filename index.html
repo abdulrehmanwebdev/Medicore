@@ -542,6 +542,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
     <!-- Desktop nav -->
     <div class="hidden lg:flex items-center gap-x-1 text-sm font-medium" id="desktop-nav">
       <a href="#home" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">Home</a>
+      <a href="#ai-assistant" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">🤖 AI Assistant</a>
       <a href="#dashboard" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">Dashboard</a>
       <a href="#symptom" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">Symptoms</a>
       <a href="#coach" data-nav class="nav-link px-3 py-2 rounded-xl hover:text-cyan-400 hover:bg-white/5 transition-colors">AI Coach</a>
@@ -555,6 +556,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
           <a href="#coach"      data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-route w-5 text-teal-400"></i>AI Health Coach</a>
           <a href="#diet"       data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-bowl-food w-5 text-teal-400"></i>Budget Diet Planner</a>
           <a href="#medicine"   data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-pills w-5 text-teal-400"></i>Medicine Tracker</a>
+          <a href="#vaccine"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-syringe w-5 text-teal-400"></i>VaccineCare</a>
           <a href="#risk"       data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-chart-line w-5 text-teal-400"></i>Health Risk Calculator</a>
           <a href="#clinics"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-hospital w-5 text-teal-400"></i>Find Clinics</a>
           <a href="#locator"    data-nav class="flex items-center gap-x-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors"><i class="fa-solid fa-map-location-dot w-5 text-teal-400"></i>Location Features</a>
@@ -614,6 +616,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
   <div id="mobile-menu" class="hidden lg:hidden glass border-t border-white/10 px-5 py-5 max-h-[80vh] overflow-y-auto">
     <div class="flex flex-col gap-y-1 text-sm">
       <a href="#home"     data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">🏠 Home</a>
+      <a href="#ai-assistant" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">🤖 AI Assistant</a>
       <a href="#dashboard" data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">📊 Dashboard</a>
       <a href="#symptom"  data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">🩺 Symptom Checker</a>
       <a href="#coach"    data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors">🧭 AI Health Coach</a>
@@ -626,6 +629,7 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
       <a href="#coach"     data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-route text-teal-400 w-5 mr-1"></i> AI Health Coach</a>
       <a href="#diet"      data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-bowl-food text-teal-400 w-5 mr-1"></i> Budget Diet Planner</a>
       <a href="#medicine"  data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-pills text-teal-400 w-5 mr-1"></i> Medicine Tracker</a>
+      <a href="#vaccine"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-syringe text-teal-400 w-5 mr-1"></i> VaccineCare</a>
       <a href="#risk"      data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-chart-line text-teal-400 w-5 mr-1"></i> Health Risk Calculator</a>
       <a href="#clinics"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-hospital text-teal-400 w-5 mr-1"></i> Find Clinics</a>
       <a href="#locator"   data-nav class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-400 transition-colors"><i class="fa-solid fa-map-location-dot text-teal-400 w-5 mr-1"></i> Location Features</a>
@@ -771,6 +775,58 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
           <p class="text-xs mt-4 text-center" style="color:var(--text-muted)">Numbers shown are sample data — your dashboard fills in as you use the tools below.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEDICORE AI ASSISTANT (HERO FEATURE) ============ -->
+<section id="ai-assistant" class="py-16 md:py-20 border-t border-white/10" aria-labelledby="ai-assistant-heading">
+  <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
+    <div class="grid lg:grid-cols-5 gap-10 items-start">
+
+      <!-- Intro / quick chips -->
+      <div class="lg:col-span-2">
+        <span class="px-6 py-2 glass text-cyan-400 text-sm rounded-3xl inline-block">🤖 NEW · HERO FEATURE</span>
+        <h2 id="ai-assistant-heading" class="text-4xl md:text-5xl font-bold mt-6 font-display">Medicore AI Assistant</h2>
+        <p class="mt-4 text-lg font-semibold text-teal-400">"What are you feeling today?"</p>
+        <p class="mt-3" style="color:var(--text-muted)">Type or speak in your own words. The assistant will ask a couple of quick follow-up questions, then guide you straight to the right Medicore tool or specialist — no forms, no menus.</p>
+        <div class="flex flex-wrap gap-2 mt-6" id="ai-quick-chips"></div>
+        <p class="text-xs mt-6" style="color:var(--text-muted)"><i class="fa-solid fa-circle-info mr-1" aria-hidden="true"></i>General guidance only, not a diagnosis. In a real emergency always use the red Emergency button.</p>
+      </div>
+
+      <!-- Chat widget -->
+      <div class="lg:col-span-3">
+        <div class="glass glass-hover rounded-3xl p-5 md:p-6 flex flex-col" style="height:540px;">
+          <div class="flex items-center gap-x-3 pb-4 border-b border-white/10 mb-4">
+            <div class="w-10 h-10 shrink-0 bg-gradient-to-br from-[#00C896] to-[#00E5FF] rounded-2xl flex items-center justify-center" aria-hidden="true">
+              <i class="fa-solid fa-robot text-[#06121f]"></i>
+            </div>
+            <div>
+              <div class="font-semibold" style="color:var(--text-base)">Medicore AI Assistant</div>
+              <div class="text-xs text-teal-400"><i class="fa-solid fa-circle" style="font-size:6px" aria-hidden="true"></i> Online — rules-based guidance</div>
+            </div>
+            <button type="button" onclick="aiResetChat()" class="ml-auto text-xs glass px-3 py-1.5 rounded-xl border border-white/20 hover:bg-white/10 transition-all focus-ring" style="color:var(--text-muted)">
+              <i class="fa-solid fa-rotate-left mr-1" aria-hidden="true"></i> Reset
+            </button>
+          </div>
+
+          <div id="ai-chat-log" class="flex-1 overflow-y-auto space-y-3 pr-1"></div>
+
+          <form id="ai-chat-form" class="mt-4 flex items-center gap-x-2">
+            <button type="button" id="ai-mic-btn" onclick="aiStartVoice()" aria-label="Voice input"
+              class="w-11 h-11 shrink-0 flex items-center justify-center rounded-2xl glass border border-white/20 hover:bg-white/10 transition-all focus-ring">
+              <i class="fa-solid fa-microphone text-teal-400" aria-hidden="true"></i>
+            </button>
+            <input id="ai-chat-input" type="text" placeholder="e.g. Mere sar mein dard hai…"
+              class="flex-1 border rounded-2xl px-4 py-3 outline-none transition-all focus-ring text-sm" autocomplete="off">
+            <button type="submit" aria-label="Send message"
+              class="w-11 h-11 shrink-0 flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] hover:scale-105 transition-all focus-ring">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1344,6 +1400,103 @@ html.light-mode .physio-alert-banner { color: #B91C1C; background: rgba(248,113,
             </div>
           </div>
 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VACCINECARE ============ -->
+<section id="vaccine" class="py-20 md:py-24 section-alt border-t border-white/10" aria-labelledby="vaccine-heading">
+  <div class="max-w-screen-2xl mx-auto px-5 md:px-8">
+
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="section-eyebrow uppercase text-teal-400 text-sm mb-3">FEATURE — IMMUNIZATION &amp; PREVENTION</div>
+      <h2 id="vaccine-heading" class="text-4xl md:text-5xl font-bold font-display">💉 VaccineCare</h2>
+      <p class="mt-4" style="color:var(--text-muted)">Stay protected. Stay on schedule. Your complete vaccination &amp; immunization record — all in one place.</p>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+      <div class="glass glass-hover rounded-3xl p-5 text-center">
+        <i class="fa-solid fa-syringe text-2xl text-teal-400 mb-2" aria-hidden="true"></i>
+        <div id="vc-stat-completed" class="text-3xl font-bold font-display">0</div>
+        <div class="text-xs mt-1" style="color:var(--text-muted)">Vaccines Completed</div>
+      </div>
+      <div class="glass glass-hover rounded-3xl p-5 text-center">
+        <i class="fa-solid fa-clock text-2xl text-cyan-400 mb-2" aria-hidden="true"></i>
+        <div id="vc-stat-upcoming" class="text-3xl font-bold font-display">0</div>
+        <div class="text-xs mt-1" style="color:var(--text-muted)">Upcoming</div>
+      </div>
+      <div class="glass glass-hover rounded-3xl p-5 text-center">
+        <i class="fa-solid fa-triangle-exclamation text-2xl text-amber-400 mb-2" aria-hidden="true"></i>
+        <div id="vc-stat-overdue" class="text-3xl font-bold font-display">0</div>
+        <div class="text-xs mt-1" style="color:var(--text-muted)">Overdue</div>
+      </div>
+      <div class="glass glass-hover rounded-3xl p-5 text-center">
+        <i class="fa-solid fa-calendar-days text-2xl text-teal-400 mb-2" aria-hidden="true"></i>
+        <div id="vc-stat-next" class="text-lg font-bold font-display">—</div>
+        <div class="text-xs mt-1" style="color:var(--text-muted)">Next Vaccine</div>
+      </div>
+    </div>
+
+    <!-- Progress ring -->
+    <div class="glass glass-hover rounded-3xl p-6 md:p-8 mb-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+      <svg width="110" height="110" viewBox="0 0 42 42" class="shrink-0" style="transform:rotate(-90deg)">
+        <circle cx="21" cy="21" r="15" fill="none" stroke="#334155" stroke-width="6"></circle>
+        <circle id="vc-progress-circle" cx="21" cy="21" r="15" fill="none" stroke="#00C896" stroke-width="6" stroke-dasharray="94" stroke-dashoffset="94" stroke-linecap="round"></circle>
+      </svg>
+      <div class="text-center sm:text-left">
+        <div id="vc-progress-pct" class="text-3xl font-bold font-display text-teal-400">0%</div>
+        <div class="text-sm" style="color:var(--text-muted)">Vaccination Complete</div>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-10">
+      <!-- Add vaccine form -->
+      <div class="lg:col-span-2">
+        <h3 class="text-xl font-semibold font-display mb-4"><i class="fa-solid fa-plus text-teal-400 mr-2" aria-hidden="true"></i>Add a Vaccine</h3>
+        <form id="vaccine-form" class="glass glass-hover rounded-3xl p-6 space-y-4">
+          <div>
+            <label for="vac-name" class="block text-sm font-medium mb-2">Vaccine name</label>
+            <input id="vac-name" type="text" required placeholder="e.g. Hepatitis B"
+              class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label for="vac-doses" class="block text-sm font-medium mb-2">Total doses</label>
+              <input id="vac-doses" type="number" min="1" max="10" value="1" required
+                class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring">
+            </div>
+            <div>
+              <label for="vac-taken" class="block text-sm font-medium mb-2">Doses already taken</label>
+              <input id="vac-taken" type="number" min="0" max="10" value="0" required
+                class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring">
+            </div>
+          </div>
+          <div>
+            <label for="vac-due" class="block text-sm font-medium mb-2">Next due date</label>
+            <input id="vac-due" type="date"
+              class="w-full border rounded-2xl px-4 py-3 outline-none transition-all focus-ring">
+            <p class="text-xs mt-1" style="color:var(--text-muted)">Leave blank if all doses are already complete</p>
+          </div>
+          <div id="vaccine-error" class="text-red-400 text-sm hidden" role="alert"></div>
+          <button type="submit" class="w-full px-6 py-3.5 bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] font-semibold rounded-2xl hover:scale-[1.02] transition-all focus-ring">
+            <i class="fa-solid fa-plus" aria-hidden="true"></i> ADD VACCINE
+          </button>
+        </form>
+      </div>
+
+      <!-- Vaccination record list -->
+      <div class="lg:col-span-3">
+        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+          <h3 class="text-xl font-semibold font-display"><i class="fa-solid fa-notes-medical text-teal-400 mr-2" aria-hidden="true"></i>My Vaccination Record</h3>
+          <button onclick="resetVaccineDemoData()" class="text-xs glass px-3 py-1.5 rounded-xl border border-white/20 hover:bg-white/10 transition-all focus-ring" style="color:var(--text-muted)">
+            <i class="fa-solid fa-rotate-left mr-1"></i> Reset Demo Data
+          </button>
+        </div>
+        <div id="vaccine-list" class="space-y-4" aria-live="polite">
+          <p class="text-sm" style="color:var(--text-muted)">No vaccines added yet. Add one on the left to start your record.</p>
         </div>
       </div>
     </div>
@@ -3287,7 +3440,7 @@ function initNav() {
     });
   });
 
-  const sections = ['home','symptom','skincheck','tools','medicine','clinics','locator','diet','risk','mental','pregnancy','firstaid','water','sleep','exercise','bloodsugar','heartrate','stress','posture','labtest','insurance','stats','about','contact','feedback']
+  const sections = ['home','ai-assistant','symptom','skincheck','tools','medicine','vaccine','clinics','locator','diet','risk','mental','pregnancy','firstaid','water','sleep','exercise','bloodsugar','heartrate','stress','posture','labtest','insurance','stats','about','contact','feedback']
     .map(id => document.getElementById(id)).filter(Boolean);
   const navLinks = Array.from(document.querySelectorAll('[data-nav]'));
 
@@ -4938,6 +5091,637 @@ function initPrescriptionUpload() {
 }
 
 /* =========================================================
+   VACCINECARE — Vaccination & Immunization Record
+   ========================================================= */
+let vaccines = JSON.parse(localStorage.getItem('cv_vaccines') || 'null');
+
+function defaultVaccineSeed() {
+  const mk = (name, total, taken, due) => ({
+    id: htUid ? htUid() : (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)),
+    name, totalDoses: total,
+    doses: Array.from({ length: total }, (_, i) => ({ taken: i < taken })),
+    nextDue: due || null
+  });
+  return [
+    mk('BCG', 1, 1, null),
+    mk('Polio (OPV/IPV)', 4, 4, null),
+    mk('DTP (Diphtheria-Tetanus-Pertussis)', 3, 3, null),
+    mk('MMR (Measles-Mumps-Rubella)', 2, 2, null),
+    mk('Hepatitis A', 2, 2, null),
+    mk('Typhoid', 1, 1, null),
+    mk('Chickenpox (Varicella)', 2, 2, null),
+    mk('Influenza (Seasonal)', 1, 1, null),
+    mk('Hepatitis B', 3, 2, '2026-09-15'),
+    mk('COVID-19 Booster', 1, 0, '2026-10-05'),
+    mk('Tetanus Booster (Td)', 1, 0, '2026-08-01'),
+  ];
+}
+
+if (!vaccines) { vaccines = defaultVaccineSeed(); }
+
+function saveVaccines() {
+  try { localStorage.setItem('cv_vaccines', JSON.stringify(vaccines)); } catch (e) {}
+}
+
+function todayISO() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+
+function formatDateNice(iso) {
+  if (!iso) return '—';
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+function vaccineStatus(v) {
+  const takenCount = v.doses.filter(d => d.taken).length;
+  if (takenCount >= v.totalDoses) return 'Completed';
+  if (v.nextDue && v.nextDue < todayISO()) return 'Overdue';
+  return 'Upcoming';
+}
+
+function renderVaccineStats() {
+  const completed = vaccines.filter(v => vaccineStatus(v) === 'Completed').length;
+  const upcoming  = vaccines.filter(v => vaccineStatus(v) === 'Upcoming').length;
+  const overdue   = vaccines.filter(v => vaccineStatus(v) === 'Overdue').length;
+
+  const nextDates = vaccines
+    .filter(v => vaccineStatus(v) === 'Upcoming' && v.nextDue)
+    .map(v => v.nextDue)
+    .sort();
+  const nextLabel = nextDates.length ? formatDateNice(nextDates[0]) : '—';
+
+  const elC = document.getElementById('vc-stat-completed');
+  const elU = document.getElementById('vc-stat-upcoming');
+  const elO = document.getElementById('vc-stat-overdue');
+  const elN = document.getElementById('vc-stat-next');
+  if (elC) elC.textContent = completed;
+  if (elU) elU.textContent = upcoming;
+  if (elO) elO.textContent = overdue;
+  if (elN) elN.textContent = nextLabel;
+
+  const totalDoses = vaccines.reduce((s, v) => s + v.totalDoses, 0);
+  const takenDoses = vaccines.reduce((s, v) => s + v.doses.filter(d => d.taken).length, 0);
+  const pct = totalDoses ? Math.round((takenDoses / totalDoses) * 100) : 0;
+  const circle = document.getElementById('vc-progress-circle');
+  const pctLabel = document.getElementById('vc-progress-pct');
+  if (circle) circle.setAttribute('stroke-dashoffset', String(94 - (94 * pct / 100)));
+  if (pctLabel) pctLabel.textContent = pct + '%';
+}
+
+function statusBadgeStyle(status) {
+  if (status === 'Completed') return 'background:rgba(0,200,150,0.15);color:#00C896;border:1px solid rgba(0,200,150,0.35);';
+  if (status === 'Overdue')   return 'background:rgba(248,113,113,0.15);color:#f87171;border:1px solid rgba(248,113,113,0.35);';
+  return 'background:rgba(251,191,36,0.15);color:#fbbf24;border:1px solid rgba(251,191,36,0.35);';
+}
+
+function renderVaccineList() {
+  const list = document.getElementById('vaccine-list');
+  if (!list) return;
+  if (vaccines.length === 0) {
+    list.innerHTML = `<p class="text-sm" style="color:var(--text-muted)">No vaccines added yet. Add one on the left to start your record.</p>`;
+    renderVaccineStats();
+    return;
+  }
+
+  list.innerHTML = vaccines.map((v, i) => {
+    const status = vaccineStatus(v);
+    const doseMarks = v.doses.map((d, di) =>
+      `<span class="text-sm mr-3" style="color:${d.taken ? '#00C896' : 'var(--text-muted)'}"><i class="fa-solid ${d.taken ? 'fa-circle-check' : 'fa-circle'} mr-1"></i>Dose ${di + 1}</span>`
+    ).join('');
+    const nextDoseIdx = v.doses.findIndex(d => !d.taken);
+    const canMark = nextDoseIdx !== -1;
+
+    return `
+      <div class="glass glass-hover rounded-3xl p-6" data-vac-id="${v.id}">
+        <div class="flex items-start justify-between gap-3 flex-wrap mb-3">
+          <h4 class="font-semibold text-lg font-display">${v.name}</h4>
+          <span class="text-xs font-semibold px-3 py-1 rounded-xl" style="${statusBadgeStyle(status)}">${status}</span>
+        </div>
+        <div class="flex flex-wrap items-center mb-3">${doseMarks}</div>
+        <div class="text-sm mb-4" style="color:var(--text-muted)">
+          <i class="fa-solid fa-calendar-days mr-1 text-teal-400"></i>
+          ${status === 'Completed' ? 'All doses complete' : 'Next Due: ' + formatDateNice(v.nextDue)}
+        </div>
+        <div class="flex items-center gap-x-3 flex-wrap">
+          <button ${canMark ? '' : 'disabled'} onclick="markVaccineDoseTaken('${v.id}')"
+            class="px-4 py-2 text-sm font-semibold rounded-xl bg-gradient-to-r from-[#00C896] to-[#00E5FF] text-[#06121f] hover:scale-[1.02] transition-all focus-ring ${canMark ? '' : 'opacity-40 cursor-not-allowed'}">
+            <i class="fa-solid fa-check mr-1"></i> Mark as Taken
+          </button>
+          <button onclick="viewVaccineDetails('${v.id}')" class="px-4 py-2 text-sm glass border border-white/20 hover:bg-white/10 rounded-xl transition-all focus-ring">
+            <i class="fa-solid fa-eye mr-1"></i> View Details
+          </button>
+          <button onclick="deleteVaccine('${v.id}')" class="ml-auto px-3 py-2 text-sm text-red-400 hover:bg-red-400/10 rounded-xl transition-all focus-ring" aria-label="Delete vaccine">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </div>`;
+  }).join('');
+
+  renderVaccineStats();
+}
+
+function markVaccineDoseTaken(id) {
+  const v = vaccines.find(x => x.id === id);
+  if (!v) return;
+  const idx = v.doses.findIndex(d => !d.taken);
+  if (idx === -1) return;
+  v.doses[idx].taken = true;
+  const stillDue = v.doses.some(d => !d.taken);
+  if (!stillDue) v.nextDue = null;
+  saveVaccines();
+  renderVaccineList();
+  showToast(stillDue ? `${v.name}: dose ${idx + 1} marked as taken.` : `${v.name} vaccination complete! 🎉`);
+}
+
+function deleteVaccine(id) {
+  const v = vaccines.find(x => x.id === id);
+  vaccines = vaccines.filter(x => x.id !== id);
+  saveVaccines();
+  renderVaccineList();
+  if (v) showToast(`${v.name} removed from your record.`);
+}
+
+function viewVaccineDetails(id) {
+  const v = vaccines.find(x => x.id === id);
+  if (!v) return;
+  const status = vaccineStatus(v);
+  const rows = v.doses.map((d, di) =>
+    `<div class="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
+       <span class="text-sm">Dose ${di + 1}</span>
+       <span class="text-xs font-semibold px-3 py-1 rounded-xl" style="${d.taken ? 'background:rgba(0,200,150,0.15);color:#00C896;border:1px solid rgba(0,200,150,0.35);' : 'background:rgba(148,163,184,0.15);color:var(--text-muted);border:1px solid rgba(148,163,184,0.25);'}">${d.taken ? 'Taken' : 'Pending'}</span>
+     </div>`
+  ).join('');
+
+  const html = `
+    <div class="space-y-4">
+      <div class="flex items-center justify-between flex-wrap gap-2">
+        <h3 class="text-xl font-bold font-display">${v.name}</h3>
+        <span class="text-xs font-semibold px-3 py-1 rounded-xl" style="${statusBadgeStyle(status)}">${status}</span>
+      </div>
+      <div class="text-sm" style="color:var(--text-muted)">
+        <i class="fa-solid fa-calendar-days mr-1 text-teal-400"></i>
+        ${status === 'Completed' ? 'All doses complete' : 'Next Due: ' + formatDateNice(v.nextDue)}
+      </div>
+      <div class="glass rounded-2xl p-4">${rows}</div>
+    </div>`;
+
+  document.getElementById('results-modal-title').textContent = v.name + ' — Details';
+  document.getElementById('results-modal-body').innerHTML = html;
+  const iconEl = document.querySelector('#results-modal-icon i');
+  if (iconEl) iconEl.className = 'fa-solid fa-syringe';
+  const overlay = document.getElementById('results-modal-overlay');
+  overlay.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('active')));
+}
+
+function resetVaccineDemoData() {
+  vaccines = defaultVaccineSeed();
+  saveVaccines();
+  renderVaccineList();
+  showToast('VaccineCare demo data reset.');
+}
+
+function initVaccineForm() {
+  const form = document.getElementById('vaccine-form');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('vac-name').value.trim();
+    const total = parseInt(document.getElementById('vac-doses').value, 10) || 1;
+    let taken = parseInt(document.getElementById('vac-taken').value, 10) || 0;
+    const due = document.getElementById('vac-due').value || null;
+    const errBox = document.getElementById('vaccine-error');
+    errBox.classList.add('hidden');
+
+    if (!name) { errBox.textContent = 'Please enter a vaccine name.'; errBox.classList.remove('hidden'); return; }
+    if (taken > total) taken = total;
+
+    vaccines.push({
+      id: htUid ? htUid() : (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)),
+      name, totalDoses: total,
+      doses: Array.from({ length: total }, (_, i) => ({ taken: i < taken })),
+      nextDue: taken >= total ? null : due
+    });
+    saveVaccines();
+    renderVaccineList();
+    form.reset();
+    document.getElementById('vac-doses').value = 1;
+    document.getElementById('vac-taken').value = 0;
+    showToast(`${name} added to your vaccination record.`);
+  });
+}
+
+initVaccineForm();
+renderVaccineList();
+
+/* =========================================================
+   MEDICORE AI ASSISTANT — "What are you feeling today?"
+   Rules-based conversational symptom-to-tool router.
+   Runs entirely on-device: keyword match → follow-up
+   questions → guidance + tool/specialist suggestion.
+   ========================================================= */
+const AI_QUICK_PROMPTS = [
+  'Mere sar mein dard hai',
+  'Mujhe bukhar hai',
+  'Pait mein dard hai',
+  'Seene mein dard hai',
+  'Khaansi ho rahi hai',
+  'Udaas mehsoos ho raha hai',
+  'Skin par rash hai',
+  'Vaccination ke baare mein'
+];
+
+const AI_EMERGENCY_KEYWORDS = [
+  'saans nahi aa raha', 'saans nahi aa rahi', 'saans band', 'not breathing',
+  'behosh', 'unconscious', 'bohot khoon beh raha', 'severe bleeding',
+  'heart attack', 'seene mein shadid dard aur saans'
+];
+
+const AI_RULES = [
+  {
+    id: 'headache',
+    keywords: ['sar dard', 'sar mein dard', 'sir dard', 'headache', 'head pain', 'migraine'],
+    intro: "Samajh gaya — sar dard. Chaliye kuch sawal poochta hoon taake behtar guidance de sakoon.",
+    questions: [
+      { key: 'duration', text: 'Headache kab se hai?', options: ['Kuch ghanton se', '1-2 din se', '1 hafte se zyada'] },
+      { key: 'fever', text: 'Fever bhi hai?', options: ['Haan', 'Nahi'] },
+      { key: 'vision', text: 'Vision mein koi problem (blurry/double) hai?', options: ['Haan', 'Nahi'] }
+    ],
+    resolve(a) {
+      if (a.vision === 'Haan') {
+        return { text: 'Sar dard ke saath vision problem hona serious ho sakta hai. Jald az jald doctor ya eye specialist se consult karein.',
+          tools: [{ href: '#appointments', label: 'Find a Specialist', urgent: true }] };
+      }
+      if (a.fever === 'Haan' && a.duration === '1 hafte se zyada') {
+        return { text: 'Bukhar ke saath lambay arsay se sar dard infection ki taraf ishara kar sakta hai. Symptom Checker se detail assessment karein.',
+          tools: [{ href: '#symptom', label: 'Open Symptom Checker' }] };
+      }
+      if (a.fever === 'Haan') {
+        return { text: 'Bukhar ke saath halka sar dard aam hai. Aaram karein, paani piyein — agar bukhar 2 din se zyada rahe to Symptom Checker use karein.',
+          tools: [{ href: '#symptom', label: 'Open Symptom Checker' }] };
+      }
+      return { text: 'Ye tension-type headache lag raha hai. Aaram karein, paani piyein aur screen se break lein. Agar dard barhta rahe ya baar baar aaye, to Symptom Checker se pura assessment lein.',
+        tools: [{ href: '#symptom', label: 'Open Symptom Checker' }, { href: '#posture', label: 'Screen Time Tracker' }] };
+    }
+  },
+  {
+    id: 'fever',
+    keywords: ['bukhar', 'fever', 'garam badan', 'temperature'],
+    intro: 'Samajh gaya — bukhar. Chaliye do sawal poochta hoon.',
+    questions: [
+      { key: 'duration', text: 'Bukhar kitne din se hai?', options: ['1 din', '2-3 din', '1 hafte se zyada'] },
+      { key: 'other', text: 'Khaansi ya gala kharab bhi hai?', options: ['Haan', 'Nahi'] }
+    ],
+    resolve(a) {
+      if (a.duration === '1 hafte se zyada') {
+        return { text: 'Lambay arsay ka bukhar khud ilaj karne ke bajaye doctor se check karwana zaroori hai.',
+          tools: [{ href: '#appointments', label: 'Find a Doctor', urgent: true }] };
+      }
+      if (a.other === 'Haan') {
+        return { text: 'Lagta hai flu/infection ho sakta hai. Symptom Checker se pura assessment karein.',
+          tools: [{ href: '#symptom', label: 'Open Symptom Checker' }] };
+      }
+      return { text: 'Halka bukhar hai — aaram karein, paani piyein aur temperature monitor karte rahein.',
+        tools: [{ href: '#symptom', label: 'Open Symptom Checker' }] };
+    }
+  },
+  {
+    id: 'chest_pain',
+    keywords: ['seene mein dard', 'seena dard', 'chest pain', 'dil mein dard', 'seene mein jakdan'],
+    intro: 'Ye important hai — chaliye jaldi se do sawal poochta hoon.',
+    questions: [
+      { key: 'breathing', text: 'Saans lenay mein bhi dikkat ho rahi hai?', options: ['Haan', 'Nahi'] },
+      { key: 'radiate', text: 'Dard baazu ya jabray tak phail raha hai?', options: ['Haan', 'Nahi'] }
+    ],
+    resolve(a) {
+      if (a.breathing === 'Haan' || a.radiate === 'Haan') {
+        return { text: 'Ye heart-related emergency warning signs ho sakte hain. Foran Emergency Health Mode use karein ya nearest hospital jayein.',
+          tools: [{ href: '#emergency', label: '🚨 Emergency Health Mode', urgent: true, sos: true }] };
+      }
+      return { text: 'Seene ka dard halka lag raha hai, lekin ise ignore na karein. Symptom Checker se assessment karein aur agar dard barh jaye to foran doctor dikhayein.',
+        tools: [{ href: '#symptom', label: 'Open Symptom Checker' }, { href: '#appointments', label: 'Find a Doctor' }] };
+    }
+  },
+  {
+    id: 'stomach',
+    keywords: ['pait dard', 'pet dard', 'pait mein dard', 'stomach pain', 'pait mein takleef'],
+    intro: 'Samajh gaya — pait dard. Do sawal poochta hoon.',
+    questions: [
+      { key: 'duration', text: 'Pait dard kab se hai?', options: ['Kuch ghanton se', '1-2 din se', '1 hafte se zyada'] },
+      { key: 'vomit', text: 'Ulti ya dast (diarrhea) bhi ho raha hai?', options: ['Haan', 'Nahi'] }
+    ],
+    resolve(a) {
+      if (a.vomit === 'Haan' && a.duration !== 'Kuch ghanton se') {
+        return { text: 'Ulti/dast ke saath lamba pait dard dehydration ka khatra barha sakta hai. Paani ya ORS piyein aur Symptom Checker se check karein.',
+          tools: [{ href: '#symptom', label: 'Open Symptom Checker' }, { href: '#firstaid', label: 'First Aid Guide' }] };
+      }
+      return { text: 'Symptom Checker se detail assessment lein — hydration aur bland khane ka khayal rakhein.',
+        tools: [{ href: '#symptom', label: 'Open Symptom Checker' }, { href: '#firstaid', label: 'First Aid Guide' }] };
+    }
+  },
+  {
+    id: 'cough',
+    keywords: ['khaansi', 'cough', 'gala kharab'],
+    intro: 'Samajh gaya — khaansi. Do sawal poochta hoon.',
+    questions: [
+      { key: 'duration', text: 'Khaansi kitne dinon se hai?', options: ['2-3 din', '1 hafte se zyada'] },
+      { key: 'breath', text: 'Saans phoolti hai ya seene mein jakdan mehsoos hoti hai?', options: ['Haan', 'Nahi'] }
+    ],
+    resolve(a) {
+      if (a.breath === 'Haan') {
+        return { text: 'Saans ki dikkat ke saath khaansi ko nazar andaz na karein — turant doctor se milein.',
+          tools: [{ href: '#appointments', label: 'Find a Doctor', urgent: true }] };
+      }
+      if (a.duration === '1 hafte se zyada') {
+        return { text: 'Lambi khaansi ka Symptom Checker se assessment karwayein.',
+          tools: [{ href: '#symptom', label: 'Open Symptom Checker' }] };
+      }
+      return { text: 'Garam paani, shehed aur aaram madadgar honge. Agar khaansi barh jaye to Symptom Checker use karein.',
+        tools: [{ href: '#symptom', label: 'Open Symptom Checker' }] };
+    }
+  },
+  {
+    id: 'mental',
+    keywords: ['udaas', 'pareshan', 'anxiety', 'depress', 'stress', 'akela mehsoos', 'ghabrahat'],
+    intro: 'Aapke feelings share karne ka shukriya — chaliye samajhne ki koshish karta hoon.',
+    questions: [
+      { key: 'duration', text: 'Ye feeling kitne arsay se hai?', options: ['Kuch din se', 'Kai hafton se'] },
+      { key: 'sleep', text: 'Kya neend ya bhook par bhi asar par raha hai?', options: ['Haan', 'Nahi'] }
+    ],
+    resolve(a) {
+      const extra = (a.duration === 'Kai hafton se' && a.sleep === 'Haan')
+        ? ' Agar ye feelings lambay arsay se barh rahi hain, to kisi mental health professional se baat karna bohot faydemand ho sakta hai.'
+        : '';
+      return { text: 'Aapke feelings important hain. Mental Health Check-In tool aapko daily mood track karne aur wellness tips dene mein madad karega.' + extra,
+        tools: [{ href: '#mental', label: 'Open Mental Health Check-In' }] };
+    }
+  },
+  {
+    id: 'pregnancy',
+    keywords: ['hamal', 'pregnant', 'pregnancy', 'hamla'],
+    questions: [],
+    resolve() {
+      return { text: 'Pregnancy Care Tracker aapko har hafte ke hisaab se guidance, diet aur checkup reminders deta hai.',
+        tools: [{ href: '#pregnancy', label: 'Open Pregnancy Tracker' }] };
+    }
+  },
+  {
+    id: 'vaccine',
+    keywords: ['vaccine', 'teeka', 'immunization', 'vaccination'],
+    questions: [],
+    resolve() {
+      return { text: 'VaccineCare aapke vaccination record, due doses aur reminders ek jagah track karta hai.',
+        tools: [{ href: '#vaccine', label: 'Open VaccineCare' }] };
+    }
+  },
+  {
+    id: 'medicine',
+    keywords: ['dawai', 'dawa yaad', 'medicine reminder', 'dawa bhool'],
+    questions: [],
+    resolve() {
+      return { text: 'Medicine Reminder & Tracker aapko har dawai ke liye alarm aur daily checklist deta hai.',
+        tools: [{ href: '#medicine', label: 'Open Medicine Tracker' }] };
+    }
+  },
+  {
+    id: 'skin',
+    keywords: ['jild', 'skin', 'rash', 'khujli', 'daane'],
+    intro: 'Samajh gaya — skin ka masla. Ek sawal poochta hoon.',
+    questions: [
+      { key: 'duration', text: 'Ye kitne dinon se hai?', options: ['2-3 din', '1 hafte se zyada'] }
+    ],
+    resolve() {
+      return { text: 'AI Skin Disease Detection tool photo se initial screening de sakta hai — lekin confirmation ke liye dermatologist zaroor dikhayein.',
+        tools: [{ href: '#skincheck', label: 'Open Skin Disease Detection' }] };
+    }
+  },
+  {
+    id: 'injury',
+    keywords: ['chot', 'zakham', 'jal gaya', 'burn', 'khoon beh raha'],
+    intro: 'Samajh gaya — chot/zakham. Ek sawal poochta hoon.',
+    questions: [
+      { key: 'bleeding', text: 'Khoon abhi bhi beh raha hai ya ruk gaya?', options: ['Beh raha hai', 'Ruk gaya'] }
+    ],
+    resolve(a) {
+      if (a.bleeding === 'Beh raha hai') {
+        return { text: 'Zakham par saaf kapray se seedha dabao dein aur agar khoon na ruke to foran Emergency Health Mode use karein.',
+          tools: [{ href: '#emergency', label: '🚨 Emergency Health Mode', urgent: true, sos: true }, { href: '#firstaid', label: 'First Aid Guide' }] };
+      }
+      return { text: 'First Aid Guide mein zakham ki dekhbhal ke step-by-step instructions maujood hain.',
+        tools: [{ href: '#firstaid', label: 'Open First Aid Guide' }] };
+    }
+  }
+];
+
+window.__aiChatState = { activeRule: null, answers: {}, questionIndex: 0 };
+
+function aiEscapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function aiScrollBottom() {
+  const log = document.getElementById('ai-chat-log');
+  if (log) log.scrollTop = log.scrollHeight;
+}
+
+function aiAddMessage(role, html) {
+  const log = document.getElementById('ai-chat-log');
+  if (!log) return;
+  const wrap = document.createElement('div');
+  if (role === 'user') {
+    wrap.className = 'flex justify-end';
+    wrap.innerHTML = `<div class="max-w-[85%] rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm font-medium" style="background:linear-gradient(135deg,#00C896,#00E5FF);color:#06121f">${html}</div>`;
+  } else {
+    wrap.className = 'flex justify-start';
+    wrap.innerHTML = `<div class="flex items-start gap-x-2 max-w-[90%]">
+        <div class="w-7 h-7 shrink-0 rounded-xl bg-gradient-to-br from-[#00C896] to-[#00E5FF] flex items-center justify-center mt-0.5" aria-hidden="true"><i class="fa-solid fa-robot text-[10px] text-[#06121f]"></i></div>
+        <div class="rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm glass" style="color:var(--text-base)">${html}</div>
+      </div>`;
+  }
+  log.appendChild(wrap);
+  aiScrollBottom();
+}
+
+function aiAddOptions(options) {
+  const log = document.getElementById('ai-chat-log');
+  if (!log) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'flex flex-wrap gap-2 pl-9';
+  wrap.innerHTML = options.map(o =>
+    `<button type="button" onclick="aiQuickReply('${o.replace(/'/g, "\\'")}')" class="text-xs px-3 py-1.5 rounded-xl glass border border-teal-400/30 hover:bg-teal-400/10 text-teal-400 transition-all focus-ring">${aiEscapeHtml(o)}</button>`
+  ).join('');
+  log.appendChild(wrap);
+  aiScrollBottom();
+}
+
+function aiBuildResultHTML(result) {
+  const buttons = (result.tools || []).map(t => {
+    const color = t.urgent
+      ? 'background:rgba(248,113,113,0.18);color:#f87171;border:1px solid rgba(248,113,113,0.4);'
+      : 'background:linear-gradient(135deg,#00C896,#00E5FF);color:#06121f;';
+    const action = t.sos ? `emergencySOS();` : `aiGoToTool('${t.href}');`;
+    return `<button type="button" onclick="${action}" class="text-xs px-4 py-2 rounded-xl font-semibold transition-all hover:scale-[1.03] focus-ring" style="${color}">${aiEscapeHtml(t.label)} <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button>`;
+  }).join('');
+  return `<div>${result.text}</div>${buttons ? `<div class="flex flex-wrap gap-2 mt-3">${buttons}</div>` : ''}`;
+}
+
+function aiGoToTool(href) {
+  const target = document.getElementById(href.replace('#', ''));
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function aiNormalizeAnswer(raw, options) {
+  const t = raw.toLowerCase().trim();
+  if (/\b(haan|han|g haan|g han|yes|ji haan)\b/.test(t)) return 'Haan';
+  if (/\b(nahi|nahin|nai|no)\b/.test(t)) return 'Nahi';
+  const found = (options || []).find(o => t.includes(o.toLowerCase()) || o.toLowerCase().includes(t));
+  return found || raw.trim();
+}
+
+function aiAskCurrentQuestion() {
+  const state = window.__aiChatState;
+  const q = state.activeRule.questions[state.questionIndex];
+  aiAddMessage('assistant', aiEscapeHtml(q.text));
+  if (q.options) aiAddOptions(q.options);
+}
+
+function aiFinishFlow() {
+  const state = window.__aiChatState;
+  const result = state.activeRule.resolve(state.answers);
+  aiAddMessage('assistant', aiBuildResultHTML(result));
+  state.activeRule = null;
+  state.answers = {};
+  state.questionIndex = 0;
+}
+
+function aiRespondEmergency() {
+  aiAddMessage('assistant', aiBuildResultHTML({
+    text: '<span class="text-red-400 font-semibold"><i class="fa-solid fa-triangle-exclamation mr-1" aria-hidden="true"></i>Ye emergency lag rahi hai.</span> Foran Emergency Health Mode use karein ya nearest hospital/ambulance ko call karein.',
+    tools: [{ href: '#emergency', label: '🚨 Emergency Health Mode', urgent: true, sos: true }]
+  }));
+  window.__aiChatState = { activeRule: null, answers: {}, questionIndex: 0 };
+}
+
+function aiFallback() {
+  aiAddMessage('assistant', 'Mujhe pura yaqeen nahi ke aap kis symptom ke baare mein baat kar rahe hain. Neeche diye gaye options try karein, ya poora Symptom Checker istemal karein.');
+  aiAddOptions(AI_QUICK_PROMPTS);
+  const btnLog = document.getElementById('ai-chat-log');
+  if (btnLog) {
+    const wrap = document.createElement('div');
+    wrap.className = 'flex justify-start pl-9';
+    wrap.innerHTML = `<button type="button" onclick="aiGoToTool('#symptom')" class="text-xs px-4 py-2 rounded-xl font-semibold transition-all hover:scale-[1.03] focus-ring" style="background:linear-gradient(135deg,#00C896,#00E5FF);color:#06121f">Open Full Symptom Checker <i class="fa-solid fa-arrow-right ml-1" aria-hidden="true"></i></button>`;
+    btnLog.appendChild(wrap);
+    aiScrollBottom();
+  }
+}
+
+function aiProcessInput(text) {
+  aiAddMessage('user', aiEscapeHtml(text));
+  const lower = text.toLowerCase();
+
+  if (AI_EMERGENCY_KEYWORDS.some(k => lower.includes(k))) {
+    setTimeout(aiRespondEmergency, 350);
+    return;
+  }
+
+  const state = window.__aiChatState;
+  if (state.activeRule) {
+    const q = state.activeRule.questions[state.questionIndex];
+    state.answers[q.key] = aiNormalizeAnswer(text, q.options);
+    state.questionIndex++;
+    if (state.questionIndex < state.activeRule.questions.length) {
+      setTimeout(aiAskCurrentQuestion, 350);
+    } else {
+      setTimeout(aiFinishFlow, 350);
+    }
+    return;
+  }
+
+  const rule = AI_RULES.find(r => r.keywords.some(k => lower.includes(k)));
+  if (!rule) { setTimeout(aiFallback, 350); return; }
+
+  state.activeRule = rule;
+  state.answers = {};
+  state.questionIndex = 0;
+
+  if (rule.questions.length === 0) {
+    setTimeout(aiFinishFlow, 350);
+  } else {
+    setTimeout(() => {
+      aiAddMessage('assistant', aiEscapeHtml(rule.intro || 'Samajh gaya, chaliye kuch sawal poochta hoon.'));
+      aiAskCurrentQuestion();
+    }, 350);
+  }
+}
+
+function aiSendMessage(e) {
+  if (e) e.preventDefault();
+  const input = document.getElementById('ai-chat-input');
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  aiProcessInput(text);
+}
+
+function aiQuickReply(text) {
+  const input = document.getElementById('ai-chat-input');
+  if (input) input.value = text;
+  aiSendMessage();
+}
+
+function aiQuickStart(text) {
+  const section = document.getElementById('ai-assistant');
+  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => aiQuickReply(text), 400);
+}
+
+function aiStartVoice() {
+  const Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!Rec) { showToast("Voice input isn't supported on this browser — please type instead."); return; }
+  const micBtn = document.getElementById('ai-mic-btn');
+  const rec = new Rec();
+  rec.lang = 'en-US';
+  rec.continuous = false;
+  rec.interimResults = false;
+  if (micBtn) micBtn.classList.add('animate-pulse');
+  showToast('Listening… speak now.');
+  rec.onresult = (e) => {
+    const transcript = e.results[0][0].transcript;
+    const input = document.getElementById('ai-chat-input');
+    if (input) input.value = transcript;
+    aiSendMessage();
+  };
+  rec.onerror = () => showToast('Voice input error — please try typing instead.');
+  rec.onend = () => { if (micBtn) micBtn.classList.remove('animate-pulse'); };
+  try { rec.start(); } catch (err) { if (micBtn) micBtn.classList.remove('animate-pulse'); }
+}
+
+function aiResetChat() {
+  const log = document.getElementById('ai-chat-log');
+  if (log) log.innerHTML = '';
+  window.__aiChatState = { activeRule: null, answers: {}, questionIndex: 0 };
+  aiAddMessage('assistant', 'Assalam-o-Alaikum! Main Medicore AI Assistant hoon. Bataiye — <strong>aap aaj kaisa mehsoos kar rahe hain?</strong>');
+  aiAddOptions(AI_QUICK_PROMPTS);
+}
+
+function initAiAssistant() {
+  const chips = document.getElementById('ai-quick-chips');
+  if (chips) {
+    chips.innerHTML = AI_QUICK_PROMPTS.map(p =>
+      `<button type="button" onclick="aiQuickStart('${p.replace(/'/g, "\\'")}')" class="text-xs px-4 py-2 rounded-xl glass border border-white/20 hover:border-teal-400/50 hover:bg-white/10 transition-all focus-ring" style="color:var(--text-base)">${aiEscapeHtml(p)}</button>`
+    ).join('');
+  }
+  const form = document.getElementById('ai-chat-form');
+  if (form) form.addEventListener('submit', aiSendMessage);
+  aiResetChat();
+}
+initAiAssistant();
+
+/* =========================================================
    2B. AI SKIN DISEASE DETECTION (photo upload)
    Heuristic, rules-based visual screening: the uploaded photo is
    analyzed on-device (canvas pixel sampling for redness, pigment,
@@ -6247,9 +7031,11 @@ function initRiskCalculator() {
    TOOLS GRID
    ========================================================= */
 const TOOLS = [
+  { icon:'fa-robot',             title:'Medicore AI Assistant',    desc:'Tell it what you feel — get guided to the right tool',  href:'#ai-assistant' },
   { icon:'fa-stethoscope',      title:'Symptom Checker',           desc:'Rules-based guidance with urgency levels',              href:'#symptom'   },
   { icon:'fa-microscope',       title:'AI Skin Disease Detection', desc:'Upload a photo for instant skin condition screening',   href:'#skincheck' },
   { icon:'fa-pills',            title:'Medicine Tracker',          desc:'Daily checklist so doses are never missed',             href:'#medicine'  },
+  { icon:'fa-syringe',          title:'VaccineCare',               desc:'Track doses, due dates & never miss a vaccine',         href:'#vaccine'   },
   { icon:'fa-hospital',         title:'Find Clinics & Doctors',    desc:'Search by specialty, city, or your location',           href:'#clinics'   },
   { icon:'fa-map-location-dot', title:'Location Features',         desc:'Hospitals, pharmacies, blood banks, ambulance & labs',  href:'#locator'   },
   { icon:'fa-bowl-food',        title:'Budget Diet Planner',       desc:'Local, affordable meals for your budget',               href:'#diet'      },
